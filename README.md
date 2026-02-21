@@ -1,87 +1,133 @@
-----
+# DBFarmer v2 🐉
+**Dragon Ball Legends - Story Farmer pour BlueStacks 5**  
+Basé sur le projet original de LUXTACO, modernisé et adapté.
 
-<p align="center">
-  <img src="./media/dbfarmer.png" style="width: 35%; height: auto;">
-</p>
+---
 
-----
-### <p align="center">🤖 DBFarmer 🤖</p>
-<br>
+## ⚡ Installation rapide
 
-<p align="" >
-  Before you read anything else, If you are looking for the <strong>FULL IN DEPTH</strong> explanation on how this works check out my <a href="https://youtube.com/@takkeshi_dev">channel</a> in which Ill try to upload the in depth explanation of most of my scripts!
-  <br><br>
-  DBFarmer is a tool that completes the story of Dragon Ball Legends autonomously with setting for human assistance and auto anti stuck measures.
-</p>
+### 1. Double-clique sur `start.bat` → choix 1 (installer les dépendances)
 
-<p align="center" >
-  <b> >>> JOIN THE DISCORD <<< </b>
-    <br>
-  https://discord.gg/PdeTUZ3M62
-</p>
+Ou manuellement dans un terminal :
+```
+pip install pyautogui opencv-python pillow numpy pygetwindow
+```
 
-----
+---
 
-### <p align="center">🧬 Installation 🧬</p>
-<br>
+## 📸 Étape 1 : Capturer les boutons
 
-<p align="">
-  <strong>Python Script:</strong>
-    
-  - For the python script you just need to start it and the libraries should auto download.
-  - Once they auto download you should be good to go!
-  
-  <strong>DBLegends:</strong>
-  
-  - Make sure your game is in english.
-  - Make sure you are on the main menu.
-  - Make sure the images line up in game.
-  
-  <strong>Extras:</strong>
-  
-  - Make sure to not have hdr on!
-</p>
+Lance `start.bat` → choix 2, ou :
+```
+python capture.py
+```
 
-----
-### <p align="center">⛑ How it works ⛑</p>
-<br>
+Une interface s'ouvre. Pour chaque bouton dans la liste :
+1. Sélectionne-le dans la liste
+2. Clique sur **"Capturer (Sélection zone)"**
+3. La fenêtre se cache → dessine un rectangle autour du bouton dans le jeu
+4. La zone est sauvegardée automatiquement ✓
 
-<p align="">
-  To use DBLegends, you need to run the following command in the project directory:
-  
-    python main.py
-  
-  Doing so will activate the script and complete the story for you. You can adjust the settings in the config file to customize the process to your preference.
-</p>
+### Boutons à capturer (16 au total) :
 
-<p align="center">
-  <img src="./media/showcase1.png" style="width: 70%; height: auto;">
-</p>
-<p align="center">
-  <img src="./media/showcase2.png" style="width: 70%; height: auto;">
-</p>
-<p align="center">
-  <img src="./media/showcase3.png" style="width: 70%; height: auto;">
-</p>
+| Image | Description |
+|-------|-------------|
+| `menu.png` | Bouton menu/maison sur l'écran principal |
+| `story.png` | Bouton "Histoire" |
+| `continue.png` | Bouton "Continuer" (reprendre la quête) |
+| `yes.png` | Bouton "Oui" / confirmation |
+| `no.png` | Bouton "Non" |
+| `demo.png` | Case "Combat démo" / auto-battle |
+| `startbattle.png` | Bouton "Combattre" |
+| `legendspointer.png` | Zone de référence pour l'équipe |
+| `ready.png` | Bouton "Prêt" |
+| `finishedpointer.png` | Indicateur fin de combat |
+| `tap.png` | Flèche "Appuyer pour continuer" |
+| `okbattle.png` | Bouton "OK" résultats |
+| `skip.png` | Bouton "Skip" (cinématiques) |
+| `storyslide.png` | ⭐ Indicateur de slide d'histoire (boite de dialogue, fond avec texte narratif) |
+| `slidetap.png` | ⭐ Icône ou zone "Appuyer pour continuer" sur un slide |
+| `nextlevel.png` | ⭐ Bouton "Niveau suivant" / flèche après un niveau cinématique fini |
+| `arrow.png` | Flèche de navigation |
+| `close.png` | Bouton X (fermer popup) |
+| `mission.png` | Le stage à sélectionner |
 
------
-### <p align="center">📦 Contribute 📦</p>
-<br>
+> ⭐ = Nouvelles images pour la gestion des niveaux cinématiques (slides d'histoire sans combat)
 
-<p align="">
-  DBFarmer is an open source project and welcomes contributions from anyone who is interested. If you want to help improve the tool, you can fork this repository and make a pull request with your changes. You can also report any issues or suggestions on the issues tab.
-</p>
+> **Conseil** : Capture les images avec le jeu en mode fenêtré (pas plein écran) pour de meilleurs résultats.
 
-----
+---
 
-### <p align="center">📌 Disclaimer 📌</p>
-<br>
+## 🎬 Niveaux cinématiques (slides d'histoire)
 
-<p align="">
-    Please use this program only for educational purposes and as a POC.
-    <br><br>
-    It is not meant to be used in any malicious way, and I decline any responsibility for what you do with it.
-    <br><br>
-</p>
+Certains niveaux du mode histoire n'ont **pas de combat** : ce sont des slides de dialogue ou de narration. Le bot détecte automatiquement ce type de niveau et :
 
------
+1. Tape en boucle sur les slides pour les faire avancer
+2. Utilise le bouton **Skip** si disponible pour accélérer
+3. Clique sur **Niveau suivant** une fois les slides terminés
+
+Pour que cela fonctionne, tu dois capturer :
+- `storyslide.png` : n'importe quel élément qui apparaît **uniquement** sur les slides (ex: la boite de dialogue en bas, le fond spécifique, un personnage narrateur)
+- `slidetap.png` : l'icône "appuyer" si elle est distincte
+- `nextlevel.png` : le bouton pour passer au niveau suivant après les slides
+
+---
+
+## 🤖 Étape 2 : Lancer le bot
+
+```
+python main.py
+```
+ou `start.bat` → choix 3.
+
+Avant de lancer :
+- ✅ BlueStacks 5 est ouvert
+- ✅ Le jeu est sur le **menu principal** (pas en combat)
+- ✅ Ton équipe est déjà configurée dans le jeu
+- ✅ Tu as de l'énergie/stamina pour jouer
+
+**CTRL+C** pour arrêter le bot à tout moment.  
+**Souris en coin haut-gauche** = arrêt d'urgence (failsafe pyautogui).
+
+---
+
+## ⚙️ Configuration (config.json)
+
+| Paramètre | Défaut | Description |
+|-----------|--------|-------------|
+| `window_name` | `BlueStacks App Player` | Titre de la fenêtre BlueStacks |
+| `confidence` | `0.75` | Seuil de détection d'image (0.5–0.95) |
+| `loop_delay` | `1.0` | Délai entre chaque vérification (sec) |
+| `click_delay` | `0.5` | Délai après un clic (sec) |
+| `anti_stuck_delay` | `60.0` | Fréquence de l'anti-stuck (sec) |
+| `combat_timeout` | `600` | Timeout max d'un combat (sec) |
+| `overlay_enabled` | `true` | Afficher l'overlay d'info |
+
+### Trouver le bon `window_name` :
+Si BlueStacks ne se trouve pas, lance `python main.py` et il te listera toutes les fenêtres ouvertes.
+
+---
+
+## 🛡 Fonctionnalités
+
+- **Detection par image** : OpenCV template matching (plus fiable que l'original)
+- **Anti-stuck** : Compare 2 screenshots toutes les 60s, clic intelligent si bloqué
+- **Overlay** : Fenêtre info en temps réel (draggable)
+- **Logs** : Fichier log par session dans le dossier `logs/`
+- **Failsafe** : Souris coin haut-gauche = arrêt immédiat
+
+---
+
+## ❓ Problèmes courants
+
+**"Fenêtre BlueStacks introuvable"**  
+→ Vérifie que BlueStacks 5 est ouvert et cherche le bon titre dans la liste affichée.
+
+**Le bot clique au mauvais endroit**  
+→ Refais la capture de cette image avec `python capture.py`.
+
+**La détection est trop sensible / pas assez**  
+→ Ajuste `confidence` dans `config.json` (augmenter = plus strict, diminuer = plus souple).
+
+**Le bot se bloque**  
+→ L'anti-stuck devrait corriger automatiquement. Sinon CTRL+C et relance.

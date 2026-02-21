@@ -1,0 +1,414 @@
+2026-02-21 16:51:15,213 [INFO] Config chargee depuis config.json
+2026-02-21 16:51:15,216 [DEBUG] Image chargée: StoryButton (story.png)
+2026-02-21 16:51:15,216 [DEBUG] Image chargée: ContinueButton (continue.png)
+2026-02-21 16:51:15,217 [DEBUG] Image chargée: MissionObject (mission.png)
+2026-02-21 16:51:15,217 [DEBUG] Image chargée: DemoCheckmark (demo.png)
+2026-02-21 16:51:15,219 [DEBUG] Image chargée: DemoChecked (demo_checked.png)
+2026-02-21 16:51:15,219 [DEBUG] Image chargée: StartBattleButton (startbattle.png)
+2026-02-21 16:51:15,220 [DEBUG] Image chargée: YesButton (yes.png)
+2026-02-21 16:51:15,220 [DEBUG] Image chargée: NoButton (no.png)
+2026-02-21 16:51:15,220 [DEBUG] Image chargée: LegendsPointer (legendspointer.png)
+2026-02-21 16:51:15,222 [DEBUG] Image chargée: ReadyButton (ready.png)
+2026-02-21 16:51:15,223 [DEBUG] Image chargée: FinishedPointer (finishedpointer.png)
+2026-02-21 16:51:15,223 [DEBUG] Image chargée: TapArrow (tap.png)
+2026-02-21 16:51:15,225 [DEBUG] Image chargée: OkBattleButton (okbattle.png)
+2026-02-21 16:51:15,225 [DEBUG] Image chargée: SkipButton (skip.png)
+2026-02-21 16:51:15,226 [DEBUG] Image chargée: StorySlide (storyslide.png)
+2026-02-21 16:51:15,226 [WARNING] Images manquantes (2): ['ArrowObject', 'CloseButton']
+2026-02-21 16:51:15,226 [WARNING] Mets ces images dans le dossier 'images/'
+2026-02-21 16:51:15,226 [WARNING] Utilise l'outil de capture: python capture.py
+2026-02-21 16:51:15,226 [INFO] Recherche de la fenetre: 'BlueStacks App Player'
+2026-02-21 16:51:15,228 [INFO] Fenetre trouvée: Bluestacks App Player | Pos: (0,0) Taille: 1920x1032
+2026-02-21 16:51:15,346 [INFO] DBFarmer initialisé avec succès
+2026-02-21 16:51:15,348 [INFO] =======================================================
+2026-02-21 16:51:15,348 [INFO]   SETUP INITIAL
+2026-02-21 16:51:15,353 [INFO] =======================================================
+2026-02-21 16:51:15,353 [INFO] Attente: StoryButton
+2026-02-21 16:51:20,230 [INFO] Anti-stuck démarré (thread background)
+2026-02-21 16:51:22,071 [DEBUG] Trouvé [StoryButton] confiance=0.94 pos=(795,795)
+2026-02-21 16:51:22,073 [INFO] Clic: StoryButton
+2026-02-21 16:51:22,633 [DEBUG] Clic en (795, 795)
+2026-02-21 16:51:22,633 [INFO] ✓ Histoire sélectionnée
+2026-02-21 16:51:22,633 [INFO] Attente: ContinueButton
+2026-02-21 16:51:24,089 [DEBUG] Trouvé [ContinueButton] confiance=0.76 pos=(1116,819)
+2026-02-21 16:51:24,092 [INFO] Clic: ContinueButton
+2026-02-21 16:51:24,646 [DEBUG] Clic en (1116, 819)
+2026-02-21 16:51:24,646 [INFO] ✓ Continuer cliqué
+2026-02-21 16:51:28,477 [WARNING] [YesButton] non trouvé après 5 essais
+2026-02-21 16:51:28,477 [INFO] ✓ Setup terminé - la boucle prend le relais
+2026-02-21 16:51:28,477 [INFO] =======================================================
+2026-02-21 16:51:28,477 [INFO]   BOUCLE DE FARMING DÉMARRÉE
+2026-02-21 16:51:28,477 [INFO] =======================================================
+2026-02-21 16:51:28,477 [INFO] Détection type de niveau...
+2026-02-21 16:51:28,477 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:51:28,703 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 16:51:28,706 [INFO] → COMBAT (StartBattleButton présent)
+2026-02-21 16:51:28,706 [INFO] ★ Niveau COMBAT
+2026-02-21 16:51:28,706 [INFO] ─── Gestion niveau COMBAT ───
+2026-02-21 16:51:28,706 [INFO] Demo checkmark
+2026-02-21 16:51:28,706 [INFO] Vérif Play Demo décochée...
+2026-02-21 16:51:28,918 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 16:51:29,089 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 16:51:29,089 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 16:51:29,091 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 16:51:29,646 [DEBUG] Clic en (1078, 809)
+2026-02-21 16:51:30,672 [DEBUG]   _find_best [DemoCheckmark] score=1.000
+2026-02-21 16:51:30,846 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-21 16:51:30,846 [DEBUG] → Gagnant: [DemoCheckmark] score=1.000
+2026-02-21 16:51:30,849 [INFO] ✓ Play Demo décochée après clic
+2026-02-21 16:51:30,849 [INFO] ✓ Demo décochée, lancement du combat
+2026-02-21 16:51:30,849 [INFO] Attente StartBattle...
+2026-02-21 16:51:30,849 [INFO] Attente: StartBattleButton
+2026-02-21 16:51:31,076 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 16:51:31,079 [INFO] Clic: StartBattleButton
+2026-02-21 16:51:31,639 [DEBUG] Clic en (1081, 904)
+2026-02-21 16:51:31,639 [INFO] ✓ Combattre cliqué
+2026-02-21 16:51:38,516 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 16:51:38,516 [WARNING] YesButton non trouvé après StartBattle
+2026-02-21 16:51:38,516 [INFO] Sélection équipe
+2026-02-21 16:51:38,714 [DEBUG] Trouvé [LegendsPointer] confiance=0.87 pos=(1145,541)
+2026-02-21 16:51:39,472 [DEBUG] Clic en (845, 631)
+2026-02-21 16:51:39,472 [INFO] Perso 1 cliqué: (845, 631)
+2026-02-21 16:51:40,027 [DEBUG] Clic en (945, 631)
+2026-02-21 16:51:40,027 [INFO] Perso 2 cliqué: (945, 631)
+2026-02-21 16:51:40,583 [DEBUG] Clic en (1045, 631)
+2026-02-21 16:51:40,583 [INFO] Perso 3 cliqué: (1045, 631)
+2026-02-21 16:51:40,583 [INFO] Attente: ReadyButton
+2026-02-21 16:51:40,835 [DEBUG] Trouvé [ReadyButton] confiance=0.97 pos=(944,986)
+2026-02-21 16:51:40,838 [INFO] Clic: ReadyButton
+2026-02-21 16:51:41,394 [DEBUG] Clic en (944, 986)
+2026-02-21 16:51:41,394 [INFO] ✓ Prêt
+2026-02-21 16:51:48,090 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 16:51:48,090 [WARNING] YesButton non trouvé après ReadyButton
+2026-02-21 16:51:48,090 [INFO] Attente fin de combat...
+2026-02-21 16:51:48,090 [INFO] Attente FinishedPointer...
+2026-02-21 16:51:48,090 [INFO] Attente: FinishedPointer
+2026-02-21 16:52:20,311 [DEBUG] Anti-stuck OK, diff=50653862
+2026-02-21 16:53:17,392 [DEBUG] Trouvé [FinishedPointer] confiance=0.90 pos=(767,206)
+2026-02-21 16:53:17,393 [INFO] Clic: FinishedPointer
+2026-02-21 16:53:17,953 [DEBUG] Clic en (767, 206)
+2026-02-21 16:53:17,953 [INFO] ✓ Combat terminé
+2026-02-21 16:53:17,953 [INFO] Écran de résultats
+2026-02-21 16:53:18,693 [DEBUG] Pas de TAP en attente
+2026-02-21 16:53:18,693 [INFO] Attente: OkBattleButton
+2026-02-21 16:53:20,142 [DEBUG] Trouvé [OkBattleButton] confiance=0.80 pos=(942,989)
+2026-02-21 16:53:20,143 [INFO] Clic: OkBattleButton
+2026-02-21 16:53:20,412 [DEBUG] Anti-stuck OK, diff=51272781
+2026-02-21 16:53:20,704 [DEBUG] Clic en (942, 989)
+2026-02-21 16:53:20,704 [INFO] ✓ OkBattle étape 1
+2026-02-21 16:53:21,471 [DEBUG] Pas de TAP en attente
+2026-02-21 16:53:21,471 [INFO] Attente: OkBattleButton
+2026-02-21 16:53:22,901 [DEBUG] Trouvé [OkBattleButton] confiance=0.78 pos=(1059,989)
+2026-02-21 16:53:22,903 [INFO] Clic: OkBattleButton
+2026-02-21 16:53:23,460 [DEBUG] Clic en (1059, 989)
+2026-02-21 16:53:23,460 [INFO] ✓ OkBattle étape 2
+2026-02-21 16:53:23,460 [INFO] Confirmation rejouer
+2026-02-21 16:53:24,261 [INFO] Attente: YesButton
+2026-02-21 16:53:24,500 [DEBUG] Trouvé [YesButton] confiance=0.97 pos=(1060,745)
+2026-02-21 16:53:24,503 [INFO] Clic: YesButton
+2026-02-21 16:53:25,064 [DEBUG] Clic en (1060, 745)
+2026-02-21 16:53:25,064 [INFO] ✓ Rejouer confirmé
+2026-02-21 16:53:25,064 [INFO] Vérif cinématique inter-niveau
+2026-02-21 16:53:26,066 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:53:30,335 [WARNING] [YesButton] non trouvé après 5 essais
+2026-02-21 16:53:30,335 [INFO] ✓ Skip inter-niveau tenté
+2026-02-21 16:53:30,335 [INFO] ✓ Combat géré, retour détection prochain niveau
+2026-02-21 16:53:30,335 [INFO] ✓✓ Combat terminé | Combats: 1 | Total: 1
+2026-02-21 16:53:30,837 [INFO] Détection type de niveau...
+2026-02-21 16:53:30,837 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:53:33,203 [DEBUG] Trouvé [StorySlide] confiance=0.93 pos=(942,64)
+2026-02-21 16:53:33,204 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:53:33,204 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:53:33,204 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:53:33,206 [INFO] Skip cinématique
+2026-02-21 16:53:33,207 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:53:33,765 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:53:40,817 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:53:40,817 [INFO] ✓ Skip confirmé
+2026-02-21 16:53:40,817 [INFO] Passage niveau suivant
+2026-02-21 16:53:40,817 [INFO] Attente: YesButton
+2026-02-21 16:54:11,236 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:54:11,236 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:54:11,238 [INFO] ✓✓ Cinématique terminée | Total: 2
+2026-02-21 16:54:11,738 [INFO] Détection type de niveau...
+2026-02-21 16:54:11,738 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:54:12,226 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 16:54:12,228 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:54:12,228 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:54:12,228 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:54:12,228 [INFO] Skip cinématique
+2026-02-21 16:54:12,230 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:54:12,784 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:54:20,010 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:54:20,010 [INFO] ✓ Skip confirmé
+2026-02-21 16:54:20,010 [INFO] Passage niveau suivant
+2026-02-21 16:54:20,010 [INFO] Attente: YesButton
+2026-02-21 16:54:20,521 [DEBUG] Anti-stuck OK, diff=38605854
+2026-02-21 16:54:50,670 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:54:50,670 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:54:50,673 [INFO] ✓✓ Cinématique terminée | Total: 3
+2026-02-21 16:54:51,174 [INFO] Détection type de niveau...
+2026-02-21 16:54:51,174 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:54:51,657 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 16:54:51,658 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:54:51,658 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:54:51,658 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:54:51,658 [INFO] Skip cinématique
+2026-02-21 16:54:51,662 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:54:52,221 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:54:59,423 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:54:59,423 [INFO] ✓ Skip confirmé
+2026-02-21 16:54:59,423 [INFO] Passage niveau suivant
+2026-02-21 16:54:59,425 [INFO] Attente: YesButton
+2026-02-21 16:55:20,614 [DEBUG] Anti-stuck OK, diff=6796835
+2026-02-21 16:55:29,877 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:55:29,877 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:55:29,878 [INFO] ✓✓ Cinématique terminée | Total: 4
+2026-02-21 16:55:30,379 [INFO] Détection type de niveau...
+2026-02-21 16:55:30,379 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:55:30,829 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 16:55:30,831 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:55:30,831 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:55:30,831 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:55:30,831 [INFO] Skip cinématique
+2026-02-21 16:55:30,832 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:55:31,393 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:55:38,746 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:55:38,747 [INFO] ✓ Skip confirmé
+2026-02-21 16:55:38,747 [INFO] Passage niveau suivant
+2026-02-21 16:55:38,748 [INFO] Attente: YesButton
+2026-02-21 16:56:08,767 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:56:08,767 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:56:08,768 [INFO] ✓✓ Cinématique terminée | Total: 5
+2026-02-21 16:56:09,270 [INFO] Détection type de niveau...
+2026-02-21 16:56:09,270 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:56:09,800 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 16:56:09,802 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:56:09,803 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:56:09,804 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:56:09,804 [INFO] Skip cinématique
+2026-02-21 16:56:09,807 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:56:10,364 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:56:17,797 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:56:17,797 [INFO] ✓ Skip confirmé
+2026-02-21 16:56:17,797 [INFO] Passage niveau suivant
+2026-02-21 16:56:17,797 [INFO] Attente: YesButton
+2026-02-21 16:56:20,713 [DEBUG] Anti-stuck OK, diff=2040743
+2026-02-21 16:56:49,046 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:56:49,046 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:56:49,046 [INFO] ✓✓ Cinématique terminée | Total: 6
+2026-02-21 16:56:49,548 [INFO] Détection type de niveau...
+2026-02-21 16:56:49,548 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:56:50,081 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 16:56:50,083 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:56:50,084 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:56:50,084 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:56:50,084 [INFO] Skip cinématique
+2026-02-21 16:56:50,087 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:56:50,645 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:56:58,069 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:56:58,069 [INFO] ✓ Skip confirmé
+2026-02-21 16:56:58,070 [INFO] Passage niveau suivant
+2026-02-21 16:56:58,070 [INFO] Attente: YesButton
+2026-02-21 16:57:20,807 [DEBUG] Anti-stuck OK, diff=1905955
+2026-02-21 16:57:28,182 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:57:28,182 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:57:28,183 [INFO] ✓✓ Cinématique terminée | Total: 7
+2026-02-21 16:57:28,684 [INFO] Détection type de niveau...
+2026-02-21 16:57:28,684 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:57:29,212 [DEBUG] Trouvé [StorySlide] confiance=0.95 pos=(942,64)
+2026-02-21 16:57:29,214 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:57:29,214 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:57:29,214 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:57:29,214 [INFO] Skip cinématique
+2026-02-21 16:57:29,217 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:57:29,775 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:57:37,380 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:57:37,380 [INFO] ✓ Skip confirmé
+2026-02-21 16:57:37,380 [INFO] Passage niveau suivant
+2026-02-21 16:57:37,380 [INFO] Attente: YesButton
+2026-02-21 16:58:08,254 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:58:08,254 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:58:08,255 [INFO] ✓✓ Cinématique terminée | Total: 8
+2026-02-21 16:58:08,756 [INFO] Détection type de niveau...
+2026-02-21 16:58:08,756 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:58:09,205 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 16:58:09,208 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:58:09,208 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:58:09,208 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:58:09,208 [INFO] Skip cinématique
+2026-02-21 16:58:09,210 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:58:09,766 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:58:16,916 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:58:16,916 [INFO] ✓ Skip confirmé
+2026-02-21 16:58:16,916 [INFO] Passage niveau suivant
+2026-02-21 16:58:16,916 [INFO] Attente: YesButton
+2026-02-21 16:58:20,899 [DEBUG] Anti-stuck OK, diff=2465126
+2026-02-21 16:58:47,417 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:58:47,417 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:58:47,417 [INFO] ✓✓ Cinématique terminée | Total: 9
+2026-02-21 16:58:47,919 [INFO] Détection type de niveau...
+2026-02-21 16:58:47,919 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:58:48,373 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 16:58:48,376 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:58:48,376 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:58:48,376 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:58:48,376 [INFO] Skip cinématique
+2026-02-21 16:58:48,377 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:58:48,932 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:58:56,084 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:58:56,085 [INFO] ✓ Skip confirmé
+2026-02-21 16:58:56,088 [INFO] Passage niveau suivant
+2026-02-21 16:58:56,089 [INFO] Attente: YesButton
+2026-02-21 16:59:21,000 [DEBUG] Anti-stuck OK, diff=2165068
+2026-02-21 16:59:26,702 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 16:59:26,702 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 16:59:26,702 [INFO] ✓✓ Cinématique terminée | Total: 10
+2026-02-21 16:59:27,204 [INFO] Détection type de niveau...
+2026-02-21 16:59:27,204 [INFO] Détection du type de niveau en cours...
+2026-02-21 16:59:27,702 [DEBUG] Trouvé [StorySlide] confiance=0.95 pos=(942,64)
+2026-02-21 16:59:27,704 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 16:59:27,705 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 16:59:27,705 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 16:59:27,705 [INFO] Skip cinématique
+2026-02-21 16:59:27,708 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 16:59:28,270 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 16:59:35,481 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 16:59:35,481 [INFO] ✓ Skip confirmé
+2026-02-21 16:59:35,482 [INFO] Passage niveau suivant
+2026-02-21 16:59:35,482 [INFO] Attente: YesButton
+2026-02-21 17:00:06,524 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 17:00:06,534 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 17:00:06,543 [INFO] ✓✓ Cinématique terminée | Total: 11
+2026-02-21 17:00:07,054 [INFO] Détection type de niveau...
+2026-02-21 17:00:07,065 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:00:08,117 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 17:00:08,120 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:00:08,120 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:00:08,120 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:00:08,121 [INFO] Skip cinématique
+2026-02-21 17:00:08,122 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:00:08,684 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:00:16,725 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:00:16,725 [INFO] ✓ Skip confirmé
+2026-02-21 17:00:16,725 [INFO] Passage niveau suivant
+2026-02-21 17:00:16,725 [INFO] Attente: YesButton
+2026-02-21 17:00:21,090 [DEBUG] Anti-stuck OK, diff=1805546
+2026-02-21 17:00:47,636 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 17:00:47,636 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 17:00:47,640 [INFO] ✓✓ Cinématique terminée | Total: 12
+2026-02-21 17:00:48,142 [INFO] Détection type de niveau...
+2026-02-21 17:00:48,142 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:00:48,716 [DEBUG] Trouvé [StorySlide] confiance=0.95 pos=(942,64)
+2026-02-21 17:00:48,719 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:00:48,719 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:00:48,719 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:00:48,719 [INFO] Skip cinématique
+2026-02-21 17:00:48,720 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:00:49,282 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:00:57,166 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:00:57,166 [INFO] ✓ Skip confirmé
+2026-02-21 17:00:57,166 [INFO] Passage niveau suivant
+2026-02-21 17:00:57,166 [INFO] Attente: YesButton
+2026-02-21 17:01:21,199 [DEBUG] Anti-stuck OK, diff=26973555
+2026-02-21 17:01:27,402 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 17:01:27,402 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 17:01:27,402 [INFO] ✓✓ Cinématique terminée | Total: 13
+2026-02-21 17:01:27,904 [INFO] Détection type de niveau...
+2026-02-21 17:01:27,904 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:01:28,400 [DEBUG] Trouvé [StorySlide] confiance=0.95 pos=(942,64)
+2026-02-21 17:01:28,404 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:01:28,404 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:01:28,404 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:01:28,404 [INFO] Skip cinématique
+2026-02-21 17:01:28,408 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:01:28,967 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:01:36,391 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:01:36,391 [INFO] ✓ Skip confirmé
+2026-02-21 17:01:36,392 [INFO] Passage niveau suivant
+2026-02-21 17:01:36,392 [INFO] Attente: YesButton
+2026-02-21 17:02:06,806 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 17:02:06,808 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 17:02:06,809 [INFO] ✓✓ Cinématique terminée | Total: 14
+2026-02-21 17:02:07,311 [INFO] Détection type de niveau...
+2026-02-21 17:02:07,311 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:02:07,884 [DEBUG] Trouvé [StorySlide] confiance=0.95 pos=(942,64)
+2026-02-21 17:02:07,887 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:02:07,887 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:02:07,887 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:02:07,887 [INFO] Skip cinématique
+2026-02-21 17:02:07,896 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:02:08,460 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:02:16,684 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:02:16,684 [INFO] ✓ Skip confirmé
+2026-02-21 17:02:16,684 [INFO] Passage niveau suivant
+2026-02-21 17:02:16,684 [INFO] Attente: YesButton
+2026-02-21 17:02:21,299 [DEBUG] Anti-stuck OK, diff=36867649
+2026-02-21 17:02:47,067 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 17:02:47,067 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 17:02:47,070 [INFO] ✓✓ Cinématique terminée | Total: 15
+2026-02-21 17:02:47,571 [INFO] Détection type de niveau...
+2026-02-21 17:02:47,571 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:02:48,144 [DEBUG] Trouvé [StorySlide] confiance=0.95 pos=(942,64)
+2026-02-21 17:02:48,146 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:02:48,148 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:02:48,148 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:02:48,148 [INFO] Skip cinématique
+2026-02-21 17:02:48,149 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:02:48,708 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:02:56,692 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:02:56,692 [INFO] ✓ Skip confirmé
+2026-02-21 17:02:56,692 [INFO] Passage niveau suivant
+2026-02-21 17:02:56,692 [INFO] Attente: YesButton
+2026-02-21 17:03:21,404 [DEBUG] Anti-stuck OK, diff=39206815
+2026-02-21 17:03:27,448 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 17:03:27,448 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 17:03:27,448 [INFO] ✓✓ Cinématique terminée | Total: 16
+2026-02-21 17:03:27,952 [INFO] Détection type de niveau...
+2026-02-21 17:03:27,959 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:03:28,514 [DEBUG] Trouvé [StorySlide] confiance=0.94 pos=(942,64)
+2026-02-21 17:03:28,516 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:03:28,518 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:03:28,518 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:03:28,518 [INFO] Skip cinématique
+2026-02-21 17:03:28,519 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:03:29,080 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:03:36,762 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:03:36,763 [INFO] ✓ Skip confirmé
+2026-02-21 17:03:36,765 [INFO] Passage niveau suivant
+2026-02-21 17:03:36,766 [INFO] Attente: YesButton
+2026-02-21 17:03:54,468 [DEBUG] Trouvé [YesButton] confiance=0.97 pos=(1060,745)
+2026-02-21 17:03:54,470 [INFO] Clic: YesButton
+2026-02-21 17:03:55,030 [DEBUG] Clic en (1060, 745)
+2026-02-21 17:03:55,030 [INFO] ✓ Niveau suivant confirmé
+2026-02-21 17:03:55,030 [INFO] ✓✓ Cinématique terminée | Total: 17
+2026-02-21 17:03:55,531 [INFO] Détection type de niveau...
+2026-02-21 17:03:55,531 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:04:00,308 [DEBUG] Trouvé [StorySlide] confiance=0.79 pos=(942,64)
+2026-02-21 17:04:00,311 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:04:00,311 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:04:00,311 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:04:00,312 [INFO] Skip cinématique
+2026-02-21 17:04:00,312 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:04:00,869 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:04:08,571 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:04:08,571 [INFO] ✓ Skip confirmé
+2026-02-21 17:04:08,571 [INFO] Passage niveau suivant
+2026-02-21 17:04:08,572 [INFO] Attente: YesButton
+2026-02-21 17:04:21,522 [DEBUG] Anti-stuck OK, diff=52553358
+2026-02-21 17:04:39,285 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 17:04:39,285 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 17:04:39,288 [INFO] ✓✓ Cinématique terminée | Total: 18
+2026-02-21 17:04:39,789 [INFO] Détection type de niveau...
+2026-02-21 17:04:39,789 [INFO] Détection du type de niveau en cours...
+2026-02-21 17:04:40,709 [DEBUG] Trouvé [StorySlide] confiance=0.79 pos=(942,64)
+2026-02-21 17:04:40,709 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 17:04:40,712 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 17:04:40,712 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 17:04:40,713 [INFO] Skip cinématique
+2026-02-21 17:04:40,721 [INFO] Clic Skip (coordonnées relatives) en (1574, 51)
+2026-02-21 17:04:41,282 [INFO] ✓ Skip cliqué (coordonnées fixes)
+2026-02-21 17:04:49,433 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 17:04:49,433 [INFO] ✓ Skip confirmé
+2026-02-21 17:04:49,433 [INFO] Passage niveau suivant
+2026-02-21 17:04:49,435 [INFO] Attente: YesButton

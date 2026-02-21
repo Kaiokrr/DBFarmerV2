@@ -1,0 +1,120 @@
+2026-02-21 07:21:43,597 [INFO] Config chargee depuis config.json
+2026-02-21 07:21:43,613 [DEBUG] Image chargée: StoryButton (story.png)
+2026-02-21 07:21:43,614 [DEBUG] Image chargée: ContinueButton (continue.png)
+2026-02-21 07:21:43,615 [DEBUG] Image chargée: MissionObject (mission.png)
+2026-02-21 07:21:43,615 [DEBUG] Image chargée: DemoCheckmark (demo.png)
+2026-02-21 07:21:43,617 [DEBUG] Image chargée: StartBattleButton (startbattle.png)
+2026-02-21 07:21:43,618 [DEBUG] Image chargée: YesButton (yes.png)
+2026-02-21 07:21:43,618 [DEBUG] Image chargée: NoButton (no.png)
+2026-02-21 07:21:43,618 [DEBUG] Image chargée: LegendsPointer (legendspointer.png)
+2026-02-21 07:21:43,620 [DEBUG] Image chargée: ReadyButton (ready.png)
+2026-02-21 07:21:43,620 [DEBUG] Image chargée: FinishedPointer (finishedpointer.png)
+2026-02-21 07:21:43,621 [DEBUG] Image chargée: TapArrow (tap.png)
+2026-02-21 07:21:43,621 [DEBUG] Image chargée: OkBattleButton (okbattle.png)
+2026-02-21 07:21:43,623 [DEBUG] Image chargée: SkipButton (skip.png)
+2026-02-21 07:21:43,623 [DEBUG] Image chargée: StorySlide (storyslide.png)
+2026-02-21 07:21:43,623 [WARNING] Images manquantes (2): ['ArrowObject', 'CloseButton']
+2026-02-21 07:21:43,623 [WARNING] Mets ces images dans le dossier 'images/'
+2026-02-21 07:21:43,623 [WARNING] Utilise l'outil de capture: python capture.py
+2026-02-21 07:21:43,623 [INFO] Recherche de la fenetre: 'BlueStacks App Player'
+2026-02-21 07:21:43,625 [INFO] Fenetre trouvée: Bluestacks App Player | Pos: (0,0) Taille: 1920x1032
+2026-02-21 07:21:43,763 [INFO] DBFarmer initialisé avec succès
+2026-02-21 07:21:43,766 [INFO] =======================================================
+2026-02-21 07:21:43,769 [INFO]   SETUP INITIAL
+2026-02-21 07:21:43,769 [INFO] =======================================================
+2026-02-21 07:21:43,770 [INFO] Attente: StoryButton
+2026-02-21 07:21:45,495 [DEBUG] Trouvé [StoryButton] confiance=1.00 pos=(795,795)
+2026-02-21 07:21:45,499 [INFO] Clic: StoryButton
+2026-02-21 07:21:46,055 [DEBUG] Clic en (795, 795)
+2026-02-21 07:21:46,055 [INFO] ✓ Histoire sélectionnée
+2026-02-21 07:21:46,056 [INFO] Attente: ContinueButton
+2026-02-21 07:21:47,504 [DEBUG] Trouvé [ContinueButton] confiance=0.76 pos=(1116,819)
+2026-02-21 07:21:47,507 [INFO] Clic: ContinueButton
+2026-02-21 07:21:48,069 [DEBUG] Clic en (1116, 819)
+2026-02-21 07:21:48,069 [INFO] ✓ Continuer cliqué
+2026-02-21 07:21:48,628 [INFO] Anti-stuck démarré (thread background)
+2026-02-21 07:22:07,189 [WARNING] [YesButton] non trouvé après 15 essais
+2026-02-21 07:22:07,189 [WARNING] YesButton non trouvé après ContinueButton (peut etre pas necessaire)
+2026-02-21 07:22:07,190 [INFO] Attente: DemoCheckmark
+2026-02-21 07:22:07,420 [DEBUG] Trouvé [DemoCheckmark] confiance=0.93 pos=(1081,808)
+2026-02-21 07:22:07,421 [INFO] Clic: DemoCheckmark
+2026-02-21 07:22:07,977 [DEBUG] Clic en (1081, 808)
+2026-02-21 07:22:07,977 [INFO] ✓ Demo checkmark activé
+2026-02-21 07:22:07,977 [INFO] Attente: StartBattleButton
+2026-02-21 07:22:08,201 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 07:22:08,203 [INFO] Clic: StartBattleButton
+2026-02-21 07:22:08,761 [DEBUG] Clic en (1081, 904)
+2026-02-21 07:22:08,761 [INFO] ✓ Combat démarré
+2026-02-21 07:22:27,879 [WARNING] [YesButton] non trouvé après 15 essais
+2026-02-21 07:22:27,879 [WARNING] YesButton non trouvé après StartBattle
+2026-02-21 07:22:27,879 [INFO] Sélection équipe
+2026-02-21 07:22:28,099 [DEBUG] Trouvé [LegendsPointer] confiance=0.87 pos=(1145,541)
+2026-02-21 07:22:28,858 [DEBUG] Clic en (845, 631)
+2026-02-21 07:22:28,858 [INFO] Perso 1 cliqué: (845, 631)
+2026-02-21 07:22:29,414 [DEBUG] Clic en (945, 631)
+2026-02-21 07:22:29,414 [INFO] Perso 2 cliqué: (945, 631)
+2026-02-21 07:22:29,968 [DEBUG] Clic en (1045, 631)
+2026-02-21 07:22:29,968 [INFO] Perso 3 cliqué: (1045, 631)
+2026-02-21 07:22:29,968 [INFO] ✓ Équipe sélectionnée
+2026-02-21 07:22:29,968 [INFO] Attente: ReadyButton
+2026-02-21 07:22:30,227 [DEBUG] Trouvé [ReadyButton] confiance=0.97 pos=(944,986)
+2026-02-21 07:22:30,230 [INFO] Clic: ReadyButton
+2026-02-21 07:22:30,788 [DEBUG] Clic en (944, 986)
+2026-02-21 07:22:30,788 [INFO] ✓ Prêt
+2026-02-21 07:22:48,713 [DEBUG] Anti-stuck OK, diff=46472967
+2026-02-21 07:22:50,251 [WARNING] [YesButton] non trouvé après 15 essais
+2026-02-21 07:22:50,251 [WARNING] YesButton non trouvé après ReadyButton
+2026-02-21 07:22:50,251 [INFO] ✓ Setup terminé - le farming commence !
+2026-02-21 07:22:50,251 [INFO] =======================================================
+2026-02-21 07:22:50,253 [INFO]   BOUCLE DE FARMING DÉMARRÉE
+2026-02-21 07:22:50,253 [INFO] =======================================================
+2026-02-21 07:22:50,253 [INFO] Détection type de niveau...
+2026-02-21 07:22:50,253 [INFO] Détection du type de niveau en cours...
+2026-02-21 07:23:35,893 [WARNING] Type de niveau non détecté après 45s → on suppose 'combat'
+2026-02-21 07:23:35,894 [WARNING] Type inconnu → traité comme combat par défaut
+2026-02-21 07:23:35,901 [INFO] ★ Niveau COMBAT détecté
+2026-02-21 07:23:35,901 [INFO] ─── Gestion niveau COMBAT ───
+2026-02-21 07:23:35,901 [INFO] Attente fin de combat...
+2026-02-21 07:23:35,901 [INFO] Attente FinishedPointer...
+2026-02-21 07:23:35,901 [INFO] Attente: FinishedPointer
+2026-02-21 07:23:48,807 [DEBUG] Anti-stuck OK, diff=28198680
+2026-02-21 07:24:48,904 [DEBUG] Anti-stuck OK, diff=41409424
+2026-02-21 07:25:08,859 [DEBUG] Trouvé [FinishedPointer] confiance=0.89 pos=(767,206)
+2026-02-21 07:25:08,861 [INFO] Clic: FinishedPointer
+2026-02-21 07:25:09,421 [DEBUG] Clic en (767, 206)
+2026-02-21 07:25:09,421 [INFO] ✓ Combat terminé
+2026-02-21 07:25:09,421 [INFO] Écran de résultats
+2026-02-21 07:25:23,390 [WARNING] [TapArrow] non trouvé après 15 essais
+2026-02-21 07:25:23,390 [INFO] Attente: OkBattleButton
+2026-02-21 07:25:23,616 [DEBUG] Trouvé [OkBattleButton] confiance=0.79 pos=(942,989)
+2026-02-21 07:25:23,619 [INFO] Clic: OkBattleButton
+2026-02-21 07:25:24,177 [DEBUG] Clic en (942, 989)
+2026-02-21 07:25:24,177 [INFO] ✓ Résultats étape 1
+2026-02-21 07:25:38,091 [WARNING] [TapArrow] non trouvé après 15 essais
+2026-02-21 07:25:38,091 [INFO] Attente: OkBattleButton
+2026-02-21 07:25:38,305 [DEBUG] Trouvé [OkBattleButton] confiance=0.78 pos=(1059,989)
+2026-02-21 07:25:38,305 [INFO] Clic: OkBattleButton
+2026-02-21 07:25:38,863 [DEBUG] Clic en (1059, 989)
+2026-02-21 07:25:38,863 [INFO] ✓ Résultats étape 2
+2026-02-21 07:25:38,864 [INFO] Attente: YesButton
+2026-02-21 07:25:39,112 [DEBUG] Trouvé [YesButton] confiance=0.97 pos=(1060,745)
+2026-02-21 07:25:39,116 [INFO] Clic: YesButton
+2026-02-21 07:25:39,675 [DEBUG] Clic en (1060, 745)
+2026-02-21 07:25:39,675 [INFO] ✓ Rejouer confirmé
+2026-02-21 07:25:39,675 [INFO] Skip cinématique
+2026-02-21 07:25:39,865 [INFO] Pas de Skip (pas de cinématique inter-niveau)
+2026-02-21 07:25:39,867 [INFO] Préparation combat suivant
+2026-02-21 07:25:39,867 [INFO] Attente: DemoCheckmark
+2026-02-21 07:25:41,288 [DEBUG] Trouvé [DemoCheckmark] confiance=0.93 pos=(1081,808)
+2026-02-21 07:25:41,290 [INFO] Clic: DemoCheckmark
+2026-02-21 07:25:41,848 [DEBUG] Clic en (1081, 808)
+2026-02-21 07:25:41,848 [INFO] ✓ Demo checkmark
+2026-02-21 07:25:41,848 [INFO] Attente: StartBattleButton
+2026-02-21 07:25:42,075 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 07:25:42,077 [INFO] Clic: StartBattleButton
+2026-02-21 07:25:42,634 [DEBUG] Clic en (1081, 904)
+2026-02-21 07:25:42,634 [INFO] ✓ Combattre cliqué
+2026-02-21 07:25:49,000 [DEBUG] Anti-stuck OK, diff=48504694
+2026-02-21 07:26:01,779 [WARNING] [YesButton] non trouvé après 15 essais
+2026-02-21 07:26:01,779 [WARNING] YesButton non trouvé après StartBattle
+2026-02-21 07:26:01,779 [INFO] Sélection équipe

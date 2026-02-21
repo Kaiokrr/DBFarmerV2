@@ -1,0 +1,432 @@
+2026-02-21 09:25:22,087 [INFO] Config chargee depuis config.json
+2026-02-21 09:25:22,089 [DEBUG] Image chargée: StoryButton (story.png)
+2026-02-21 09:25:22,091 [DEBUG] Image chargée: ContinueButton (continue.png)
+2026-02-21 09:25:22,091 [DEBUG] Image chargée: MissionObject (mission.png)
+2026-02-21 09:25:22,092 [DEBUG] Image chargée: DemoCheckmark (demo.png)
+2026-02-21 09:25:22,092 [DEBUG] Image chargée: DemoChecked (demo_checked.png)
+2026-02-21 09:25:22,092 [DEBUG] Image chargée: StartBattleButton (startbattle.png)
+2026-02-21 09:25:22,092 [DEBUG] Image chargée: YesButton (yes.png)
+2026-02-21 09:25:22,094 [DEBUG] Image chargée: NoButton (no.png)
+2026-02-21 09:25:22,094 [DEBUG] Image chargée: LegendsPointer (legendspointer.png)
+2026-02-21 09:25:22,096 [DEBUG] Image chargée: ReadyButton (ready.png)
+2026-02-21 09:25:22,096 [DEBUG] Image chargée: FinishedPointer (finishedpointer.png)
+2026-02-21 09:25:22,098 [DEBUG] Image chargée: TapArrow (tap.png)
+2026-02-21 09:25:22,098 [DEBUG] Image chargée: OkBattleButton (okbattle.png)
+2026-02-21 09:25:22,099 [DEBUG] Image chargée: SkipButton (skip.png)
+2026-02-21 09:25:22,099 [DEBUG] Image chargée: StorySlide (storyslide.png)
+2026-02-21 09:25:22,099 [WARNING] Images manquantes (2): ['ArrowObject', 'CloseButton']
+2026-02-21 09:25:22,100 [WARNING] Mets ces images dans le dossier 'images/'
+2026-02-21 09:25:22,102 [WARNING] Utilise l'outil de capture: python capture.py
+2026-02-21 09:25:22,102 [INFO] Recherche de la fenetre: 'BlueStacks App Player'
+2026-02-21 09:25:22,104 [INFO] Fenetre trouvée: Bluestacks App Player | Pos: (0,0) Taille: 1920x1032
+2026-02-21 09:25:22,215 [INFO] DBFarmer initialisé avec succès
+2026-02-21 09:25:22,217 [INFO] =======================================================
+2026-02-21 09:25:22,218 [INFO]   SETUP INITIAL
+2026-02-21 09:25:22,219 [INFO] =======================================================
+2026-02-21 09:25:22,221 [INFO] Attente: StoryButton
+2026-02-21 09:25:22,504 [DEBUG] Trouvé [StoryButton] confiance=0.97 pos=(795,795)
+2026-02-21 09:25:22,505 [INFO] Clic: StoryButton
+2026-02-21 09:25:23,066 [DEBUG] Clic en (795, 795)
+2026-02-21 09:25:23,066 [INFO] ✓ Histoire sélectionnée
+2026-02-21 09:25:23,066 [INFO] Attente: ContinueButton
+2026-02-21 09:25:24,516 [DEBUG] Trouvé [ContinueButton] confiance=0.76 pos=(1116,819)
+2026-02-21 09:25:24,518 [INFO] Clic: ContinueButton
+2026-02-21 09:25:25,072 [DEBUG] Clic en (1116, 819)
+2026-02-21 09:25:25,072 [INFO] ✓ Continuer cliqué
+2026-02-21 09:25:27,105 [INFO] Anti-stuck démarré (thread background)
+2026-02-21 09:25:28,783 [WARNING] [YesButton] non trouvé après 5 essais
+2026-02-21 09:25:28,783 [INFO] ✓ Setup terminé - la boucle prend le relais
+2026-02-21 09:25:28,783 [INFO] =======================================================
+2026-02-21 09:25:28,783 [INFO]   BOUCLE DE FARMING DÉMARRÉE
+2026-02-21 09:25:28,783 [INFO] =======================================================
+2026-02-21 09:25:28,783 [INFO] Détection type de niveau...
+2026-02-21 09:25:28,783 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:25:28,987 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 09:25:28,990 [INFO] → COMBAT (StartBattleButton présent)
+2026-02-21 09:25:28,990 [INFO] ★ Niveau COMBAT
+2026-02-21 09:25:28,990 [INFO] ─── Gestion niveau COMBAT ───
+2026-02-21 09:25:28,990 [INFO] Demo checkmark
+2026-02-21 09:25:28,990 [INFO] Vérif Play Demo décochée...
+2026-02-21 09:25:29,176 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:25:29,322 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:25:29,322 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:25:29,326 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 09:25:29,884 [DEBUG] Clic en (1078, 809)
+2026-02-21 09:25:30,872 [DEBUG]   _find_best [DemoCheckmark] score=1.000
+2026-02-21 09:25:31,025 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-21 09:25:31,025 [DEBUG] → Gagnant: [DemoCheckmark] score=1.000
+2026-02-21 09:25:31,027 [INFO] ✓ Play Demo décochée après clic
+2026-02-21 09:25:31,027 [INFO] ✓ Demo décochée, lancement du combat
+2026-02-21 09:25:31,027 [INFO] Attente StartBattle...
+2026-02-21 09:25:31,027 [INFO] Attente: StartBattleButton
+2026-02-21 09:25:31,233 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 09:25:31,235 [INFO] Clic: StartBattleButton
+2026-02-21 09:25:31,794 [DEBUG] Clic en (1081, 904)
+2026-02-21 09:25:31,794 [INFO] ✓ Combattre cliqué
+2026-02-21 09:25:38,407 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 09:25:38,407 [WARNING] YesButton non trouvé après StartBattle
+2026-02-21 09:25:38,408 [INFO] Sélection équipe
+2026-02-21 09:25:38,584 [DEBUG] Trouvé [LegendsPointer] confiance=0.87 pos=(1145,541)
+2026-02-21 09:25:39,342 [DEBUG] Clic en (845, 631)
+2026-02-21 09:25:39,342 [INFO] Perso 1 cliqué: (845, 631)
+2026-02-21 09:25:39,897 [DEBUG] Clic en (945, 631)
+2026-02-21 09:25:39,897 [INFO] Perso 2 cliqué: (945, 631)
+2026-02-21 09:25:40,453 [DEBUG] Clic en (1045, 631)
+2026-02-21 09:25:40,453 [INFO] Perso 3 cliqué: (1045, 631)
+2026-02-21 09:25:40,453 [INFO] Attente: ReadyButton
+2026-02-21 09:25:40,682 [DEBUG] Trouvé [ReadyButton] confiance=0.97 pos=(944,986)
+2026-02-21 09:25:40,685 [INFO] Clic: ReadyButton
+2026-02-21 09:25:41,245 [DEBUG] Clic en (944, 986)
+2026-02-21 09:25:41,245 [INFO] ✓ Prêt
+2026-02-21 09:25:47,537 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 09:25:47,537 [WARNING] YesButton non trouvé après ReadyButton
+2026-02-21 09:25:47,537 [INFO] Attente fin de combat...
+2026-02-21 09:25:47,537 [INFO] Attente FinishedPointer...
+2026-02-21 09:25:47,537 [INFO] Attente: FinishedPointer
+2026-02-21 09:26:27,187 [DEBUG] Anti-stuck OK, diff=59768288
+2026-02-21 09:27:06,155 [DEBUG] Trouvé [FinishedPointer] confiance=0.89 pos=(767,206)
+2026-02-21 09:27:06,157 [INFO] Clic: FinishedPointer
+2026-02-21 09:27:06,714 [DEBUG] Clic en (767, 206)
+2026-02-21 09:27:06,714 [INFO] ✓ Combat terminé
+2026-02-21 09:27:06,714 [INFO] Écran de résultats
+2026-02-21 09:27:07,431 [INFO] Attente: OkBattleButton
+2026-02-21 09:27:10,028 [DEBUG] Trouvé [OkBattleButton] confiance=0.78 pos=(942,989)
+2026-02-21 09:27:10,031 [INFO] Clic: OkBattleButton
+2026-02-21 09:27:10,588 [DEBUG] Clic en (942, 989)
+2026-02-21 09:27:10,588 [INFO] ✓ OkBattle étape 1
+2026-02-21 09:27:11,283 [INFO] Attente: OkBattleButton
+2026-02-21 09:27:12,670 [DEBUG] Trouvé [OkBattleButton] confiance=0.79 pos=(1059,989)
+2026-02-21 09:27:12,673 [INFO] Clic: OkBattleButton
+2026-02-21 09:27:13,227 [DEBUG] Clic en (1059, 989)
+2026-02-21 09:27:13,227 [INFO] ✓ OkBattle étape 2
+2026-02-21 09:27:13,227 [INFO] Confirmation rejouer
+2026-02-21 09:27:14,028 [INFO] Attente: YesButton
+2026-02-21 09:27:14,253 [DEBUG] Trouvé [YesButton] confiance=0.97 pos=(1060,745)
+2026-02-21 09:27:14,255 [INFO] Clic: YesButton
+2026-02-21 09:27:14,810 [DEBUG] Clic en (1060, 745)
+2026-02-21 09:27:14,810 [INFO] ✓ Rejouer confirmé
+2026-02-21 09:27:14,810 [INFO] Vérif cinématique inter-niveau
+2026-02-21 09:27:16,007 [INFO] Pas de cinématique inter-niveau
+2026-02-21 09:27:16,007 [INFO] ✓ Combat géré, retour détection prochain niveau
+2026-02-21 09:27:16,009 [INFO] ✓✓ Combat terminé | Combats: 1 | Total: 1
+2026-02-21 09:27:16,510 [INFO] Détection type de niveau...
+2026-02-21 09:27:16,510 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:27:16,709 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 09:27:16,712 [INFO] → COMBAT (StartBattleButton présent)
+2026-02-21 09:27:16,712 [INFO] ★ Niveau COMBAT
+2026-02-21 09:27:16,712 [INFO] ─── Gestion niveau COMBAT ───
+2026-02-21 09:27:16,712 [INFO] Demo checkmark
+2026-02-21 09:27:16,712 [INFO] Vérif Play Demo décochée...
+2026-02-21 09:27:16,896 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:27:17,045 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:27:17,045 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:27:17,048 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 09:27:17,601 [DEBUG] Clic en (1078, 809)
+2026-02-21 09:27:18,587 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:27:18,738 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:27:18,738 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:27:18,740 [DEBUG] Encore état [DemoChecked], nouvel essai...
+2026-02-21 09:27:18,920 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:27:19,063 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:27:19,063 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:27:19,065 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 09:27:19,622 [DEBUG] Clic en (1078, 809)
+2026-02-21 09:27:20,616 [DEBUG]   _find_best [DemoCheckmark] score=1.000
+2026-02-21 09:27:20,767 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-21 09:27:20,767 [DEBUG] → Gagnant: [DemoCheckmark] score=1.000
+2026-02-21 09:27:20,768 [INFO] ✓ Play Demo décochée après clic
+2026-02-21 09:27:20,770 [INFO] ✓ Demo décochée, lancement du combat
+2026-02-21 09:27:20,770 [INFO] Attente StartBattle...
+2026-02-21 09:27:20,770 [INFO] Attente: StartBattleButton
+2026-02-21 09:27:20,972 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 09:27:20,973 [INFO] Clic: StartBattleButton
+2026-02-21 09:27:21,532 [DEBUG] Clic en (1081, 904)
+2026-02-21 09:27:21,532 [INFO] ✓ Combattre cliqué
+2026-02-21 09:27:27,273 [DEBUG] Anti-stuck OK, diff=59890970
+2026-02-21 09:27:28,161 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 09:27:28,161 [WARNING] YesButton non trouvé après StartBattle
+2026-02-21 09:27:28,162 [INFO] Sélection équipe
+2026-02-21 09:27:28,339 [DEBUG] Trouvé [LegendsPointer] confiance=0.87 pos=(1145,541)
+2026-02-21 09:27:29,094 [DEBUG] Clic en (845, 631)
+2026-02-21 09:27:29,094 [INFO] Perso 1 cliqué: (845, 631)
+2026-02-21 09:27:29,650 [DEBUG] Clic en (945, 631)
+2026-02-21 09:27:29,650 [INFO] Perso 2 cliqué: (945, 631)
+2026-02-21 09:27:30,206 [DEBUG] Clic en (1045, 631)
+2026-02-21 09:27:30,206 [INFO] Perso 3 cliqué: (1045, 631)
+2026-02-21 09:27:30,206 [INFO] Attente: ReadyButton
+2026-02-21 09:27:30,427 [DEBUG] Trouvé [ReadyButton] confiance=0.97 pos=(944,986)
+2026-02-21 09:27:30,430 [INFO] Clic: ReadyButton
+2026-02-21 09:27:30,990 [DEBUG] Clic en (944, 986)
+2026-02-21 09:27:30,990 [INFO] ✓ Prêt
+2026-02-21 09:27:37,248 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 09:27:37,248 [WARNING] YesButton non trouvé après ReadyButton
+2026-02-21 09:27:37,248 [INFO] Attente fin de combat...
+2026-02-21 09:27:37,248 [INFO] Attente FinishedPointer...
+2026-02-21 09:27:37,248 [INFO] Attente: FinishedPointer
+2026-02-21 09:28:27,361 [DEBUG] Anti-stuck OK, diff=58270003
+2026-02-21 09:28:53,523 [DEBUG] Trouvé [FinishedPointer] confiance=0.88 pos=(767,206)
+2026-02-21 09:28:53,524 [INFO] Clic: FinishedPointer
+2026-02-21 09:28:54,083 [DEBUG] Clic en (767, 206)
+2026-02-21 09:28:54,083 [INFO] ✓ Combat terminé
+2026-02-21 09:28:54,084 [INFO] Écran de résultats
+2026-02-21 09:28:54,775 [INFO] Attente: OkBattleButton
+2026-02-21 09:28:57,368 [DEBUG] Trouvé [OkBattleButton] confiance=0.78 pos=(942,989)
+2026-02-21 09:28:57,371 [INFO] Clic: OkBattleButton
+2026-02-21 09:28:57,932 [DEBUG] Clic en (942, 989)
+2026-02-21 09:28:57,932 [INFO] ✓ OkBattle étape 1
+2026-02-21 09:28:58,636 [INFO] Attente: OkBattleButton
+2026-02-21 09:29:00,026 [DEBUG] Trouvé [OkBattleButton] confiance=0.78 pos=(1059,989)
+2026-02-21 09:29:00,028 [INFO] Clic: OkBattleButton
+2026-02-21 09:29:00,584 [DEBUG] Clic en (1059, 989)
+2026-02-21 09:29:00,584 [INFO] ✓ OkBattle étape 2
+2026-02-21 09:29:00,585 [INFO] Confirmation rejouer
+2026-02-21 09:29:01,386 [INFO] Attente: YesButton
+2026-02-21 09:29:01,623 [DEBUG] Trouvé [YesButton] confiance=0.97 pos=(1060,745)
+2026-02-21 09:29:01,625 [INFO] Clic: YesButton
+2026-02-21 09:29:02,180 [DEBUG] Clic en (1060, 745)
+2026-02-21 09:29:02,180 [INFO] ✓ Rejouer confirmé
+2026-02-21 09:29:02,180 [INFO] Vérif cinématique inter-niveau
+2026-02-21 09:29:03,384 [INFO] Pas de cinématique inter-niveau
+2026-02-21 09:29:03,384 [INFO] ✓ Combat géré, retour détection prochain niveau
+2026-02-21 09:29:03,385 [INFO] ✓✓ Combat terminé | Combats: 2 | Total: 2
+2026-02-21 09:29:03,886 [INFO] Détection type de niveau...
+2026-02-21 09:29:03,886 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:29:04,090 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 09:29:04,091 [INFO] → COMBAT (StartBattleButton présent)
+2026-02-21 09:29:04,093 [INFO] ★ Niveau COMBAT
+2026-02-21 09:29:04,093 [INFO] ─── Gestion niveau COMBAT ───
+2026-02-21 09:29:04,093 [INFO] Demo checkmark
+2026-02-21 09:29:04,093 [INFO] Vérif Play Demo décochée...
+2026-02-21 09:29:04,281 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:29:04,424 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:29:04,424 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:29:04,428 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 09:29:04,985 [DEBUG] Clic en (1078, 809)
+2026-02-21 09:29:05,984 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:29:06,132 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:29:06,132 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:29:06,134 [DEBUG] Encore état [DemoChecked], nouvel essai...
+2026-02-21 09:29:06,320 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:29:06,471 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:29:06,471 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:29:06,473 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 09:29:07,027 [DEBUG] Clic en (1078, 809)
+2026-02-21 09:29:08,018 [DEBUG]   _find_best [DemoCheckmark] score=1.000
+2026-02-21 09:29:08,175 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-21 09:29:08,175 [DEBUG] → Gagnant: [DemoCheckmark] score=1.000
+2026-02-21 09:29:08,178 [INFO] ✓ Play Demo décochée après clic
+2026-02-21 09:29:08,178 [INFO] ✓ Demo décochée, lancement du combat
+2026-02-21 09:29:08,178 [INFO] Attente StartBattle...
+2026-02-21 09:29:08,178 [INFO] Attente: StartBattleButton
+2026-02-21 09:29:08,381 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 09:29:08,384 [INFO] Clic: StartBattleButton
+2026-02-21 09:29:08,945 [DEBUG] Clic en (1081, 904)
+2026-02-21 09:29:08,945 [INFO] ✓ Combattre cliqué
+2026-02-21 09:29:15,588 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 09:29:15,588 [WARNING] YesButton non trouvé après StartBattle
+2026-02-21 09:29:15,589 [INFO] Sélection équipe
+2026-02-21 09:29:15,762 [DEBUG] Trouvé [LegendsPointer] confiance=0.87 pos=(1145,541)
+2026-02-21 09:29:16,519 [DEBUG] Clic en (845, 631)
+2026-02-21 09:29:16,519 [INFO] Perso 1 cliqué: (845, 631)
+2026-02-21 09:29:17,075 [DEBUG] Clic en (945, 631)
+2026-02-21 09:29:17,075 [INFO] Perso 2 cliqué: (945, 631)
+2026-02-21 09:29:17,630 [DEBUG] Clic en (1045, 631)
+2026-02-21 09:29:17,630 [INFO] Perso 3 cliqué: (1045, 631)
+2026-02-21 09:29:17,631 [INFO] Attente: ReadyButton
+2026-02-21 09:29:17,851 [DEBUG] Trouvé [ReadyButton] confiance=0.97 pos=(944,986)
+2026-02-21 09:29:17,855 [INFO] Clic: ReadyButton
+2026-02-21 09:29:18,415 [DEBUG] Clic en (944, 986)
+2026-02-21 09:29:18,415 [INFO] ✓ Prêt
+2026-02-21 09:29:24,667 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 09:29:24,667 [WARNING] YesButton non trouvé après ReadyButton
+2026-02-21 09:29:24,667 [INFO] Attente fin de combat...
+2026-02-21 09:29:24,667 [INFO] Attente FinishedPointer...
+2026-02-21 09:29:24,667 [INFO] Attente: FinishedPointer
+2026-02-21 09:29:27,457 [DEBUG] Anti-stuck OK, diff=35392792
+2026-02-21 09:30:27,536 [DEBUG] Anti-stuck OK, diff=34556562
+2026-02-21 09:31:27,615 [DEBUG] Anti-stuck OK, diff=28696268
+2026-02-21 09:32:01,753 [DEBUG] Trouvé [FinishedPointer] confiance=0.89 pos=(767,206)
+2026-02-21 09:32:01,755 [INFO] Clic: FinishedPointer
+2026-02-21 09:32:02,311 [DEBUG] Clic en (767, 206)
+2026-02-21 09:32:02,311 [INFO] ✓ Combat terminé
+2026-02-21 09:32:02,313 [INFO] Écran de résultats
+2026-02-21 09:32:03,013 [INFO] Attente: OkBattleButton
+2026-02-21 09:32:05,606 [DEBUG] Trouvé [OkBattleButton] confiance=0.79 pos=(942,989)
+2026-02-21 09:32:05,609 [INFO] Clic: OkBattleButton
+2026-02-21 09:32:06,165 [DEBUG] Clic en (942, 989)
+2026-02-21 09:32:06,165 [INFO] ✓ OkBattle étape 1
+2026-02-21 09:32:06,869 [INFO] Attente: OkBattleButton
+2026-02-21 09:32:08,254 [DEBUG] Trouvé [OkBattleButton] confiance=0.79 pos=(1059,989)
+2026-02-21 09:32:08,258 [INFO] Clic: OkBattleButton
+2026-02-21 09:32:08,818 [DEBUG] Clic en (1059, 989)
+2026-02-21 09:32:08,818 [INFO] ✓ OkBattle étape 2
+2026-02-21 09:32:08,818 [INFO] Confirmation rejouer
+2026-02-21 09:32:09,619 [INFO] Attente: YesButton
+2026-02-21 09:32:09,843 [DEBUG] Trouvé [YesButton] confiance=0.97 pos=(1060,745)
+2026-02-21 09:32:09,844 [INFO] Clic: YesButton
+2026-02-21 09:32:10,400 [DEBUG] Clic en (1060, 745)
+2026-02-21 09:32:10,400 [INFO] ✓ Rejouer confirmé
+2026-02-21 09:32:10,400 [INFO] Vérif cinématique inter-niveau
+2026-02-21 09:32:11,599 [INFO] Pas de cinématique inter-niveau
+2026-02-21 09:32:11,599 [INFO] ✓ Combat géré, retour détection prochain niveau
+2026-02-21 09:32:11,599 [INFO] ✓✓ Combat terminé | Combats: 3 | Total: 3
+2026-02-21 09:32:12,101 [INFO] Détection type de niveau...
+2026-02-21 09:32:12,101 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:32:15,321 [DEBUG] Trouvé [StorySlide] confiance=0.83 pos=(942,64)
+2026-02-21 09:32:15,323 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 09:32:15,323 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 09:32:15,323 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 09:32:15,323 [INFO] Skip cinématique
+2026-02-21 09:32:15,528 [INFO] Skip pas encore visible, on attend...
+2026-02-21 09:32:15,528 [INFO] Attente: SkipButton
+2026-02-21 09:32:27,702 [DEBUG] Anti-stuck OK, diff=39159128
+2026-02-21 09:32:45,931 [WARNING] Timeout (30s) en attendant [SkipButton]
+2026-02-21 09:32:45,931 [WARNING] Skip introuvable, on continue quand même
+2026-02-21 09:32:52,715 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 09:32:52,715 [INFO] ✓ Skip confirmé
+2026-02-21 09:32:52,715 [INFO] Passage niveau suivant
+2026-02-21 09:32:52,715 [INFO] Attente: YesButton
+2026-02-21 09:33:23,708 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 09:33:23,708 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 09:33:23,708 [INFO] ✓✓ Cinématique terminée | Total: 4
+2026-02-21 09:33:24,209 [INFO] Détection type de niveau...
+2026-02-21 09:33:24,209 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:33:24,621 [DEBUG] Trouvé [StorySlide] confiance=0.83 pos=(942,64)
+2026-02-21 09:33:24,623 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 09:33:24,623 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 09:33:24,623 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 09:33:24,623 [INFO] Skip cinématique
+2026-02-21 09:33:24,831 [INFO] Skip pas encore visible, on attend...
+2026-02-21 09:33:24,831 [INFO] Attente: SkipButton
+2026-02-21 09:33:27,788 [DEBUG] Anti-stuck OK, diff=1159896
+2026-02-21 09:33:55,209 [WARNING] Timeout (30s) en attendant [SkipButton]
+2026-02-21 09:33:55,209 [WARNING] Skip introuvable, on continue quand même
+2026-02-21 09:34:02,020 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 09:34:02,020 [INFO] ✓ Skip confirmé
+2026-02-21 09:34:02,020 [INFO] Passage niveau suivant
+2026-02-21 09:34:02,020 [INFO] Attente: YesButton
+2026-02-21 09:34:27,870 [DEBUG] Anti-stuck OK, diff=1300767
+2026-02-21 09:34:33,316 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 09:34:33,318 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 09:34:33,321 [INFO] ✓✓ Cinématique terminée | Total: 5
+2026-02-21 09:34:33,821 [INFO] Détection type de niveau...
+2026-02-21 09:34:33,821 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:34:34,242 [DEBUG] Trouvé [StorySlide] confiance=0.83 pos=(942,64)
+2026-02-21 09:34:34,244 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 09:34:34,244 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 09:34:34,244 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 09:34:34,245 [INFO] Skip cinématique
+2026-02-21 09:34:34,453 [INFO] Skip pas encore visible, on attend...
+2026-02-21 09:34:34,455 [INFO] Attente: SkipButton
+2026-02-21 09:35:05,321 [WARNING] Timeout (30s) en attendant [SkipButton]
+2026-02-21 09:35:05,322 [WARNING] Skip introuvable, on continue quand même
+2026-02-21 09:35:12,089 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 09:35:12,089 [INFO] ✓ Skip confirmé
+2026-02-21 09:35:12,089 [INFO] Passage niveau suivant
+2026-02-21 09:35:12,089 [INFO] Attente: YesButton
+2026-02-21 09:35:27,955 [DEBUG] Anti-stuck OK, diff=104952870
+2026-02-21 09:35:43,188 [WARNING] Timeout (30s) en attendant [YesButton]
+2026-02-21 09:35:43,188 [WARNING] YesButton niveau suivant non trouvé
+2026-02-21 09:35:43,189 [INFO] ✓✓ Cinématique terminée | Total: 6
+2026-02-21 09:35:43,690 [INFO] Détection type de niveau...
+2026-02-21 09:35:43,690 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:35:44,119 [DEBUG] Trouvé [StorySlide] confiance=0.84 pos=(942,64)
+2026-02-21 09:35:44,122 [INFO] → CINEMATIQUE (StorySlide présent)
+2026-02-21 09:35:44,122 [INFO] ★ Niveau CINÉMATIQUE
+2026-02-21 09:35:44,122 [INFO] ─── Gestion niveau CINEMATIQUE ───
+2026-02-21 09:35:44,122 [INFO] Skip cinématique
+2026-02-21 09:35:44,352 [INFO] Skip pas encore visible, on attend...
+2026-02-21 09:35:44,352 [INFO] Attente: SkipButton
+2026-02-21 09:36:15,011 [WARNING] Timeout (30s) en attendant [SkipButton]
+2026-02-21 09:36:15,011 [WARNING] Skip introuvable, on continue quand même
+2026-02-21 09:36:21,811 [WARNING] [YesButton] non trouvé après 10 essais
+2026-02-21 09:36:21,811 [INFO] ✓ Skip confirmé
+2026-02-21 09:36:21,811 [INFO] Passage niveau suivant
+2026-02-21 09:36:21,811 [INFO] Attente: YesButton
+2026-02-21 09:36:28,038 [DEBUG] Anti-stuck OK, diff=76736391
+2026-02-21 09:36:30,702 [DEBUG] Trouvé [YesButton] confiance=0.97 pos=(1060,745)
+2026-02-21 09:36:30,704 [INFO] Clic: YesButton
+2026-02-21 09:36:31,264 [DEBUG] Clic en (1060, 745)
+2026-02-21 09:36:31,264 [INFO] ✓ Niveau suivant confirmé
+2026-02-21 09:36:31,264 [INFO] ✓✓ Cinématique terminée | Total: 7
+2026-02-21 09:36:31,765 [INFO] Détection type de niveau...
+2026-02-21 09:36:31,765 [INFO] Détection du type de niveau en cours...
+2026-02-21 09:36:32,673 [DEBUG] Trouvé [StartBattleButton] confiance=0.82 pos=(1081,904)
+2026-02-21 09:36:32,675 [INFO] → COMBAT (StartBattleButton présent)
+2026-02-21 09:36:32,675 [INFO] ★ Niveau COMBAT
+2026-02-21 09:36:32,676 [INFO] ─── Gestion niveau COMBAT ───
+2026-02-21 09:36:32,676 [INFO] Demo checkmark
+2026-02-21 09:36:32,677 [INFO] Vérif Play Demo décochée...
+2026-02-21 09:36:32,866 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:36:33,011 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:36:33,012 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:36:33,014 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 09:36:33,570 [DEBUG] Clic en (1078, 809)
+2026-02-21 09:36:34,566 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:36:34,719 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:36:34,721 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:36:34,722 [DEBUG] Encore état [DemoChecked], nouvel essai...
+2026-02-21 09:36:34,911 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:36:35,067 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:36:35,067 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:36:35,068 [INFO] Play Demo cochée — clic pour décocher en (1078, 809)
+2026-02-21 09:36:35,625 [DEBUG] Clic en (1078, 809)
+2026-02-21 09:36:36,617 [DEBUG]   _find_best [DemoCheckmark] score=0.958
+2026-02-21 09:36:36,762 [DEBUG]   _find_best [DemoChecked] score=1.000
+2026-02-21 09:36:36,764 [DEBUG] → Gagnant: [DemoChecked] score=1.000
+2026-02-21 09:36:36,766 [DEBUG] Encore état [DemoChecked], nouvel essai...
+2026-02-21 09:36:36,936 [DEBUG]   _find_best [DemoCheckmark] score=0.414
+2026-02-21 09:36:37,068 [DEBUG]   _find_best [DemoChecked] score=0.411
+2026-02-21 09:36:37,652 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:37,797 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:38,397 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:38,540 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:39,121 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:39,265 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:39,857 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:40,013 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:40,603 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:40,747 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:41,334 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:41,475 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:42,057 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:42,210 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:42,800 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:42,945 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:43,539 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:43,686 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:44,275 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:44,427 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:45,012 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:45,159 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:45,741 [DEBUG]   _find_best [DemoCheckmark] score=0.423
+2026-02-21 09:36:45,885 [DEBUG]   _find_best [DemoChecked] score=0.417
+2026-02-21 09:36:46,482 [DEBUG]   _find_best [DemoCheckmark] score=0.324
+2026-02-21 09:36:46,612 [DEBUG]   _find_best [DemoChecked] score=0.352
+2026-02-21 09:36:47,205 [DEBUG]   _find_best [DemoCheckmark] score=0.324
+2026-02-21 09:36:47,339 [DEBUG]   _find_best [DemoChecked] score=0.352
+2026-02-21 09:36:47,917 [DEBUG]   _find_best [DemoCheckmark] score=0.324
+2026-02-21 09:36:48,057 [DEBUG]   _find_best [DemoChecked] score=0.352
+2026-02-21 09:36:48,658 [DEBUG]   _find_best [DemoCheckmark] score=0.324
+2026-02-21 09:36:48,803 [DEBUG]   _find_best [DemoChecked] score=0.352
+2026-02-21 09:36:49,385 [DEBUG]   _find_best [DemoCheckmark] score=0.324
+2026-02-21 09:36:49,527 [DEBUG]   _find_best [DemoChecked] score=0.352
+2026-02-21 09:36:50,107 [DEBUG]   _find_best [DemoCheckmark] score=0.353
+2026-02-21 09:36:50,250 [DEBUG]   _find_best [DemoChecked] score=0.352
+2026-02-21 09:36:50,844 [DEBUG]   _find_best [DemoCheckmark] score=0.382
+2026-02-21 09:36:50,991 [DEBUG]   _find_best [DemoChecked] score=0.388
+2026-02-21 09:36:51,576 [DEBUG]   _find_best [DemoCheckmark] score=0.383
+2026-02-21 09:36:51,719 [DEBUG]   _find_best [DemoChecked] score=0.388
+2026-02-21 09:36:52,304 [DEBUG]   _find_best [DemoCheckmark] score=0.382
+2026-02-21 09:36:52,446 [DEBUG]   _find_best [DemoChecked] score=0.388
+2026-02-21 09:36:52,849 [WARNING] Play Demo non confirmée décochée après 20s
+2026-02-21 09:36:52,849 [WARNING] Demo non confirmée décochée, on continue quand même
+2026-02-21 09:36:52,849 [INFO] ✓ Demo décochée, lancement du combat
+2026-02-21 09:36:52,849 [INFO] Attente StartBattle...
+2026-02-21 09:36:52,849 [INFO] Attente: StartBattleButton
+2026-02-21 09:37:23,119 [WARNING] Timeout (30s) en attendant [StartBattleButton]
+2026-02-21 09:37:23,119 [INFO] ✓ Combattre cliqué
+2026-02-21 09:37:28,127 [DEBUG] Anti-stuck OK, diff=61747270
+2026-02-21 09:37:29,741 [WARNING] [YesButton] non trouvé après 8 essais
+2026-02-21 09:37:29,741 [WARNING] YesButton non trouvé après StartBattle
+2026-02-21 09:37:29,742 [INFO] Sélection équipe

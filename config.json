@@ -1,0 +1,17 @@
+{
+    "window_name": "BlueStacks App Player",
+    "image_folder": "images",
+    "confidence": 0.75,
+    "loop_delay": 1.0,
+    "click_delay": 0.5,
+    "anti_stuck_delay": 60.0,
+    "max_tries": 15,
+    "combat_timeout": 600,
+    "overlay_enabled": true,
+    "log_level": "INFO",
+    "skip_position": {
+        "mode": "absolute",
+        "x": 1120,
+        "y": 70
+    }
+}
