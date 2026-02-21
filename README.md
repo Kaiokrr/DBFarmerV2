@@ -7,7 +7,7 @@ Fork modernisé du projet original de [LUXTACO](https://github.com/LUXTACO/DBFar
 
 ## ✨ Changements vs l'original
 
-- ✅ Compatible **BlueStacks 5** (l'original était pour MEmu)
+- ✅ Compatible **BlueStacks 5** (La fenêtre de BS doit s'appeler "Bluestacks App Player")
 - ✅ Détection par **OpenCV** template matching (plus précis que pyautogui seul)
 - ✅ Gestion automatique des **niveaux cinématiques** (slides sans combat)
 - ✅ Détection intelligente du type de niveau (combat ou cinématique)
