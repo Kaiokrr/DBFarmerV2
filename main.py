@@ -99,7 +99,8 @@ PRIORITY_LIST = {
 # Offsets pour cliquer sur les 3 personnages de l'equipe
 # (relatifs au LegendsPointer detecte)
 TEAM_OFFSETS = {
-    "y":       90,   # Decalage vertical vers les persos
+    "y":       90,   # Decalage vertical vers les persos (ligne 1)
+    "row2_y":  190,  # Decalage vertical ligne 2
     "char1_x": 300,  # Decalage horizontal perso 1
     "char2_x": 200,  # Decalage horizontal perso 2
     "char3_x": 100,  # Decalage horizontal perso 3
@@ -537,8 +538,8 @@ class DBFarmer:
 
     def _select_team(self):
         """
-        Clique sur les 3 emplacements de personnages.
-        Utilise LegendsPointer comme point de reference.
+        Clique sur les 6 emplacements de personnages (2 lignes de 3).
+        Couvre le cas où le mode histoire impose un perso supplémentaire (ligne 2).
         """
         self._set_action("Sélection équipe")
         start = time.time()
@@ -546,23 +547,27 @@ class DBFarmer:
             coords = self._find("LegendsPointer")
             if coords:
                 px, py = coords
-                offsets = TEAM_OFFSETS
-                team_y  = py + offsets["y"]
-                char1_x = px - offsets["char1_x"]
-                char2_x = px - offsets["char2_x"]
-                char3_x = px - offsets["char3_x"]
+                offsets  = TEAM_OFFSETS
+                row1_y   = py + offsets["y"]
+                row2_y   = py + offsets["row2_y"]
+                char1_x  = px - offsets["char1_x"]
+                char2_x  = px - offsets["char2_x"]
+                char3_x  = px - offsets["char3_x"]
 
                 time.sleep(0.2)
-                self._click(char1_x, team_y)
-                logger.info(f"Perso 1 cliqué: ({char1_x}, {team_y})")
-                self._click(char2_x, team_y)
-                logger.info(f"Perso 2 cliqué: ({char2_x}, {team_y})")
-                self._click(char3_x, team_y)
-                logger.info(f"Perso 3 cliqué: ({char3_x}, {team_y})")
+                # Ligne 1
+                self._click(char1_x, row1_y); logger.info(f"Perso 1 cliqué: ({char1_x}, {row1_y})")
+                self._click(char2_x, row1_y); logger.info(f"Perso 2 cliqué: ({char2_x}, {row1_y})")
+                self._click(char3_x, row1_y); logger.info(f"Perso 3 cliqué: ({char3_x}, {row1_y})")
+                # Ligne 2 (perso imposé éventuel)
+                self._click(char1_x, row2_y); logger.info(f"Perso 4 cliqué: ({char1_x}, {row2_y})")
+                self._click(char2_x, row2_y); logger.info(f"Perso 5 cliqué: ({char2_x}, {row2_y})")
+                self._click(char3_x, row2_y); logger.info(f"Perso 6 cliqué: ({char3_x}, {row2_y})")
                 return True
 
             if time.time() - start > 60:
                 logger.warning("LegendsPointer introuvable, selection equipe ignoree")
+                self.recovery_requested = True
                 return False
             time.sleep(self.loop_delay)
 
