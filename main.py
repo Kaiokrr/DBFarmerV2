@@ -71,7 +71,7 @@ IMAGE_FILES = {
     "StorySlide":       "storyslide.png",     # Indicateur qu'on est sur un slide d'histoire (ex: boite de dialogue, fond noir avec texte)
 
     # ── NAVIGATION / ANTI-STUCK ───────────────────────────────
-    "ArrowObject":      "arrow.png",          # Fleche de navigation generale
+    "RematchButton":    "rematch.png",        # Bouton Rematch visible uniquement en cas de défaite
     "CloseButton":      "close.png",          # Bouton fermer (X) sur popups
     "BackButton":       "back.png",           # Bouton retour du jeu
     "HomeButton":       "home.png",           # Bouton home du jeu (amène à l'accueil)
@@ -250,8 +250,12 @@ class DBFarmer:
             "action":      "Démarrage",
         }
 
-        # Flag pour désactiver l'anti-stuck pendant les combats
+        # Flag pour désactiver l'anti-stuck pendant les combats et résultats
         self.in_combat = False
+
+        # Flag posé par l'anti-stuck pour demander une récupération
+        # La boucle principale le détecte et gère la récupération proprement
+        self.recovery_requested = False
 
         os.makedirs(self.image_folder, exist_ok=True)
 
@@ -490,10 +494,11 @@ class DBFarmer:
 
     # ── Attendre et cliquer ────────────────────────────────────
 
-    def _wait_and_click(self, key: str, timeout: float = 120, delay: float = None) -> bool:
+    def _wait_and_click(self, key: str, timeout: float = 30, delay: float = None) -> bool:
         """
-        Attend indefiniment qu'un element apparaisse puis clique dessus.
-        Retourne True si clique, False si timeout.
+        Attend qu'un élément apparaisse puis clique dessus.
+        Si timeout dépassé → recovery_requested = True (anti-stuck prend le relais).
+        Retourne True si cliqué, False si timeout.
         """
         delay = delay or self.loop_delay
         self._set_action(f"Attente: {key}")
@@ -505,7 +510,8 @@ class DBFarmer:
                 self._click(*coords)
                 return True
             if time.time() - start > timeout:
-                logger.warning(f"Timeout ({timeout}s) en attendant [{key}]")
+                logger.warning(f"Timeout ({timeout}s) en attendant [{key}] → récupération demandée")
+                self.recovery_requested = True
                 return False
             time.sleep(delay)
 
@@ -582,16 +588,22 @@ class DBFarmer:
 
         print("\n[DBFarmer] Attente du bouton Histoire...")
 
-        # 1. Bouton Histoire — attend indéfiniment, anti-stuck gère les blocages
+        # 1. Bouton Histoire — vérifie recovery_requested en cas de blocage
         self._set_action("Attente: StoryButton")
         while not self._find("StoryButton"):
+            if self.recovery_requested:
+                logger.warning("Setup bloqué sur StoryButton → récupération")
+                return
             time.sleep(0.5)
         self._click(*self._find("StoryButton"))
         logger.info("✓ Histoire sélectionnée")
 
-        # 2. Bouton Continuer — attend indéfiniment
+        # 2. Bouton Continuer — vérifie recovery_requested en cas de blocage
         self._set_action("Attente: ContinueButton")
         while not self._find("ContinueButton"):
+            if self.recovery_requested:
+                logger.warning("Setup bloqué sur ContinueButton → récupération")
+                return
             time.sleep(0.5)
         self._click(*self._find("ContinueButton"))
         logger.info("✓ Continuer cliqué")
@@ -629,7 +641,8 @@ class DBFarmer:
                 return "story"
             time.sleep(0.3)
 
-        logger.warning(f"Type non détecté après {timeout}s → COMBAT par défaut")
+        logger.warning(f"Type non détecté après {timeout}s → récupération demandée")
+        self.recovery_requested = True
         return "unknown"
 
     # ── GESTION D'UN NIVEAU CINEMATIQUE (slides) ───────────────
@@ -692,7 +705,8 @@ class DBFarmer:
                 # Aucune trouvée → écran pas encore chargé
                 time.sleep(0.4)
 
-        logger.warning(f"Play Demo non confirmée décochée après {timeout}s")
+        logger.warning(f"Play Demo non confirmée décochée après {timeout}s → récupération demandée")
+        self.recovery_requested = True
         return False
 
     # ── VIDER LES TAPS EN ATTENTE ──────────────────────────────
@@ -752,20 +766,11 @@ class DBFarmer:
         self._wait_and_click("StartBattleButton", timeout=30)
         logger.info("✓ Combattre cliqué")
 
-        # Oui pour confirmer la dépense d'énergie
-        time.sleep(0.8)
-        if not self._try_click("YesButton", tries=8, delay=0.5):
-            logger.warning("YesButton non trouvé après StartBattle")
-
         # Sélection équipe + Prêt
         self._select_team()
 
         self._wait_and_click("ReadyButton", timeout=30)
         logger.info("✓ Prêt")
-
-        time.sleep(0.5)
-        if not self._try_click("YesButton", tries=8, delay=0.5):
-            logger.warning("YesButton non trouvé après ReadyButton")
 
         # ── Attente fin de combat ──────────────────────────────
         self.in_combat = True
@@ -794,24 +799,50 @@ class DBFarmer:
             return False
         logger.info("✓ Combat terminé")
 
-        # ── Écran de résultats ─────────────────────────────────
-        # Séquence complète :
+        # ── Vérifier victoire ou défaite ──────────────────────
+        time.sleep(0.5)
+        if self._find("RematchButton"):
+            logger.info("✗ DÉFAITE détectée (RematchButton visible) → Rematch")
+            self._click(*self._find("RematchButton"))
+            # Réinitialiser in_combat pour relancer le combat
+            self.in_combat = True
+            self._set_status("Combat en cours (rematch)")
+            self._set_action("Attente fin de combat (rematch)...")
+            logger.info("Attente FinishedPointer (rematch)...")
+
+            combat_start = time.time()
+            found = False
+            while time.time() - combat_start < combat_max:
+                if self._find("FinishedPointer"):
+                    self._click(*self._find("FinishedPointer"))
+                    found = True
+                    break
+                time.sleep(self.loop_delay)
+
+            self.in_combat = False
+            if not found:
+                logger.warning("FinishedPointer non trouvé après rematch → récupération")
+                return False
+            logger.info("✓ Combat rematch terminé")
+            time.sleep(0.5)
+
+        # ── Écran de résultats (victoire confirmée) ────────────
         # [TAP x N si level up / objectifs] → OkBattle → [TAP x N] → OkBattle
+        self.in_combat = True
         self._set_action("Écran de résultats")
         for step in range(2):
-            # Vider tous les TAP en attente avant chaque OkBattle
             self._flush_taps()
-            # Ensuite cliquer OkBattle
             self._wait_and_click("OkBattleButton", timeout=20)
             logger.info(f"✓ OkBattle étape {step+1}")
 
         # ── Confirmation rejouer ───────────────────────────────
         self._set_action("Confirmation rejouer")
-        time.sleep(0.8)   # Laisser l'écran de confirmation apparaître
+        time.sleep(0.8)
         self._wait_and_click("YesButton", timeout=30)
         logger.info("✓ Rejouer confirmé")
 
-        # ── Fin : retour à la détection du prochain niveau ────
+        # ── Fin : anti-stuck réactivé ──────────────────────────
+        self.in_combat = False
         logger.info("✓ Combat géré, retour détection prochain niveau")
         return True
 
@@ -828,6 +859,14 @@ class DBFarmer:
 
         while True:
             try:
+                # ── Vérifier si l'anti-stuck a demandé une récupération ──
+                if self.recovery_requested:
+                    logger.warning("Récupération demandée par l'anti-stuck → traitement")
+                    self.recovery_requested = False
+                    self.in_combat = False  # Sécurité
+                    self._recover_to_menu()
+                    continue
+
                 level_type = self._detect_level_type(timeout=45)
 
                 if level_type == "story":
@@ -893,7 +932,12 @@ class DBFarmer:
             if self._find("StoryButton"):
                 logger.info("✓ StoryButton visible → accueil atteint")
                 time.sleep(1.0)
+                self.recovery_requested = False
                 self.setup()
+                # Si setup() a été interrompu par recovery_requested → reboucler
+                if self.recovery_requested:
+                    logger.warning("Setup interrompu → nouvelle tentative de récupération")
+                    continue
                 return True
 
             # ── HomeButton visible → un clic ramène à l'accueil
@@ -903,7 +947,11 @@ class DBFarmer:
                 self._click(*home)
                 time.sleep(1.5)
                 logger.info("✓ Accueil atteint via Home → relance setup")
+                self.recovery_requested = False
                 self.setup()
+                if self.recovery_requested:
+                    logger.warning("Setup interrompu → nouvelle tentative de récupération")
+                    continue
                 return True
 
             # ── BackButton visible → reculer d'un écran ───────
@@ -967,7 +1015,7 @@ class DBFarmer:
                 if old_ss is None or new_ss is None:
                     continue
 
-                # Ne pas interférer pendant un combat
+                # Ne pas interférer pendant un combat ou les résultats
                 if self.in_combat:
                     logger.debug("Anti-stuck en pause (combat en cours)")
                     continue
@@ -980,10 +1028,6 @@ class DBFarmer:
                 diff_score = np.sum(diff)
 
                 # ── Vérification écran hors contexte ──────────
-                # Même si l'écran bouge (animations shop etc.), on vérifie
-                # qu'on est bien sur un écran attendu par le bot.
-                # Si ni StartBattleButton ni StorySlide ni SkipButton ni StoryButton
-                # ne sont visibles → on est perdu → récupération immédiate.
                 on_known_screen = any([
                     self._find("StartBattleButton"),
                     self._find("StoryButton"),
@@ -997,25 +1041,24 @@ class DBFarmer:
                 ])
 
                 if not on_known_screen:
-                    logger.warning("Anti-stuck: écran non reconnu (shop, popup, etc.) → récupération")
-                    self._set_status("Anti-stuck: récupération")
+                    logger.warning("Anti-stuck: écran non reconnu → récupération demandée")
+                    self.recovery_requested = True
                     self.stats["stuck_fixed"] += 1
-                    self._recover_to_menu()
                     continue
 
-                if diff_score < 50000:  # Ecran quasiment identique = stuck
+                if diff_score < 50000:
                     logger.warning(f"Stuck détecté! diff={diff_score}")
                     self._set_status("Anti-stuck actif")
 
-                    # Chercher le bouton le plus prioritaire
-                    best_key  = None
-                    best_prio = -1
+                    best_key    = None
+                    best_prio   = -1
+                    best_coords = None
                     for key, prio in sorted(PRIORITY_LIST.items(), key=lambda x: -x[1]):
                         coords = self._find(key)
                         if coords:
                             if prio > best_prio:
-                                best_prio = prio
-                                best_key  = key
+                                best_prio   = prio
+                                best_key    = key
                                 best_coords = coords
 
                     if best_key:
@@ -1023,8 +1066,9 @@ class DBFarmer:
                         self._click(*best_coords)
                         self.stats["stuck_fixed"] += 1
                     else:
-                        logger.warning("Anti-stuck: aucun bouton trouvé, appui sur Echap")
-                        pyautogui.press("escape")
+                        logger.warning("Anti-stuck: aucun bouton trouvé → récupération demandée")
+                        self.recovery_requested = True
+                        self.stats["stuck_fixed"] += 1
 
                     self._set_status("Farming")
                 else:

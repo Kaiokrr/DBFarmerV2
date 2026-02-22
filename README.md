@@ -1,92 +1,94 @@
 # DBFarmer v2 🐉
-**Dragon Ball Legends - Story Mode Farmer pour BlueStacks 5**
+**Dragon Ball Legends - Story Mode Farmer for BlueStacks 5**
 
-Fork modernisé du projet original de [LUXTACO](https://github.com/LUXTACO/DBFarmer), entièrement réécrit pour BlueStacks 5 et la version actuelle du jeu.
-
----
-
-## ✨ Changements vs l'original
-
-- ✅ Compatible **BlueStacks 5** (l'original était pour MEmu)
-- ✅ Détection par **OpenCV** template matching (plus précis que pyautogui seul)
-- ✅ Gestion automatique des **niveaux cinématiques** (slides sans combat)
-- ✅ Détection intelligente du type de niveau (combat ou cinématique)
-- ✅ Vérification de l'état de la case **Play Demo** avant chaque combat
-- ✅ Gestion des **TAP multiples** après combat (level up, objectifs)
-- ✅ **Overlay** temps réel avec stats et logs (draggable)
-- ✅ **Anti-stuck** par comparaison de pixels
-- ✅ Outil de **capture d'images** intégré (`capture.py`)
-- ✅ Suppression de la dépendance Discord
-- ✅ Logs par session dans le dossier `logs/`
+Modernized fork of the original [LUXTACO](https://github.com/LUXTACO/DBFarmer) project, fully rewritten for BlueStacks 5 and the current version of the game.
 
 ---
 
-## ⚡ Installation rapide
+## ✨ Changes vs the original
 
-Double-clique sur `start.bat` → choix **1** (installer les dépendances)
+- ✅ Compatible with **BlueStacks 5** (original was for MEmu — window must be named "BlueStacks App Player")
+- ✅ **OpenCV** template matching detection (more reliable than pyautogui alone)
+- ✅ Automatic handling of **cinematic levels** (story slides without combat)
+- ✅ Intelligent level type detection (combat or cinematic)
+- ✅ **Play Demo** checkbox state verification before each battle
+- ✅ **Multiple TAP** handling after combat (level up, objectives)
+- ✅ **Defeat detection** with automatic Rematch
+- ✅ Real-time **overlay** with stats and logs (draggable)
+- ✅ **Anti-stuck** with automatic recovery to main menu
+- ✅ Built-in **image capture tool** (`capture.py`)
+- ✅ Removed Discord dependency
+- ✅ Per-session logs in `logs/` folder
 
-Ou manuellement :
+---
+
+## ⚡ Quick Install
+
+Double-click `start.bat` → choice **1** (install dependencies)
+
+Or manually:
 ```
 pip install pyautogui opencv-python pillow numpy pygetwindow
 ```
 
 ---
 
-## 📸 Étape 1 : Capturer les boutons
+## 📸 Step 1: Capture button images
 
-Lance `start.bat` → choix **2**, ou :
+Run `start.bat` → choice **2**, or:
 ```
 python capture.py
 ```
 
-Une interface graphique s'ouvre. Pour chaque bouton :
-1. Sélectionne-le dans la liste
-2. Clique sur **"Capturer (Sélection zone)"**
-3. La fenêtre se cache → dessine un rectangle autour du bouton dans le jeu
-4. La zone est sauvegardée automatiquement ✓
+A GUI will open. For each button:
+1. Select it in the list
+2. Click **"Capture (Select zone)"**
+3. The window hides → draw a rectangle around the button in the game
+4. The zone is saved automatically ✓
 
-### Boutons à capturer :
+### Buttons to capture:
 
 | Image | Description |
 |-------|-------------|
-| `story.png` | Bouton "Histoire" sur l'écran d'accueil |
-| `continue.png` | Bouton "Continuer" (reprendre la quête) |
-| `yes.png` | Bouton "Oui" / confirmation |
-| `no.png` | Bouton "Non" |
-| `demo.png` | Case **"Play Demo" vide** (décochée — état requis pour lancer le combat auto) |
-| `demo_checked.png` | Case **"Play Demo" cochée** (avec la coche jaune — le bot la décochera) |
-| `startbattle.png` | Bouton "Start Battle" / "Combattre" |
-| `legendspointer.png` | Zone de référence pour la sélection de l'équipe |
-| `ready.png` | Bouton "Prêt" / "Ready" |
-| `finishedpointer.png` | Indicateur de fin de combat |
-| `tap.png` | Bouton "TAP" / flèche après combat (level up, objectifs) |
-| `okbattle.png` | Bouton "OK" sur l'écran de résultats |
-| `storyslide.png` | Indicateur de slide d'histoire (boite de dialogue, fond narratif) |
-| `arrow.png` | Flèche de navigation générale |
-| `close.png` | Bouton X (fermer un popup) |
-| `back.png` | Bouton retour du jeu (utilisé pour la récupération en cas de stuck) |
-| `home.png` | Bouton home du jeu (utilisé pour la récupération en cas de stuck) |
-| `mission.png` | Le stage/niveau à sélectionner |
+| `story.png` | "Story" button on the home screen |
+| `continue.png` | "Continue" button (resume progress) |
+| `yes.png` | "Yes" / confirmation button |
+| `no.png` | "No" button |
+| `demo.png` | **"Play Demo" unchecked** (empty checkbox — required state to launch auto battle) |
+| `demo_checked.png` | **"Play Demo" checked** (yellow checkmark — bot will uncheck it) |
+| `startbattle.png` | "Start Battle" button |
+| `legendspointer.png` | Reference zone for team selection |
+| `ready.png` | "Ready" button |
+| `finishedpointer.png` | End of battle indicator |
+| `tap.png` | "TAP" button / arrow after battle (level up, objectives) |
+| `okbattle.png` | "OK" button on results screen |
+| `rematch.png` | "Rematch" button — only visible on defeat screen |
+| `storyslide.png` | Story slide indicator (dialogue box, narrative background) |
+| `arrow.png` | General navigation arrow |
+| `close.png` | X button (close popup) |
+| `back.png` | In-game back button (used for recovery when stuck) |
+| `home.png` | In-game home button (used for recovery when stuck) |
+| `mission.png` | The stage/level to select |
 
-> **Note** : `demo.png` et `demo_checked.png` sont déjà inclus dans le dossier `images/` — pas besoin de les recapturer.
+> **Note**: `demo.png` and `demo_checked.png` are already included in the `images/` folder — no need to recapture them.
 
-> **Conseil** : Capture les images avec BlueStacks en mode **fenêtré** (pas plein écran).
+> **Tip**: Capture images with BlueStacks in **fullscreen** mode.
 
 ---
 
-## ⚙️ Configurer le Skip (important)
+## ⚙️ Configure Skip position (important)
 
-Le bouton **Skip** des cinématiques est cliqué par coordonnées fixes (plus fiable que la détection image). Tu dois mesurer sa position **une seule fois** :
+The **Skip** button on cinematic levels is clicked using fixed coordinates (more reliable than image detection). You only need to measure its position **once**:
 
-1. Lance le jeu sur un niveau cinématique (slide visible avec le bouton Skip)
-2. Dans un terminal Python :
+1. Open the game on a cinematic level (slide visible with the Skip button)
+2. In a Python terminal:
 ```python
 import pyautogui, time
 time.sleep(3)
 print(pyautogui.position())
 ```
-3. Dans les 3 secondes, place ta souris **sur le bouton Skip**
-4. Note les coordonnées affichées et mets-les dans `config.json` :
+3. Within 3 seconds, hover your mouse **over the Skip button**
+4. Note the coordinates and put them in `config.json`:
 
 ```json
 "skip_position": {
@@ -98,82 +100,92 @@ print(pyautogui.position())
 
 ---
 
-## 🤖 Étape 2 : Lancer le bot
+## 🤖 Step 2: Run the bot
 
 ```
 python main.py
 ```
-ou `start.bat` → choix **3**.
+or `start.bat` → choice **3**.
 
-Avant de lancer :
-- ✅ BlueStacks 5 est ouvert en mode **plein écran**
-- ✅ Le jeu est sur l'**écran d'accueil** (pas en combat)
-- ✅ Tu as de l'énergie pour jouer
+Before launching:
+- ✅ BlueStacks 5 is open in **fullscreen**
+- ✅ The game is on the **home screen** (not in combat)
+- ✅ You have energy to play
 
-**CTRL+C** pour arrêter proprement.  
-**Souris en coin haut-gauche** = arrêt d'urgence (failsafe pyautogui).
+**CTRL+C** to stop cleanly.  
+**Mouse to top-left corner** = emergency stop (pyautogui failsafe).
 
 ---
 
-## 🔄 Fonctionnement
+## 🔄 How it works
 
-### Séquence de démarrage (une fois)
+### Startup sequence (once)
 ```
-Accueil → Histoire → Continuer → Oui
-```
-
-### Boucle principale
-Le bot détecte automatiquement le type de chaque niveau :
-
-**Niveau COMBAT** :
-```
-Vérif Play Demo décochée → Start Battle → Oui → Équipe → Prêt → Oui
-→ [combat auto] →
-FinishedPointer → TAP(s) si level up → OK → TAP(s) → OK → Oui (rejouer)
-→ [prochain niveau]
+Home → Story → Continue
 ```
 
-**Niveau CINÉMATIQUE** (slides sans combat) :
+### Main loop
+The bot automatically detects the type of each level:
+
+**COMBAT level**:
 ```
-Skip → Oui
+Verify Play Demo unchecked → Start Battle → Team selection → Ready
+→ [auto battle] →
+FinishedPointer → Victory or Defeat (Rematch) →
+TAP(s) if level up → OK → TAP(s) → OK → Yes (replay)
+→ [next level]
 ```
+
+**CINEMATIC level** (story slides without combat):
+```
+Skip → Yes
+```
+
+### Stuck handling
+Every timeout automatically triggers a recovery:
+1. Anti-stuck sets a `recovery_requested` flag
+2. Main loop detects it between each action
+3. `_recover_to_menu()` returns to menu via `BackButton` → `HomeButton` → Escape
+4. `setup()` restarts farming from the home screen
+
+The anti-stuck is **paused** during combat and the results screen to avoid false positives.
 
 ---
 
 ## ⚙️ Configuration (config.json)
 
-| Paramètre | Défaut | Description |
-|-----------|--------|-------------|
-| `window_name` | `BlueStacks App Player` | Titre de la fenêtre BlueStacks |
-| `confidence` | `0.75` | Seuil de détection OpenCV (0.5–0.95) |
-| `click_delay` | `0.5` | Délai après chaque clic (sec) |
-| `anti_stuck_delay` | `60.0` | Fréquence de l'anti-stuck (sec) |
-| `combat_timeout` | `600` | Timeout max d'un combat (sec) |
-| `overlay_enabled` | `true` | Afficher l'overlay |
-| `skip_position` | `x:1120, y:70` | Coordonnées absolues du bouton Skip |
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `window_name` | `BlueStacks App Player` | BlueStacks window title |
+| `confidence` | `0.75` | OpenCV detection threshold (0.5–0.95) |
+| `click_delay` | `0.5` | Delay after each click (sec) |
+| `anti_stuck_delay` | `60.0` | Anti-stuck check frequency (sec) |
+| `combat_timeout` | `600` | Max combat duration before recovery (sec) |
+| `overlay_enabled` | `true` | Show overlay |
+| `skip_position` | `x:1120, y:70` | Absolute coordinates of the Skip button |
 
 ---
 
-## ❓ Problèmes courants
+## ❓ Common issues
 
-**"Fenêtre BlueStacks introuvable"**  
-→ Vérifie que BlueStacks 5 est ouvert. Lance `python main.py` pour voir la liste des fenêtres et ajuste `window_name` dans `config.json`.
+**"BlueStacks window not found"**  
+→ Make sure BlueStacks 5 is open. Run `python main.py` to see the list of detected windows and adjust `window_name` in `config.json`.
 
-**Le bot lance le combat alors que Play Demo est cochée**  
-→ Recapture `demo.png` (case vide) et `demo_checked.png` (case avec coche jaune) en incluant le texte "Play Demo" dans la sélection.
+**Bot launches combat with Play Demo checked**  
+→ Recapture `demo.png` (empty checkbox) and `demo_checked.png` (yellow checkmark) making sure to include the "Play Demo" text in your selection area.
 
-**Le Skip ne clique pas au bon endroit**  
-→ Mesure les coordonnées exactes du bouton Skip et mets-les dans `config.json` → `skip_position`.
+**Skip doesn't click in the right place**  
+→ Measure the exact coordinates of the Skip button and update `config.json` → `skip_position`.
 
-**La détection est trop sensible / pas assez**  
-→ Ajuste `confidence` dans `config.json` (augmenter = plus strict, diminuer = plus souple).
+**Detection too sensitive / not sensitive enough**  
+→ Adjust `confidence` in `config.json` (higher = stricter, lower = more lenient).
 
-**Le bot se bloque**  
-→ L'anti-stuck se déclenche automatiquement toutes les 60s. Il détecte aussi les écrans non reconnus (shop, popups, etc.) et revient automatiquement au menu via `back.png` → `home.png` → relance du setup. Pendant un combat, l'anti-stuck est mis en pause (le combat bouge l'écran). Si le combat dépasse 10 min sans se terminer, l'anti-stuck se réactive et force une récupération.
+**Bot gets stuck**  
+→ The anti-stuck triggers automatically every 60s. It detects unrecognized screens (shop, popups, etc.) and sets a recovery flag. The main loop returns to menu via `back.png` → `home.png` → Escape, then restarts setup. During combat and results screen, anti-stuck is paused. If combat exceeds 10 min, anti-stuck reactivates and forces recovery.
 
 ---
 
-## 📦 Dépendances
+## 📦 Dependencies
 
 - Python 3.8+
 - pyautogui
@@ -184,6 +196,6 @@ Skip → Oui
 
 ---
 
-## 🙏 Crédits
+## 🙏 Credits
 
-Basé sur [DBFarmer](https://github.com/LUXTACO/DBFarmer) de **LUXTACO**.
+Based on [DBFarmer](https://github.com/LUXTACO/DBFarmer) by **LUXTACO**.

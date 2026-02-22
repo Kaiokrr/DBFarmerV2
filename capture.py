@@ -35,7 +35,7 @@ BUTTONS_TO_CAPTURE = [
     ("okbattle",        "OkBattleButton",    "Le bouton 'OK' sur l'ecran de resultats"),
     ("skip",            "SkipButton",        "Le bouton 'Skip' pour passer une cinematique"),
     ("storyslide",      "StorySlide",        "Indicateur de slide d'histoire (boite de dialogue, fond avec texte narratif...)"),
-    ("arrow",           "ArrowObject",       "Fleche de navigation generale"),
+    ("rematch",         "RematchButton",     "Bouton 'Rematch' visible uniquement en cas de défaite (à côté du bouton OK)"),
     ("close",           "CloseButton",       "Bouton X pour fermer un popup"),
     ("back",            "BackButton",        "Bouton retour du jeu (fleche retour en bas ou coin)"),
     ("home",            "HomeButton",        "Bouton home du jeu (icone maison, amene a l'accueil)"),
