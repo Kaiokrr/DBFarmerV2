@@ -60,12 +60,12 @@ A GUI will open. For each button:
 | `legendspointer.png` | Reference zone for team selection |
 | `ready.png` | "Ready" button |
 | `finishedpointer.png` | End of battle indicator |
-| `tap.png` | "TAP" button / arrow after battle (level up, objectives) |
+| `tap.png` | "TAP" button / arrow after battle (centered at bottom) |
+| `tap2.png` | "TAP" icon variant (bottom right corner) |
 | `okbattle.png` | "OK" button on results screen |
 | `rematch.png` | "Rematch" button — only visible on defeat screen |
 | `storyslide.png` | Story slide indicator (dialogue box, narrative background) |
 | `arrow.png` | General navigation arrow |
-| `close.png` | X button (close popup) |
 | `back.png` | In-game back button (used for recovery when stuck) |
 | `home.png` | In-game home button (used for recovery when stuck) |
 | `mission.png` | The stage/level to select |

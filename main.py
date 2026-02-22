@@ -63,7 +63,8 @@ IMAGE_FILES = {
 
     # ── PENDANT / FIN DU COMBAT ───────────────────────────────
     "FinishedPointer":  "finishedpointer.png",# Indicateur de fin de combat
-    "TapArrow":         "tap.png",            # Fleche "Tap to continue" apres combat
+    "TapArrow":         "tap.png",            # Fleche "Tap to continue" apres combat (centré en bas)
+    "TapArrow2":        "tap2.png",           # Variante TAP icône bas droite
     "OkBattleButton":   "okbattle.png",       # Bouton "OK" sur l'ecran de resultats
     "SkipButton":       "skip.png",           # Bouton "Skip" (passer une cinematique)
 
@@ -83,6 +84,7 @@ PRIORITY_LIST = {
     "ArrowObject":       13,
     "CloseButton":       12,
     "TapArrow":          11,
+    "TapArrow2":         11,
     "NoButton":          10,
     "YesButton":          9,
     "StartBattleButton":  8,
@@ -608,9 +610,10 @@ class DBFarmer:
         self._click(*self._find("ContinueButton"))
         logger.info("✓ Continuer cliqué")
 
-        # 3. Confirmation Oui (si nécessaire)
-        time.sleep(0.5)
-        self._try_click("YesButton", tries=5, delay=0.4)
+        # 3. Vérifier si recovery demandé après ContinueButton
+        if self.recovery_requested:
+            logger.warning("Setup bloqué après ContinueButton → récupération")
+            return
 
         logger.info("✓ Setup terminé - la boucle prend le relais")
 
@@ -661,10 +664,9 @@ class DBFarmer:
 
         # ── Étape 2 : Un seul Oui pour confirmer le skip ──────
         time.sleep(0.5)
-        if self._wait_and_click("YesButton", timeout=15):
-            logger.info("✓ Skip confirmé")
-        else:
-            logger.warning("YesButton non trouvé après Skip")
+        if not self._wait_and_click("YesButton", timeout=15):
+            return False
+        logger.info("✓ Skip confirmé")
 
         self.stats["story_levels"] = self.stats.get("story_levels", 0) + 1
         return True
@@ -724,13 +726,12 @@ class DBFarmer:
         taps = 0
         while taps < max_taps:
             time.sleep(0.5)
-            coords = self._find("TapArrow")
+            coords = self._find("TapArrow") or self._find("TapArrow2")
             if coords:
                 self._click(*coords)
                 taps += 1
                 logger.info(f"✓ TAP #{taps} cliqué en {coords}")
             else:
-                # Plus de TAP visible → on sort
                 break
 
         if taps > 0:
@@ -758,18 +759,22 @@ class DBFarmer:
         # ── Demo : vérifier qu'elle est DÉCOCHÉE avant de lancer ──
         self._set_action("Demo checkmark")
         if not self._ensure_demo_unchecked(timeout=20):
-            logger.warning("Demo non confirmée décochée, on continue quand même")
+            return False  # recovery_requested déjà posé par _ensure_demo_unchecked
         logger.info("✓ Demo décochée, lancement du combat")
 
         # Attendre que StartBattleButton soit bien chargé avant de cliquer
         self._set_action("Attente StartBattle...")
-        self._wait_and_click("StartBattleButton", timeout=30)
+        if not self._wait_and_click("StartBattleButton", timeout=30):
+            return False  # recovery_requested déjà posé par _wait_and_click
         logger.info("✓ Combattre cliqué")
 
         # Sélection équipe + Prêt
         self._select_team()
+        if self.recovery_requested:
+            return False
 
-        self._wait_and_click("ReadyButton", timeout=30)
+        if not self._wait_and_click("ReadyButton", timeout=30):
+            return False
         logger.info("✓ Prêt")
 
         # ── Attente fin de combat ──────────────────────────────
@@ -827,18 +832,21 @@ class DBFarmer:
             time.sleep(0.5)
 
         # ── Écran de résultats (victoire confirmée) ────────────
-        # [TAP x N si level up / objectifs] → OkBattle → [TAP x N] → OkBattle
         self.in_combat = True
         self._set_action("Écran de résultats")
         for step in range(2):
             self._flush_taps()
-            self._wait_and_click("OkBattleButton", timeout=20)
+            if not self._wait_and_click("OkBattleButton", timeout=20):
+                self.in_combat = False
+                return False
             logger.info(f"✓ OkBattle étape {step+1}")
 
         # ── Confirmation rejouer ───────────────────────────────
         self._set_action("Confirmation rejouer")
         time.sleep(0.8)
-        self._wait_and_click("YesButton", timeout=30)
+        if not self._wait_and_click("YesButton", timeout=30):
+            self.in_combat = False
+            return False
         logger.info("✓ Rejouer confirmé")
 
         # ── Fin : anti-stuck réactivé ──────────────────────────
@@ -968,7 +976,7 @@ class DBFarmer:
                     time.sleep(0.8)
 
                 # TAP popup éventuel
-                tap = self._find("TapArrow")
+                tap = self._find("TapArrow") or self._find("TapArrow2")
                 if tap:
                     self._click(*tap)
                     time.sleep(0.8)
@@ -985,7 +993,7 @@ class DBFarmer:
             logger.info(f"Retour #{attempt+1} via Echap (aucun bouton trouvé)")
 
             # TAP popup avant Echap
-            tap = self._find("TapArrow")
+            tap = self._find("TapArrow") or self._find("TapArrow2")
             if tap:
                 self._click(*tap)
                 time.sleep(0.8)
