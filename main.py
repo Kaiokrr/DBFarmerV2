@@ -590,21 +590,31 @@ class DBFarmer:
 
         print("\n[DBFarmer] Attente du bouton Histoire...")
 
-        # 1. Bouton Histoire — vérifie recovery_requested en cas de blocage
+        # 1. Bouton Histoire — timeout 60s puis recovery
         self._set_action("Attente: StoryButton")
+        start = time.time()
         while not self._find("StoryButton"):
             if self.recovery_requested:
                 logger.warning("Setup bloqué sur StoryButton → récupération")
+                return
+            if time.time() - start > 60:
+                logger.warning("Timeout StoryButton (60s) → récupération demandée")
+                self.recovery_requested = True
                 return
             time.sleep(0.5)
         self._click(*self._find("StoryButton"))
         logger.info("✓ Histoire sélectionnée")
 
-        # 2. Bouton Continuer — vérifie recovery_requested en cas de blocage
+        # 2. Bouton Continuer — timeout 60s puis recovery
         self._set_action("Attente: ContinueButton")
+        start = time.time()
         while not self._find("ContinueButton"):
             if self.recovery_requested:
                 logger.warning("Setup bloqué sur ContinueButton → récupération")
+                return
+            if time.time() - start > 60:
+                logger.warning("Timeout ContinueButton (60s) → récupération demandée")
+                self.recovery_requested = True
                 return
             time.sleep(0.5)
         self._click(*self._find("ContinueButton"))
@@ -1046,7 +1056,17 @@ class DBFarmer:
                     self._find("YesButton"),
                     self._find("ReadyButton"),
                     self._find("ContinueButton"),
+                    self._find("TapArrow"),
+                    self._find("TapArrow2"),
                 ])
+
+                # ── TAP détecté → cliquer immédiatement sans attendre le diff ──
+                tap = self._find("TapArrow") or self._find("TapArrow2")
+                if tap:
+                    logger.info("Anti-stuck: TAP détecté → clic immédiat")
+                    self._click(*tap)
+                    self.stats["stuck_fixed"] += 1
+                    continue
 
                 if not on_known_screen:
                     logger.warning("Anti-stuck: écran non reconnu → récupération demandée")
