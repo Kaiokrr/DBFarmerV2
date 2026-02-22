@@ -128,12 +128,12 @@ Le bot détecte automatiquement le type de chaque niveau :
 Vérif Play Demo décochée → Start Battle → Oui → Équipe → Prêt → Oui
 → [combat auto] →
 FinishedPointer → TAP(s) si level up → OK → TAP(s) → OK → Oui (rejouer)
-→ Skip cinématique inter-niveau → [prochain niveau]
+→ [prochain niveau]
 ```
 
 **Niveau CINÉMATIQUE** (slides sans combat) :
 ```
-Skip → Oui → Oui (niveau suivant)
+Skip → Oui
 ```
 
 ---
