@@ -728,15 +728,10 @@ class DBFarmer:
 
     # ── VIDER LES TAPS EN ATTENTE ──────────────────────────────
 
-    def _flush_taps(self, max_taps: int = 10, timeout_per_tap: float = 3.0):
+    def _flush_taps(self, max_taps: int = 10):
         """
         Clique sur TapArrow en boucle jusqu'à ce qu'il disparaisse.
-        Gère les cas où plusieurs TAP s'enchaînent :
-          - Level up de personnage
-          - Objectifs du niveau complétés
-          - Animations diverses
-
-        S'arrête dès que TapArrow n'est plus visible ou après max_taps clics.
+        Double vérification après absence pour éviter les TAP à apparition tardive.
         """
         taps = 0
         while taps < max_taps:
@@ -747,7 +742,15 @@ class DBFarmer:
                 taps += 1
                 logger.info(f"✓ TAP #{taps} cliqué en {coords}")
             else:
-                break
+                # Attendre un peu et revérifier au cas où un nouveau TAP apparaît
+                time.sleep(1.5)
+                coords = self._find("TapArrow") or self._find("TapArrow2")
+                if coords:
+                    self._click(*coords)
+                    taps += 1
+                    logger.info(f"✓ TAP tardif #{taps} cliqué en {coords}")
+                else:
+                    break  # Vraiment plus de TAP
 
         if taps > 0:
             logger.info(f"✓ {taps} TAP(s) vidé(s)")
@@ -818,6 +821,9 @@ class DBFarmer:
             logger.warning(f"FinishedPointer non trouvé après {combat_max}s → anti-stuck réactivé, récupération")
             return False
         logger.info("✓ Combat terminé")
+
+        # Attendre que les animations post-combat et TAPs se chargent
+        time.sleep(2.0)
 
         # ── Vérifier victoire ou défaite ──────────────────────
         time.sleep(0.5)
