@@ -635,17 +635,12 @@ class DBFarmer:
         self._click_skip()
         logger.info("✓ Skip cliqué (coordonnées fixes)")
 
-        # ── Étape 2 : Confirmer le skip avec Oui ──────────────
+        # ── Étape 2 : Un seul Oui pour confirmer le skip ──────
         time.sleep(0.5)
-        self._try_click("YesButton", tries=10, delay=0.4)
-        logger.info("✓ Skip confirmé")
-
-        # ── Étape 3 : Le jeu propose le niveau suivant → Oui ──
-        self._set_action("Passage niveau suivant")
-        if self._wait_and_click("YesButton", timeout=30):
-            logger.info("✓ Niveau suivant confirmé")
+        if self._wait_and_click("YesButton", timeout=15):
+            logger.info("✓ Skip confirmé")
         else:
-            logger.warning("YesButton niveau suivant non trouvé")
+            logger.warning("YesButton non trouvé après Skip")
 
         self.stats["story_levels"] = self.stats.get("story_levels", 0) + 1
         return True
@@ -787,20 +782,7 @@ class DBFarmer:
         self._wait_and_click("YesButton", timeout=30)
         logger.info("✓ Rejouer confirmé")
 
-        # ── Skip cinématique inter-niveau (optionnel) ──────────
-        self._set_action("Vérif cinématique inter-niveau")
-        time.sleep(1.0)
-        # On tente un clic Skip aux coordonnées fixes, puis on vérifie
-        # si un YesButton de confirmation apparaît — sinon c'était inutile mais sans danger
-        self._click_skip()
-        time.sleep(0.5)
-        self._try_click("YesButton", tries=5, delay=0.4)
-        logger.info("✓ Skip inter-niveau tenté")
-
         # ── Fin : retour à la détection du prochain niveau ────
-        # On NE prépare PAS le combat suivant ici.
-        # La boucle principale appellera _detect_level_type() qui verra
-        # si DemoCheckmark est présent ou si c'est une cinématique.
         logger.info("✓ Combat géré, retour détection prochain niveau")
         return True
 
