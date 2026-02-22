@@ -7,7 +7,7 @@ Fork modernisé du projet original de [LUXTACO](https://github.com/LUXTACO/DBFar
 
 ## ✨ Changements vs l'original
 
-- ✅ Compatible **BlueStacks 5** (La fenêtre de BS doit s'appeler "Bluestacks App Player")
+- ✅ Compatible **BlueStacks 5** (l'original était pour MEmu)
 - ✅ Détection par **OpenCV** template matching (plus précis que pyautogui seul)
 - ✅ Gestion automatique des **niveaux cinématiques** (slides sans combat)
 - ✅ Détection intelligente du type de niveau (combat ou cinématique)
@@ -64,6 +64,8 @@ Une interface graphique s'ouvre. Pour chaque bouton :
 | `storyslide.png` | Indicateur de slide d'histoire (boite de dialogue, fond narratif) |
 | `arrow.png` | Flèche de navigation générale |
 | `close.png` | Bouton X (fermer un popup) |
+| `back.png` | Bouton retour du jeu (utilisé pour la récupération en cas de stuck) |
+| `home.png` | Bouton home du jeu (utilisé pour la récupération en cas de stuck) |
 | `mission.png` | Le stage/niveau à sélectionner |
 
 > **Note** : `demo.png` et `demo_checked.png` sont déjà inclus dans le dossier `images/` — pas besoin de les recapturer.
@@ -167,7 +169,7 @@ Skip → Oui
 → Ajuste `confidence` dans `config.json` (augmenter = plus strict, diminuer = plus souple).
 
 **Le bot se bloque**  
-→ L'anti-stuck se déclenche automatiquement toutes les 60s. Sinon CTRL+C et relance.
+→ L'anti-stuck se déclenche automatiquement toutes les 60s. Il détecte aussi les écrans non reconnus (shop, popups, etc.) et revient automatiquement au menu via `back.png` → `home.png` → relance du setup. Pendant un combat, l'anti-stuck est mis en pause (le combat bouge l'écran). Si le combat dépasse 10 min sans se terminer, l'anti-stuck se réactive et force une récupération.
 
 ---
 

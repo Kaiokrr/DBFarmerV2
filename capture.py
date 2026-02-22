@@ -37,6 +37,8 @@ BUTTONS_TO_CAPTURE = [
     ("storyslide",      "StorySlide",        "Indicateur de slide d'histoire (boite de dialogue, fond avec texte narratif...)"),
     ("arrow",           "ArrowObject",       "Fleche de navigation generale"),
     ("close",           "CloseButton",       "Bouton X pour fermer un popup"),
+    ("back",            "BackButton",        "Bouton retour du jeu (fleche retour en bas ou coin)"),
+    ("home",            "HomeButton",        "Bouton home du jeu (icone maison, amene a l'accueil)"),
     ("mission",         "MissionObject",     "Le stage/niveau a selectionner dans la liste"),
 ]
 

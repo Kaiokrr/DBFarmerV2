@@ -73,6 +73,8 @@ IMAGE_FILES = {
     # ── NAVIGATION / ANTI-STUCK ───────────────────────────────
     "ArrowObject":      "arrow.png",          # Fleche de navigation generale
     "CloseButton":      "close.png",          # Bouton fermer (X) sur popups
+    "BackButton":       "back.png",           # Bouton retour du jeu
+    "HomeButton":       "home.png",           # Bouton home du jeu (amène à l'accueil)
 }
 
 # Priorite pour l'anti-stuck (plus le chiffre est haut, plus c'est prioritaire)
@@ -247,6 +249,9 @@ class DBFarmer:
             "stuck_fixed": 0,
             "action":      "Démarrage",
         }
+
+        # Flag pour désactiver l'anti-stuck pendant les combats
+        self.in_combat = False
 
         os.makedirs(self.image_folder, exist_ok=True)
 
@@ -567,8 +572,8 @@ class DBFarmer:
     def setup(self):
         """
         Séquence de démarrage : Histoire → Continuer → Oui
-        Ensuite la boucle loop() prend le relais et détecte elle-même
-        le type du premier niveau (combat ou cinématique).
+        Chaque étape attend indéfiniment — si bloquée, l'anti-stuck
+        (thread background) prend le relais et débloque la situation.
         """
         logger.info("="*55)
         logger.info("  SETUP INITIAL")
@@ -577,12 +582,18 @@ class DBFarmer:
 
         print("\n[DBFarmer] Attente du bouton Histoire...")
 
-        # 1. Bouton Histoire (directement sur l'écran d'accueil)
-        self._wait_and_click("StoryButton", timeout=300)
+        # 1. Bouton Histoire — attend indéfiniment, anti-stuck gère les blocages
+        self._set_action("Attente: StoryButton")
+        while not self._find("StoryButton"):
+            time.sleep(0.5)
+        self._click(*self._find("StoryButton"))
         logger.info("✓ Histoire sélectionnée")
 
-        # 2. Bouton Continuer (reprendre la progression)
-        self._wait_and_click("ContinueButton")
+        # 2. Bouton Continuer — attend indéfiniment
+        self._set_action("Attente: ContinueButton")
+        while not self._find("ContinueButton"):
+            time.sleep(0.5)
+        self._click(*self._find("ContinueButton"))
         logger.info("✓ Continuer cliqué")
 
         # 3. Confirmation Oui (si nécessaire)
@@ -757,11 +768,29 @@ class DBFarmer:
             logger.warning("YesButton non trouvé après ReadyButton")
 
         # ── Attente fin de combat ──────────────────────────────
+        self.in_combat = True
         self._set_status("Combat en cours")
         self._set_action("Attente fin de combat...")
         logger.info("Attente FinishedPointer...")
-        if not self._wait_and_click("FinishedPointer", timeout=self.config["combat_timeout"]):
-            logger.warning("FinishedPointer non trouvé (timeout combat)")
+
+        combat_start = time.time()
+        combat_max   = self.config["combat_timeout"]  # 600s = 10 min
+
+        found = False
+        while time.time() - combat_start < combat_max:
+            if self._find("FinishedPointer"):
+                self._click(*self._find("FinishedPointer"))
+                found = True
+                break
+            # Après 10 min sans FinishedPointer → réactiver l'anti-stuck
+            if time.time() - combat_start >= combat_max:
+                break
+            time.sleep(self.loop_delay)
+
+        self.in_combat = False
+
+        if not found:
+            logger.warning(f"FinishedPointer non trouvé après {combat_max}s → anti-stuck réactivé, récupération")
             return False
         logger.info("✓ Combat terminé")
 
@@ -807,16 +836,24 @@ class DBFarmer:
                     if success:
                         self.stats["completed"] += 1
                         logger.info(f"✓✓ Cinématique terminée | Total: {self.stats['completed']}")
+                    else:
+                        logger.warning("Cinématique échouée → récupération")
+                        self._recover_to_menu()
 
-                elif level_type in ("combat", "unknown"):
-                    if level_type == "unknown":
-                        logger.warning("Type inconnu → traité comme COMBAT")
+                elif level_type == "combat":
                     logger.info("★ Niveau COMBAT")
                     success = self._handle_combat_level()
                     if success:
                         self.stats["loops"]     += 1
                         self.stats["completed"] += 1
                         logger.info(f"✓✓ Combat terminé | Combats: {self.stats['loops']} | Total: {self.stats['completed']}")
+                    else:
+                        logger.warning("Combat échoué → récupération")
+                        self._recover_to_menu()
+
+                elif level_type == "unknown":
+                    logger.warning("Type inconnu après timeout → récupération vers menu")
+                    self._recover_to_menu()
 
                 time.sleep(0.5)
 
@@ -827,11 +864,89 @@ class DBFarmer:
                 print(f"    Combats        : {self.stats['loops']}")
                 print(f"    Cinématiques   : {self.stats.get('story_levels', 0)}")
                 print(f"  Anti-stuck fixes : {self.stats['stuck_fixed']}")
+                print(f"  Récupérations   : {self.stats.get('recoveries', 0)}")
                 sys.exit(0)
 
             except Exception as e:
                 logger.error(f"Erreur dans la boucle: {e}", exc_info=True)
                 time.sleep(3)
+
+    # ── RECUPERATION VERS LE MENU ──────────────────────────────
+
+    def _recover_to_menu(self, max_backs: int = 15) -> bool:
+        """
+        Tente de revenir au menu principal en utilisant :
+          1. BackButton  → bouton retour du jeu (priorité max)
+          2. HomeButton  → visible = on clique = amène directement à l'accueil
+          3. Echap       → si aucun bouton du jeu trouvé
+
+        S'arrête dès que StoryButton ou HomeButton sont visibles.
+        Une fois sur l'accueil, relance setup().
+        """
+        logger.warning("═══ RÉCUPÉRATION VERS LE MENU ═══")
+        self._set_status("Récupération...")
+        self.stats["recoveries"] = self.stats.get("recoveries", 0) + 1
+
+        for attempt in range(max_backs):
+
+            # ── On est sur l'accueil → relancer setup ─────────
+            if self._find("StoryButton"):
+                logger.info("✓ StoryButton visible → accueil atteint")
+                time.sleep(1.0)
+                self.setup()
+                return True
+
+            # ── HomeButton visible → un clic ramène à l'accueil
+            home = self._find("HomeButton")
+            if home:
+                logger.info(f"✓ HomeButton visible → clic en {home}")
+                self._click(*home)
+                time.sleep(1.5)
+                logger.info("✓ Accueil atteint via Home → relance setup")
+                self.setup()
+                return True
+
+            # ── BackButton visible → reculer d'un écran ───────
+            back = self._find("BackButton")
+            if back:
+                logger.info(f"Retour #{attempt+1} via BackButton en {back}")
+                self._click(*back)
+                time.sleep(1.2)
+
+                # Fermer popup éventuel
+                close = self._find("CloseButton")
+                if close:
+                    self._click(*close)
+                    time.sleep(0.8)
+
+                # TAP popup éventuel
+                tap = self._find("TapArrow")
+                if tap:
+                    self._click(*tap)
+                    time.sleep(0.8)
+
+                # Refuser confirmation éventuelle
+                no = self._find("NoButton")
+                if no:
+                    self._click(*no)
+                    time.sleep(0.8)
+
+                continue
+
+            # ── Aucun bouton du jeu trouvé → Echap ────────────
+            logger.info(f"Retour #{attempt+1} via Echap (aucun bouton trouvé)")
+
+            # TAP popup avant Echap
+            tap = self._find("TapArrow")
+            if tap:
+                self._click(*tap)
+                time.sleep(0.8)
+
+            pyautogui.press("escape")
+            time.sleep(1.2)
+
+        logger.error("Impossible de revenir au menu après plusieurs tentatives")
+        return False
 
     # ── ANTI-STUCK (thread background) ────────────────────────
 
@@ -852,12 +967,41 @@ class DBFarmer:
                 if old_ss is None or new_ss is None:
                     continue
 
+                # Ne pas interférer pendant un combat
+                if self.in_combat:
+                    logger.debug("Anti-stuck en pause (combat en cours)")
+                    continue
+
                 # Comparer les deux screenshots
                 diff = cv2.absdiff(
                     cv2.cvtColor(old_ss, cv2.COLOR_RGB2GRAY),
                     cv2.cvtColor(new_ss, cv2.COLOR_RGB2GRAY)
                 )
                 diff_score = np.sum(diff)
+
+                # ── Vérification écran hors contexte ──────────
+                # Même si l'écran bouge (animations shop etc.), on vérifie
+                # qu'on est bien sur un écran attendu par le bot.
+                # Si ni StartBattleButton ni StorySlide ni SkipButton ni StoryButton
+                # ne sont visibles → on est perdu → récupération immédiate.
+                on_known_screen = any([
+                    self._find("StartBattleButton"),
+                    self._find("StoryButton"),
+                    self._find("StorySlide"),
+                    self._find("SkipButton"),
+                    self._find("FinishedPointer"),
+                    self._find("OkBattleButton"),
+                    self._find("YesButton"),
+                    self._find("ReadyButton"),
+                    self._find("ContinueButton"),
+                ])
+
+                if not on_known_screen:
+                    logger.warning("Anti-stuck: écran non reconnu (shop, popup, etc.) → récupération")
+                    self._set_status("Anti-stuck: récupération")
+                    self.stats["stuck_fixed"] += 1
+                    self._recover_to_menu()
+                    continue
 
                 if diff_score < 50000:  # Ecran quasiment identique = stuck
                     logger.warning(f"Stuck détecté! diff={diff_score}")
