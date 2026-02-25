@@ -36,7 +36,15 @@ DEFAULT_CONFIG = {
     "skip_position": {
         "x_pct": 0.82,   # X position as % of window width (0.82 = 82% = right side)
         "y_pct": 0.05    # Y position as % of window height (0.05 = 5% = top)
-    }
+    },
+    "team_slots": [
+        {"x": 845, "y": 631},
+        {"x": 945, "y": 631},
+        {"x": 1045, "y": 631},
+        {"x": 845, "y": 731},
+        {"x": 945, "y": 731},
+        {"x": 1045, "y": 731}
+    ]
 }
 
 CONFIG_PATH = "config.json"
@@ -58,7 +66,7 @@ IMAGE_FILES = {
     "NoButton":         "no.png",             # "No" button (to avoid)
 
     # ── TEAM SELECTION ─────────────────────────────────────────
-    "LegendsPointer":   "legendspointer.png", # Reference point for team placement
+    "LegendsPointer":   "legendspointer.png", # Reference point — signals team selection screen is ready
     "ReadyButton":      "ready.png",          # "Ready" button
 
     # ── DURING / END OF COMBAT ─────────────────────────────────
@@ -68,6 +76,8 @@ IMAGE_FILES = {
     "OkBattleButton":   "okbattle.png",       # "OK" button on results screen
     "SkipButton":       "skip.png",           # "Skip" button (skip a cinematic)
     "RematchButton":    "rematch.png",        # Rematch button (visible only on defeat screen)
+    "QuitBattleButton": "quitbattle.png",     # Quit Battle button (to exit a stuck combat)
+    "InCombatIndicator":"incombat.png",       # AUTO ON button — visible only during combat
 
     # ── CINEMATIC LEVELS (story slides without combat) ─────────
     "StorySlide":       "storyslide.png",     # Indicator that we're on a story slide
@@ -83,6 +93,7 @@ PRIORITY_LIST = {
     "ArrowObject":       13,
     "TapArrow":          11,
     "TapArrow2":         11,
+    "QuitBattleButton":  10,
     "NoButton":          10,
     "YesButton":          9,
     "StartBattleButton":  8,
@@ -94,15 +105,7 @@ PRIORITY_LIST = {
     "MissionObject":      0,
 }
 
-# Offsets for clicking the 6 team character slots
-# (relative to detected LegendsPointer)
-TEAM_OFFSETS = {
-    "y":       90,   # Vertical offset to row 1
-    "row2_y":  190,  # Vertical offset to row 2
-    "char1_x": 300,  # Horizontal offset char 1
-    "char2_x": 200,  # Horizontal offset char 2
-    "char3_x": 100,  # Horizontal offset char 3
-}
+# Team slots are now configured directly in config.json under "team_slots"
 
 # ─────────────────────────────────────────────────────────────
 #  LOGGING
@@ -560,38 +563,36 @@ class DBFarmer:
 
     def _select_team(self):
         """
-        Clicks all 6 character slots (2 rows of 3).
-        Covers the case where story mode forces an extra character (row 2).
+        Waits for LegendsPointer to confirm team selection screen is ready,
+        then clicks all 6 slots using absolute coordinates from config.json.
+        Edit 'team_slots' in config.json to calibrate positions for your screen.
         """
-        self._set_action("Team selection")
+        self._set_action("Waiting for team selection screen...")
         start = time.time()
         while True:
-            coords = self._find("LegendsPointer")
-            if coords:
-                px, py = coords
-                offsets  = TEAM_OFFSETS
-                row1_y   = py + offsets["y"]
-                row2_y   = py + offsets["row2_y"]
-                char1_x  = px - offsets["char1_x"]
-                char2_x  = px - offsets["char2_x"]
-                char3_x  = px - offsets["char3_x"]
+            if self._find("LegendsPointer"):
+                break
+            if time.time() - start > 30:
+                logger.warning("LegendsPointer not found after 30s → skipping wait")
+                break
+            time.sleep(0.5)
 
-                time.sleep(0.2)
-                # Row 1
-                self._click(char1_x, row1_y); logger.info(f"Char 1 clicked: ({char1_x}, {row1_y})")
-                self._click(char2_x, row1_y); logger.info(f"Char 2 clicked: ({char2_x}, {row1_y})")
-                self._click(char3_x, row1_y); logger.info(f"Char 3 clicked: ({char3_x}, {row1_y})")
-                # Row 2 (forced character slot)
-                self._click(char1_x, row2_y); logger.info(f"Char 4 clicked: ({char1_x}, {row2_y})")
-                self._click(char2_x, row2_y); logger.info(f"Char 5 clicked: ({char2_x}, {row2_y})")
-                self._click(char3_x, row2_y); logger.info(f"Char 6 clicked: ({char3_x}, {row2_y})")
-                return True
+        self._set_action("Team selection")
+        slots = self.config.get("team_slots", [])
+        if not slots:
+            logger.warning("No team_slots in config.json — skipping team selection")
+            return True
 
-            if time.time() - start > 60:
-                logger.warning("LegendsPointer not found, skipping team selection")
-                self.recovery_requested = True
-                return False
-            time.sleep(self.loop_delay)
+        time.sleep(0.3)
+        for i, slot in enumerate(slots):
+            self._click(slot["x"], slot["y"])
+            logger.info(f"Char {i+1} clicked: ({slot['x']}, {slot['y']})")
+            if i == 2:
+                time.sleep(0.5)
+
+        # Wait for UI to settle before ReadyButton
+        time.sleep(1.0)
+        return True
 
     # ── Stats / status ─────────────────────────────────────────
 
@@ -844,9 +845,10 @@ class DBFarmer:
         time.sleep(2.0)
 
         # ── Check victory or defeat ────────────────────────────
-        if self._find("RematchButton"):
+        if self._find_with_confidence("RematchButton", min(0.90, self.confidence + 0.15)):
             logger.info("✗ DEFEAT detected (RematchButton visible) → Rematch")
-            self._click(*self._find("RematchButton"))
+            rematch = self._find_with_confidence("RematchButton", min(0.90, self.confidence + 0.15))
+            self._click(*rematch)
             self.in_combat = True
             self._set_status("Combat in progress (rematch)")
             self._set_action("Waiting for end of combat (rematch)...")
@@ -909,7 +911,7 @@ class DBFarmer:
                     logger.warning("Recovery requested by anti-stuck → handling")
                     self.recovery_requested = False
                     self.in_combat = False  # Safety
-                    self._recover_to_menu()
+                    self._smart_recover()
                     continue
 
                 level_type = self._detect_level_type(timeout=45)
@@ -921,8 +923,8 @@ class DBFarmer:
                         self.stats["completed"] += 1
                         logger.info(f"✓✓ Cinematic done | Total: {self.stats['completed']}")
                     else:
-                        logger.warning("Cinematic failed → recovery")
-                        self._recover_to_menu()
+                        logger.warning("Cinematic failed → smart recovery")
+                        self._smart_recover()
 
                 elif level_type == "combat":
                     logger.info("★ COMBAT level")
@@ -932,12 +934,12 @@ class DBFarmer:
                         self.stats["completed"] += 1
                         logger.info(f"✓✓ Combat done | Combats: {self.stats['loops']} | Total: {self.stats['completed']}")
                     else:
-                        logger.warning("Combat failed → recovery")
-                        self._recover_to_menu()
+                        logger.warning("Combat failed → smart recovery")
+                        self._smart_recover()
 
                 elif level_type == "unknown":
-                    logger.warning("Unknown level type after timeout → recovery")
-                    self._recover_to_menu()
+                    logger.warning("Unknown level type after timeout → smart recovery")
+                    self._smart_recover()
 
                 time.sleep(0.5)
 
@@ -954,6 +956,162 @@ class DBFarmer:
             except Exception as e:
                 logger.error(f"Error in main loop: {e}", exc_info=True)
                 time.sleep(3)
+
+    # ── COMBAT DETECTION ───────────────────────────────────────
+
+    def _is_in_combat(self) -> bool:
+        """
+        Detects if we are currently in an active combat
+        by looking for the AUTO ON button (only visible during combat).
+        """
+        return self._find("InCombatIndicator") is not None
+
+    # ── SMART RECOVERY ─────────────────────────────────────────
+
+    def _smart_recover(self):
+        """
+        Detects the current screen and resumes from the right point
+        instead of always going back to the menu.
+
+        Priority order:
+          1. In combat (AUTO ON visible)  → quit combat then recover
+          2. OkBattleButton               → resume from results screen
+          3. ReadyButton                  → resume from Ready
+          4. StartBattleButton            → resume full combat sequence
+          5. SkipButton / StorySlide      → resume cinematic
+          6. TapArrow                     → flush taps and continue
+          7. YesButton                    → click and continue
+          8. StoryButton                  → setup()
+          9. Nothing recognized           → _recover_to_menu()
+        """
+        logger.warning("═══ SMART RECOVERY ═══")
+        self._set_status("Smart recovery...")
+        self.stats["recoveries"] = self.stats.get("recoveries", 0) + 1
+        self.in_combat = False
+        time.sleep(1.0)
+
+        # ── 1. In combat (AUTO ON visible) → wait for FinishedPointer ──
+        if self._is_in_combat():
+            logger.info("Smart recovery: AUTO ON detected → still in combat, waiting for FinishedPointer")
+            self.in_combat = True
+            self._set_action("Waiting for end of combat (smart recovery)...")
+            combat_start = time.time()
+            combat_max   = self.config["combat_timeout"]
+            found = False
+            while time.time() - combat_start < combat_max:
+                if self._find("FinishedPointer"):
+                    self._click(*self._find("FinishedPointer"))
+                    found = True
+                    break
+                time.sleep(self.loop_delay)
+            self.in_combat = False
+            if not found:
+                logger.warning("FinishedPointer not found after combat timeout → full recovery")
+                self._recover_to_menu()
+                return
+            time.sleep(2.0)
+            # Results screen
+            self.in_combat = True
+            for step in range(2):
+                self._flush_taps()
+                if not self._wait_and_click("OkBattleButton", timeout=20):
+                    self.in_combat = False
+                    self._recover_to_menu()
+                    return
+                logger.info(f"✓ OkBattle step {step+1}")
+            time.sleep(0.8)
+            self._wait_and_click("YesButton", timeout=30)
+            self.in_combat = False
+            logger.info("✓ Smart recovery: combat finished normally")
+            return
+
+        # ── 2. Results screen ──────────────────────────────────
+        if self._find("OkBattleButton"):
+            logger.info("Smart recovery: results screen → resuming from OkBattle")
+            self.in_combat = True
+            for step in range(2):
+                self._flush_taps()
+                if not self._wait_and_click("OkBattleButton", timeout=20):
+                    self.in_combat = False
+                    self._recover_to_menu()
+                    return
+                logger.info(f"✓ OkBattle step {step+1}")
+            time.sleep(0.8)
+            if not self._wait_and_click("YesButton", timeout=30):
+                self.in_combat = False
+                self._recover_to_menu()
+                return
+            self.in_combat = False
+            logger.info("✓ Smart recovery: results handled")
+            return
+
+        # ── 3. Ready screen → go back and restart from StartBattle ──
+        if self._find("ReadyButton"):
+            logger.info("Smart recovery: ReadyButton visible → going back to re-select team")
+            back = self._find_with_confidence("BackButton", max(0.50, self.confidence - 0.25))
+            if back:
+                self._click(*back)
+                time.sleep(1.2)
+                self._flush_taps()
+            else:
+                pyautogui.press("escape")
+                time.sleep(1.2)
+            # Now should be on StartBattle screen → full combat sequence
+            if self._find("StartBattleButton"):
+                logger.info("Smart recovery: StartBattle found after back → resuming full combat")
+                success = self._handle_combat_level()
+                if success:
+                    self.stats["loops"]     += 1
+                    self.stats["completed"] += 1
+                else:
+                    self._recover_to_menu()
+            else:
+                self._recover_to_menu()
+            return
+
+        # ── 4. Start Battle screen ─────────────────────────────
+        if self._find("StartBattleButton"):
+            logger.info("Smart recovery: StartBattle screen → resuming full combat")
+            success = self._handle_combat_level()
+            if success:
+                self.stats["loops"]     += 1
+                self.stats["completed"] += 1
+            else:
+                self._recover_to_menu()
+            return
+
+        # ── 5. Cinematic ───────────────────────────────────────
+        if self._find("SkipButton") or self._find("StorySlide"):
+            logger.info("Smart recovery: cinematic screen → resuming")
+            success = self._handle_story_level()
+            if success:
+                self.stats["completed"] += 1
+            else:
+                self._recover_to_menu()
+            return
+
+        # ── 6. TAP pending ─────────────────────────────────────
+        if self._find("TapArrow") or self._find("TapArrow2"):
+            logger.info("Smart recovery: TAP detected → flushing")
+            self._flush_taps()
+            return
+
+        # ── 7. Yes button ──────────────────────────────────────
+        if self._find("YesButton"):
+            logger.info("Smart recovery: YesButton detected → clicking")
+            self._click(*self._find("YesButton"))
+            return
+
+        # ── 8. Already on home screen ──────────────────────────
+        if self._find("StoryButton"):
+            logger.info("Smart recovery: already on home screen → setup")
+            self.recovery_requested = False
+            self.setup()
+            return
+
+        # ── 9. Nothing recognized → full recovery ──────────────
+        logger.warning("Smart recovery: screen not recognized → full recovery to menu")
+        self._recover_to_menu()
 
     # ── RECOVERY TO MENU ───────────────────────────────────────
 
@@ -1004,6 +1162,13 @@ class DBFarmer:
                 logger.info(f"Back #{attempt+1} via BackButton at {back}")
                 self._click(*back)
                 time.sleep(1.2)
+
+                # QuitBattle may appear after pressing back during combat
+                quit_btn = self._find("QuitBattleButton")
+                if quit_btn:
+                    logger.info("QuitBattle button found → clicking")
+                    self._click(*quit_btn)
+                    time.sleep(1.2)
 
                 # Flush all pending TAPs after back
                 self._flush_taps()

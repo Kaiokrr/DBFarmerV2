@@ -1,0 +1,508 @@
+2026-02-25 06:47:51,257 [INFO] Config loaded from config.json
+2026-02-25 06:47:51,260 [DEBUG] Image loaded: StoryButton (story.png)
+2026-02-25 06:47:51,261 [DEBUG] Image loaded: ContinueButton (continue.png)
+2026-02-25 06:47:51,264 [DEBUG] Image loaded: MissionObject (mission.png)
+2026-02-25 06:47:51,264 [DEBUG] Image loaded: DemoCheckmark (demo.png)
+2026-02-25 06:47:51,266 [DEBUG] Image loaded: DemoChecked (demo_checked.png)
+2026-02-25 06:47:51,267 [DEBUG] Image loaded: StartBattleButton (startbattle.png)
+2026-02-25 06:47:51,269 [DEBUG] Image loaded: YesButton (yes.png)
+2026-02-25 06:47:51,270 [DEBUG] Image loaded: NoButton (no.png)
+2026-02-25 06:47:51,272 [DEBUG] Image loaded: LegendsPointer (legendspointer.png)
+2026-02-25 06:47:51,274 [DEBUG] Image loaded: ReadyButton (ready.png)
+2026-02-25 06:47:51,276 [DEBUG] Image loaded: FinishedPointer (finishedpointer.png)
+2026-02-25 06:47:51,276 [DEBUG] Image loaded: TapArrow (tap.png)
+2026-02-25 06:47:51,278 [DEBUG] Image loaded: TapArrow2 (tap2.png)
+2026-02-25 06:47:51,279 [DEBUG] Image loaded: OkBattleButton (okbattle.png)
+2026-02-25 06:47:51,281 [DEBUG] Image loaded: SkipButton (skip.png)
+2026-02-25 06:47:51,285 [DEBUG] Image loaded: RematchButton (rematch.png)
+2026-02-25 06:47:51,287 [DEBUG] Image loaded: StorySlide (storyslide.png)
+2026-02-25 06:47:51,288 [DEBUG] Image loaded: BackButton (back.png)
+2026-02-25 06:47:51,290 [DEBUG] Image loaded: HomeButton (home.png)
+2026-02-25 06:47:51,290 [INFO] All images loaded (19)
+2026-02-25 06:47:51,291 [INFO] Looking for window: 'BlueStacks App Player'
+2026-02-25 06:47:51,293 [INFO] Window found: Bluestacks App Player | Pos: (0,0) Size: 1920x1032
+2026-02-25 06:47:51,410 [INFO] DBFarmer initialized successfully
+2026-02-25 06:47:51,413 [INFO] =======================================================
+2026-02-25 06:47:51,416 [INFO]   INITIAL SETUP
+2026-02-25 06:47:51,416 [INFO] =======================================================
+2026-02-25 06:47:51,416 [INFO] Waiting: StoryButton
+2026-02-25 06:47:56,294 [INFO] Anti-stuck started (background thread)
+2026-02-25 06:47:56,455 [DEBUG] Found [StoryButton] confidence=0.78 pos=(795,795)
+2026-02-25 06:47:56,720 [DEBUG] Found [StoryButton] confidence=0.83 pos=(795,795)
+2026-02-25 06:47:57,278 [DEBUG] Click at (795, 795)
+2026-02-25 06:47:57,278 [INFO] ✓ Story selected
+2026-02-25 06:47:57,278 [INFO] Waiting: ContinueButton
+2026-02-25 06:47:58,965 [DEBUG] Found [ContinueButton] confidence=0.76 pos=(1116,819)
+2026-02-25 06:47:59,200 [DEBUG] Found [ContinueButton] confidence=0.76 pos=(1116,819)
+2026-02-25 06:47:59,757 [DEBUG] Click at (1116, 819)
+2026-02-25 06:47:59,757 [INFO] ✓ Continue clicked
+2026-02-25 06:48:03,677 [WARNING] [YesButton] not found after 5 attempts
+2026-02-25 06:48:03,677 [INFO] ✓ Setup done - main loop taking over
+2026-02-25 06:48:03,677 [INFO] =======================================================
+2026-02-25 06:48:03,677 [INFO]   FARMING LOOP STARTED
+2026-02-25 06:48:03,677 [INFO] =======================================================
+2026-02-25 06:48:03,679 [INFO] Detecting level type...
+2026-02-25 06:48:03,679 [INFO] Detecting level type...
+2026-02-25 06:48:03,913 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:48:03,916 [INFO] → COMBAT (StartBattleButton found)
+2026-02-25 06:48:03,916 [INFO] ★ COMBAT level
+2026-02-25 06:48:03,916 [INFO] ─── Handling COMBAT level ───
+2026-02-25 06:48:03,916 [INFO] Demo checkmark
+2026-02-25 06:48:04,137 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:48:04,324 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:48:04,324 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:48:04,327 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:48:04,882 [DEBUG] Click at (1078, 809)
+2026-02-25 06:48:05,906 [DEBUG]   _find_best [DemoCheckmark] score=0.989
+2026-02-25 06:48:06,082 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-25 06:48:06,082 [DEBUG] → Winner: [DemoCheckmark] score=0.989
+2026-02-25 06:48:06,084 [INFO] ✓ Play Demo unchecked after click
+2026-02-25 06:48:06,084 [INFO] ✓ Demo unchecked, launching combat
+2026-02-25 06:48:06,084 [INFO] Waiting for StartBattle...
+2026-02-25 06:48:06,084 [INFO] Waiting: StartBattleButton
+2026-02-25 06:48:06,320 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:48:06,324 [INFO] Click: StartBattleButton
+2026-02-25 06:48:06,882 [DEBUG] Click at (1081, 904)
+2026-02-25 06:48:06,882 [INFO] ✓ Start Battle clicked
+2026-02-25 06:48:06,883 [INFO] Team selection
+2026-02-25 06:48:09,507 [DEBUG] Found [LegendsPointer] confidence=0.86 pos=(1145,541)
+2026-02-25 06:48:10,270 [DEBUG] Click at (845, 631)
+2026-02-25 06:48:10,270 [INFO] Char 1 clicked: (845, 631)
+2026-02-25 06:48:10,825 [DEBUG] Click at (945, 631)
+2026-02-25 06:48:10,825 [INFO] Char 2 clicked: (945, 631)
+2026-02-25 06:48:11,382 [DEBUG] Click at (1045, 631)
+2026-02-25 06:48:11,382 [INFO] Char 3 clicked: (1045, 631)
+2026-02-25 06:48:11,937 [DEBUG] Click at (845, 731)
+2026-02-25 06:48:11,937 [INFO] Char 4 clicked: (845, 731)
+2026-02-25 06:48:12,492 [DEBUG] Click at (945, 731)
+2026-02-25 06:48:12,492 [INFO] Char 5 clicked: (945, 731)
+2026-02-25 06:48:13,048 [DEBUG] Click at (1045, 731)
+2026-02-25 06:48:13,048 [INFO] Char 6 clicked: (1045, 731)
+2026-02-25 06:48:13,048 [INFO] Waiting: ReadyButton
+2026-02-25 06:48:13,305 [DEBUG] Found [ReadyButton] confidence=0.97 pos=(944,986)
+2026-02-25 06:48:13,306 [INFO] Click: ReadyButton
+2026-02-25 06:48:13,868 [DEBUG] Click at (944, 986)
+2026-02-25 06:48:13,868 [INFO] ✓ Ready
+2026-02-25 06:48:13,868 [INFO] Waiting for end of combat...
+2026-02-25 06:48:13,868 [INFO] Waiting for FinishedPointer...
+2026-02-25 06:48:56,384 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:49:56,458 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:50:56,540 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:51:51,192 [DEBUG] Found [FinishedPointer] confidence=0.89 pos=(767,206)
+2026-02-25 06:51:51,380 [DEBUG] Found [FinishedPointer] confidence=0.89 pos=(767,206)
+2026-02-25 06:51:51,940 [DEBUG] Click at (767, 206)
+2026-02-25 06:51:51,940 [INFO] ✓ Combat finished
+2026-02-25 06:51:54,141 [INFO] Results screen
+2026-02-25 06:51:56,644 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:51:57,042 [DEBUG] No TAP pending
+2026-02-25 06:51:57,042 [INFO] Waiting: OkBattleButton
+2026-02-25 06:51:57,234 [DEBUG] Found [OkBattleButton] confidence=0.79 pos=(942,989)
+2026-02-25 06:51:57,237 [INFO] Click: OkBattleButton
+2026-02-25 06:51:57,795 [DEBUG] Click at (942, 989)
+2026-02-25 06:51:57,795 [INFO] ✓ OkBattle step 1
+2026-02-25 06:52:00,683 [DEBUG] No TAP pending
+2026-02-25 06:52:00,684 [INFO] Waiting: OkBattleButton
+2026-02-25 06:52:00,880 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(1059,989)
+2026-02-25 06:52:00,883 [INFO] Click: OkBattleButton
+2026-02-25 06:52:01,440 [DEBUG] Click at (1059, 989)
+2026-02-25 06:52:01,440 [INFO] ✓ OkBattle step 2
+2026-02-25 06:52:01,440 [INFO] Replay confirmation
+2026-02-25 06:52:02,242 [INFO] Waiting: YesButton
+2026-02-25 06:52:02,468 [DEBUG] Found [YesButton] confidence=0.97 pos=(1060,745)
+2026-02-25 06:52:02,468 [INFO] Click: YesButton
+2026-02-25 06:52:03,023 [DEBUG] Click at (1060, 745)
+2026-02-25 06:52:03,023 [INFO] ✓ Replay confirmed
+2026-02-25 06:52:03,024 [INFO] ✓ Combat handled, back to level detection
+2026-02-25 06:52:03,026 [INFO] ✓✓ Combat done | Combats: 1 | Total: 1
+2026-02-25 06:52:03,526 [INFO] Detecting level type...
+2026-02-25 06:52:03,526 [INFO] Detecting level type...
+2026-02-25 06:52:08,335 [DEBUG] Found [StorySlide] confidence=0.83 pos=(942,64)
+2026-02-25 06:52:08,337 [INFO] → CINEMATIC (StorySlide found)
+2026-02-25 06:52:08,338 [INFO] ★ CINEMATIC level
+2026-02-25 06:52:08,338 [INFO] ─── Handling CINEMATIC level ───
+2026-02-25 06:52:08,338 [INFO] Skip cinematic
+2026-02-25 06:52:08,338 [INFO] Skip click at (1120, 70) [mode=absolute]
+2026-02-25 06:52:08,899 [INFO] ✓ Skip clicked (fixed coordinates)
+2026-02-25 06:52:09,399 [INFO] Waiting: YesButton
+2026-02-25 06:52:09,622 [DEBUG] Found [YesButton] confidence=0.97 pos=(1060,745)
+2026-02-25 06:52:09,623 [INFO] Click: YesButton
+2026-02-25 06:52:10,183 [DEBUG] Click at (1060, 745)
+2026-02-25 06:52:10,183 [INFO] ✓ Skip confirmed
+2026-02-25 06:52:10,184 [INFO] ✓✓ Cinematic done | Total: 2
+2026-02-25 06:52:10,684 [INFO] Detecting level type...
+2026-02-25 06:52:10,684 [INFO] Detecting level type...
+2026-02-25 06:52:11,762 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:52:11,764 [INFO] → COMBAT (StartBattleButton found)
+2026-02-25 06:52:11,764 [INFO] ★ COMBAT level
+2026-02-25 06:52:11,764 [INFO] ─── Handling COMBAT level ───
+2026-02-25 06:52:11,764 [INFO] Demo checkmark
+2026-02-25 06:52:11,945 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:52:12,084 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:52:12,085 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:52:12,087 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:52:12,668 [DEBUG] Click at (1078, 809)
+2026-02-25 06:52:13,659 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:52:13,799 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:52:13,799 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:52:13,800 [DEBUG] Still state [DemoChecked], retrying...
+2026-02-25 06:52:13,974 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:52:14,110 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:52:14,110 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:52:14,113 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:52:14,669 [DEBUG] Click at (1078, 809)
+2026-02-25 06:52:15,644 [DEBUG]   _find_best [DemoCheckmark] score=0.989
+2026-02-25 06:52:15,780 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-25 06:52:15,780 [DEBUG] → Winner: [DemoCheckmark] score=0.989
+2026-02-25 06:52:15,782 [INFO] ✓ Play Demo unchecked after click
+2026-02-25 06:52:15,783 [INFO] ✓ Demo unchecked, launching combat
+2026-02-25 06:52:15,783 [INFO] Waiting for StartBattle...
+2026-02-25 06:52:15,783 [INFO] Waiting: StartBattleButton
+2026-02-25 06:52:15,976 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:52:15,979 [INFO] Click: StartBattleButton
+2026-02-25 06:52:16,536 [DEBUG] Click at (1081, 904)
+2026-02-25 06:52:16,536 [INFO] ✓ Start Battle clicked
+2026-02-25 06:52:16,536 [INFO] Team selection
+2026-02-25 06:52:20,330 [DEBUG] Found [LegendsPointer] confidence=0.86 pos=(1145,541)
+2026-02-25 06:52:21,092 [DEBUG] Click at (845, 631)
+2026-02-25 06:52:21,092 [INFO] Char 1 clicked: (845, 631)
+2026-02-25 06:52:21,648 [DEBUG] Click at (945, 631)
+2026-02-25 06:52:21,648 [INFO] Char 2 clicked: (945, 631)
+2026-02-25 06:52:22,203 [DEBUG] Click at (1045, 631)
+2026-02-25 06:52:22,203 [INFO] Char 3 clicked: (1045, 631)
+2026-02-25 06:52:22,760 [DEBUG] Click at (845, 731)
+2026-02-25 06:52:22,760 [INFO] Char 4 clicked: (845, 731)
+2026-02-25 06:52:23,314 [DEBUG] Click at (945, 731)
+2026-02-25 06:52:23,315 [INFO] Char 5 clicked: (945, 731)
+2026-02-25 06:52:23,870 [DEBUG] Click at (1045, 731)
+2026-02-25 06:52:23,870 [INFO] Char 6 clicked: (1045, 731)
+2026-02-25 06:52:23,871 [INFO] Waiting: ReadyButton
+2026-02-25 06:52:24,103 [DEBUG] Found [ReadyButton] confidence=0.97 pos=(944,986)
+2026-02-25 06:52:24,106 [INFO] Click: ReadyButton
+2026-02-25 06:52:24,662 [DEBUG] Click at (944, 986)
+2026-02-25 06:52:24,662 [INFO] ✓ Ready
+2026-02-25 06:52:24,662 [INFO] Waiting for end of combat...
+2026-02-25 06:52:24,662 [INFO] Waiting for FinishedPointer...
+2026-02-25 06:52:56,746 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:53:56,831 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:54:56,909 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:55:15,066 [DEBUG] Found [FinishedPointer] confidence=0.88 pos=(767,206)
+2026-02-25 06:55:15,272 [DEBUG] Found [FinishedPointer] confidence=0.88 pos=(767,206)
+2026-02-25 06:55:15,828 [DEBUG] Click at (767, 206)
+2026-02-25 06:55:15,828 [INFO] ✓ Combat finished
+2026-02-25 06:55:18,057 [INFO] Results screen
+2026-02-25 06:55:20,947 [DEBUG] No TAP pending
+2026-02-25 06:55:20,947 [INFO] Waiting: OkBattleButton
+2026-02-25 06:55:21,157 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(942,989)
+2026-02-25 06:55:21,159 [INFO] Click: OkBattleButton
+2026-02-25 06:55:21,717 [DEBUG] Click at (942, 989)
+2026-02-25 06:55:21,717 [INFO] ✓ OkBattle step 1
+2026-02-25 06:55:24,594 [DEBUG] No TAP pending
+2026-02-25 06:55:24,594 [INFO] Waiting: OkBattleButton
+2026-02-25 06:55:24,798 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(1059,989)
+2026-02-25 06:55:24,801 [INFO] Click: OkBattleButton
+2026-02-25 06:55:25,354 [DEBUG] Click at (1059, 989)
+2026-02-25 06:55:25,354 [INFO] ✓ OkBattle step 2
+2026-02-25 06:55:25,355 [INFO] Replay confirmation
+2026-02-25 06:55:26,156 [INFO] Waiting: YesButton
+2026-02-25 06:55:26,399 [DEBUG] Found [YesButton] confidence=0.97 pos=(1060,745)
+2026-02-25 06:55:26,401 [INFO] Click: YesButton
+2026-02-25 06:55:26,960 [DEBUG] Click at (1060, 745)
+2026-02-25 06:55:26,960 [INFO] ✓ Replay confirmed
+2026-02-25 06:55:26,960 [INFO] ✓ Combat handled, back to level detection
+2026-02-25 06:55:26,960 [INFO] ✓✓ Combat done | Combats: 2 | Total: 3
+2026-02-25 06:55:27,461 [INFO] Detecting level type...
+2026-02-25 06:55:27,461 [INFO] Detecting level type...
+2026-02-25 06:55:28,554 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:55:28,557 [INFO] → COMBAT (StartBattleButton found)
+2026-02-25 06:55:28,557 [INFO] ★ COMBAT level
+2026-02-25 06:55:28,557 [INFO] ─── Handling COMBAT level ───
+2026-02-25 06:55:28,557 [INFO] Demo checkmark
+2026-02-25 06:55:28,757 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:55:28,916 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:55:28,916 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:55:28,918 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:55:29,479 [DEBUG] Click at (1078, 809)
+2026-02-25 06:55:30,464 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:55:30,604 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:55:30,604 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:55:30,607 [DEBUG] Still state [DemoChecked], retrying...
+2026-02-25 06:55:30,786 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:55:30,932 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:55:30,932 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:55:30,934 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:55:31,494 [DEBUG] Click at (1078, 809)
+2026-02-25 06:55:32,476 [DEBUG]   _find_best [DemoCheckmark] score=0.989
+2026-02-25 06:55:32,617 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-25 06:55:32,617 [DEBUG] → Winner: [DemoCheckmark] score=0.989
+2026-02-25 06:55:32,619 [INFO] ✓ Play Demo unchecked after click
+2026-02-25 06:55:32,619 [INFO] ✓ Demo unchecked, launching combat
+2026-02-25 06:55:32,619 [INFO] Waiting for StartBattle...
+2026-02-25 06:55:32,621 [INFO] Waiting: StartBattleButton
+2026-02-25 06:55:32,815 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:55:32,816 [INFO] Click: StartBattleButton
+2026-02-25 06:55:33,376 [DEBUG] Click at (1081, 904)
+2026-02-25 06:55:33,376 [INFO] ✓ Start Battle clicked
+2026-02-25 06:55:33,376 [INFO] Team selection
+2026-02-25 06:55:37,146 [DEBUG] Found [LegendsPointer] confidence=0.86 pos=(1145,541)
+2026-02-25 06:55:37,902 [DEBUG] Click at (845, 631)
+2026-02-25 06:55:37,902 [INFO] Char 1 clicked: (845, 631)
+2026-02-25 06:55:38,459 [DEBUG] Click at (945, 631)
+2026-02-25 06:55:38,459 [INFO] Char 2 clicked: (945, 631)
+2026-02-25 06:55:39,012 [DEBUG] Click at (1045, 631)
+2026-02-25 06:55:39,012 [INFO] Char 3 clicked: (1045, 631)
+2026-02-25 06:55:39,570 [DEBUG] Click at (845, 731)
+2026-02-25 06:55:39,570 [INFO] Char 4 clicked: (845, 731)
+2026-02-25 06:55:40,132 [DEBUG] Click at (945, 731)
+2026-02-25 06:55:40,132 [INFO] Char 5 clicked: (945, 731)
+2026-02-25 06:55:40,688 [DEBUG] Click at (1045, 731)
+2026-02-25 06:55:40,688 [INFO] Char 6 clicked: (1045, 731)
+2026-02-25 06:55:40,688 [INFO] Waiting: ReadyButton
+2026-02-25 06:55:40,929 [DEBUG] Found [ReadyButton] confidence=0.97 pos=(944,986)
+2026-02-25 06:55:40,930 [INFO] Click: ReadyButton
+2026-02-25 06:55:41,486 [DEBUG] Click at (944, 986)
+2026-02-25 06:55:41,486 [INFO] ✓ Ready
+2026-02-25 06:55:41,487 [INFO] Waiting for end of combat...
+2026-02-25 06:55:41,487 [INFO] Waiting for FinishedPointer...
+2026-02-25 06:55:56,987 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:56:40,036 [DEBUG] Found [FinishedPointer] confidence=0.89 pos=(767,206)
+2026-02-25 06:56:40,236 [DEBUG] Found [FinishedPointer] confidence=0.89 pos=(767,206)
+2026-02-25 06:56:40,804 [DEBUG] Click at (767, 206)
+2026-02-25 06:56:40,804 [INFO] ✓ Combat finished
+2026-02-25 06:56:43,020 [INFO] Results screen
+2026-02-25 06:56:45,905 [DEBUG] No TAP pending
+2026-02-25 06:56:45,905 [INFO] Waiting: OkBattleButton
+2026-02-25 06:56:46,117 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(942,989)
+2026-02-25 06:56:46,119 [INFO] Click: OkBattleButton
+2026-02-25 06:56:46,678 [DEBUG] Click at (942, 989)
+2026-02-25 06:56:46,678 [INFO] ✓ OkBattle step 1
+2026-02-25 06:56:49,613 [DEBUG] No TAP pending
+2026-02-25 06:56:49,613 [INFO] Waiting: OkBattleButton
+2026-02-25 06:56:49,814 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(1059,989)
+2026-02-25 06:56:49,816 [INFO] Click: OkBattleButton
+2026-02-25 06:56:50,371 [DEBUG] Click at (1059, 989)
+2026-02-25 06:56:50,371 [INFO] ✓ OkBattle step 2
+2026-02-25 06:56:50,372 [INFO] Replay confirmation
+2026-02-25 06:56:51,173 [INFO] Waiting: YesButton
+2026-02-25 06:56:51,420 [DEBUG] Found [YesButton] confidence=0.97 pos=(1060,745)
+2026-02-25 06:56:51,422 [INFO] Click: YesButton
+2026-02-25 06:56:51,977 [DEBUG] Click at (1060, 745)
+2026-02-25 06:56:51,977 [INFO] ✓ Replay confirmed
+2026-02-25 06:56:51,978 [INFO] ✓ Combat handled, back to level detection
+2026-02-25 06:56:51,978 [INFO] ✓✓ Combat done | Combats: 3 | Total: 4
+2026-02-25 06:56:52,479 [INFO] Detecting level type...
+2026-02-25 06:56:52,479 [INFO] Detecting level type...
+2026-02-25 06:56:53,575 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:56:53,577 [INFO] → COMBAT (StartBattleButton found)
+2026-02-25 06:56:53,577 [INFO] ★ COMBAT level
+2026-02-25 06:56:53,577 [INFO] ─── Handling COMBAT level ───
+2026-02-25 06:56:53,577 [INFO] Demo checkmark
+2026-02-25 06:56:53,769 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:56:53,918 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:56:53,920 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:56:53,921 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:56:54,484 [DEBUG] Click at (1078, 809)
+2026-02-25 06:56:55,462 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:56:55,630 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:56:55,630 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:56:55,632 [DEBUG] Still state [DemoChecked], retrying...
+2026-02-25 06:56:55,818 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:56:55,963 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:56:55,963 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:56:55,966 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:56:56,525 [DEBUG] Click at (1078, 809)
+2026-02-25 06:56:57,260 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:56:57,535 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:56:57,724 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:56:57,724 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:56:57,728 [DEBUG] Still state [DemoChecked], retrying...
+2026-02-25 06:56:57,938 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:56:58,098 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:56:58,098 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:56:58,101 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:56:58,656 [DEBUG] Click at (1078, 809)
+2026-02-25 06:56:59,702 [DEBUG]   _find_best [DemoCheckmark] score=0.989
+2026-02-25 06:56:59,879 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-25 06:56:59,881 [DEBUG] → Winner: [DemoCheckmark] score=0.989
+2026-02-25 06:56:59,882 [INFO] ✓ Play Demo unchecked after click
+2026-02-25 06:56:59,882 [INFO] ✓ Demo unchecked, launching combat
+2026-02-25 06:56:59,882 [INFO] Waiting for StartBattle...
+2026-02-25 06:56:59,884 [INFO] Waiting: StartBattleButton
+2026-02-25 06:56:59,956 [DEBUG] Anti-stuck OK, diff=47056225
+2026-02-25 06:57:00,104 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:57:00,107 [INFO] Click: StartBattleButton
+2026-02-25 06:57:00,662 [DEBUG] Click at (1081, 904)
+2026-02-25 06:57:00,662 [INFO] ✓ Start Battle clicked
+2026-02-25 06:57:00,663 [INFO] Team selection
+2026-02-25 06:57:04,455 [DEBUG] Found [LegendsPointer] confidence=0.86 pos=(1145,541)
+2026-02-25 06:57:05,209 [DEBUG] Click at (845, 631)
+2026-02-25 06:57:05,209 [INFO] Char 1 clicked: (845, 631)
+2026-02-25 06:57:05,768 [DEBUG] Click at (945, 631)
+2026-02-25 06:57:05,768 [INFO] Char 2 clicked: (945, 631)
+2026-02-25 06:57:06,323 [DEBUG] Click at (1045, 631)
+2026-02-25 06:57:06,323 [INFO] Char 3 clicked: (1045, 631)
+2026-02-25 06:57:06,877 [DEBUG] Click at (845, 731)
+2026-02-25 06:57:06,877 [INFO] Char 4 clicked: (845, 731)
+2026-02-25 06:57:07,434 [DEBUG] Click at (945, 731)
+2026-02-25 06:57:07,434 [INFO] Char 5 clicked: (945, 731)
+2026-02-25 06:57:07,989 [DEBUG] Click at (1045, 731)
+2026-02-25 06:57:07,989 [INFO] Char 6 clicked: (1045, 731)
+2026-02-25 06:57:07,990 [INFO] Waiting: ReadyButton
+2026-02-25 06:57:08,233 [DEBUG] Found [ReadyButton] confidence=0.97 pos=(944,986)
+2026-02-25 06:57:08,237 [INFO] Click: ReadyButton
+2026-02-25 06:57:08,797 [DEBUG] Click at (944, 986)
+2026-02-25 06:57:08,797 [INFO] ✓ Ready
+2026-02-25 06:57:08,797 [INFO] Waiting for end of combat...
+2026-02-25 06:57:08,798 [INFO] Waiting for FinishedPointer...
+2026-02-25 06:58:00,060 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 06:58:16,898 [DEBUG] Found [FinishedPointer] confidence=0.89 pos=(767,206)
+2026-02-25 06:58:17,099 [DEBUG] Found [FinishedPointer] confidence=0.89 pos=(767,206)
+2026-02-25 06:58:17,659 [DEBUG] Click at (767, 206)
+2026-02-25 06:58:17,659 [INFO] ✓ Combat finished
+2026-02-25 06:58:19,863 [INFO] Results screen
+2026-02-25 06:58:22,756 [DEBUG] No TAP pending
+2026-02-25 06:58:22,756 [INFO] Waiting: OkBattleButton
+2026-02-25 06:58:22,980 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(942,989)
+2026-02-25 06:58:22,983 [INFO] Click: OkBattleButton
+2026-02-25 06:58:23,543 [DEBUG] Click at (942, 989)
+2026-02-25 06:58:23,543 [INFO] ✓ OkBattle step 1
+2026-02-25 06:58:26,205 [DEBUG] Found [TapArrow] confidence=0.87 pos=(947,938)
+2026-02-25 06:58:26,764 [DEBUG] Click at (947, 938)
+2026-02-25 06:58:26,764 [INFO] ✓ Late TAP #1 clicked at (947, 938)
+2026-02-25 06:58:27,467 [DEBUG] Found [TapArrow] confidence=0.89 pos=(947,938)
+2026-02-25 06:58:28,028 [DEBUG] Click at (947, 938)
+2026-02-25 06:58:28,028 [INFO] ✓ TAP #2 clicked at (947, 938)
+2026-02-25 06:58:30,899 [INFO] ✓ 2 TAP(s) cleared
+2026-02-25 06:58:30,899 [INFO] Waiting: OkBattleButton
+2026-02-25 06:58:31,093 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(1059,989)
+2026-02-25 06:58:31,094 [INFO] Click: OkBattleButton
+2026-02-25 06:58:31,654 [DEBUG] Click at (1059, 989)
+2026-02-25 06:58:31,654 [INFO] ✓ OkBattle step 2
+2026-02-25 06:58:31,654 [INFO] Replay confirmation
+2026-02-25 06:58:32,456 [INFO] Waiting: YesButton
+2026-02-25 06:58:32,678 [DEBUG] Found [YesButton] confidence=0.97 pos=(1060,745)
+2026-02-25 06:58:32,680 [INFO] Click: YesButton
+2026-02-25 06:58:33,236 [DEBUG] Click at (1060, 745)
+2026-02-25 06:58:33,236 [INFO] ✓ Replay confirmed
+2026-02-25 06:58:33,236 [INFO] ✓ Combat handled, back to level detection
+2026-02-25 06:58:33,236 [INFO] ✓✓ Combat done | Combats: 4 | Total: 5
+2026-02-25 06:58:33,738 [INFO] Detecting level type...
+2026-02-25 06:58:33,738 [INFO] Detecting level type...
+2026-02-25 06:58:34,805 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:58:34,807 [INFO] → COMBAT (StartBattleButton found)
+2026-02-25 06:58:34,807 [INFO] ★ COMBAT level
+2026-02-25 06:58:34,807 [INFO] ─── Handling COMBAT level ───
+2026-02-25 06:58:34,807 [INFO] Demo checkmark
+2026-02-25 06:58:34,998 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:58:35,145 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:58:35,145 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:58:35,147 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:58:35,700 [DEBUG] Click at (1078, 809)
+2026-02-25 06:58:36,685 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:58:36,833 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:58:36,833 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:58:36,835 [DEBUG] Still state [DemoChecked], retrying...
+2026-02-25 06:58:37,024 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:58:37,170 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:58:37,170 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:58:37,171 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:58:37,729 [DEBUG] Click at (1078, 809)
+2026-02-25 06:58:38,721 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:58:38,884 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:58:38,884 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:58:38,885 [DEBUG] Still state [DemoChecked], retrying...
+2026-02-25 06:58:39,076 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 06:58:39,220 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 06:58:39,220 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 06:58:39,223 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 06:58:39,778 [DEBUG] Click at (1078, 809)
+2026-02-25 06:58:40,770 [DEBUG]   _find_best [DemoCheckmark] score=0.989
+2026-02-25 06:58:40,920 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-25 06:58:40,920 [DEBUG] → Winner: [DemoCheckmark] score=0.989
+2026-02-25 06:58:40,924 [INFO] ✓ Play Demo unchecked after click
+2026-02-25 06:58:40,924 [INFO] ✓ Demo unchecked, launching combat
+2026-02-25 06:58:40,924 [INFO] Waiting for StartBattle...
+2026-02-25 06:58:40,924 [INFO] Waiting: StartBattleButton
+2026-02-25 06:58:41,129 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 06:58:41,130 [INFO] Click: StartBattleButton
+2026-02-25 06:58:41,686 [DEBUG] Click at (1081, 904)
+2026-02-25 06:58:41,686 [INFO] ✓ Start Battle clicked
+2026-02-25 06:58:41,687 [INFO] Team selection
+2026-02-25 06:58:44,207 [DEBUG] Found [LegendsPointer] confidence=0.86 pos=(1145,541)
+2026-02-25 06:58:44,964 [DEBUG] Click at (845, 631)
+2026-02-25 06:58:44,964 [INFO] Char 1 clicked: (845, 631)
+2026-02-25 06:58:45,520 [DEBUG] Click at (945, 631)
+2026-02-25 06:58:45,520 [INFO] Char 2 clicked: (945, 631)
+2026-02-25 06:58:46,077 [DEBUG] Click at (1045, 631)
+2026-02-25 06:58:46,077 [INFO] Char 3 clicked: (1045, 631)
+2026-02-25 06:58:46,631 [DEBUG] Click at (845, 731)
+2026-02-25 06:58:46,631 [INFO] Char 4 clicked: (845, 731)
+2026-02-25 06:58:47,187 [DEBUG] Click at (945, 731)
+2026-02-25 06:58:47,187 [INFO] Char 5 clicked: (945, 731)
+2026-02-25 06:58:47,742 [DEBUG] Click at (1045, 731)
+2026-02-25 06:58:47,742 [INFO] Char 6 clicked: (1045, 731)
+2026-02-25 06:58:47,742 [INFO] Waiting: ReadyButton
+2026-02-25 06:58:47,985 [DEBUG] Found [ReadyButton] confidence=0.97 pos=(944,986)
+2026-02-25 06:58:47,987 [INFO] Click: ReadyButton
+2026-02-25 06:58:48,549 [DEBUG] Click at (944, 986)
+2026-02-25 06:58:48,549 [INFO] ✓ Ready
+2026-02-25 06:58:48,549 [INFO] Waiting for end of combat...
+2026-02-25 06:58:48,549 [INFO] Waiting for FinishedPointer...
+2026-02-25 06:59:00,143 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 07:00:00,215 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 07:01:00,295 [DEBUG] Anti-stuck paused (combat in progress)
+2026-02-25 07:01:23,340 [DEBUG] Found [FinishedPointer] confidence=0.90 pos=(767,206)
+2026-02-25 07:01:23,530 [DEBUG] Found [FinishedPointer] confidence=0.90 pos=(767,206)
+2026-02-25 07:01:24,090 [DEBUG] Click at (767, 206)
+2026-02-25 07:01:24,090 [INFO] ✓ Combat finished
+2026-02-25 07:01:26,290 [INFO] Results screen
+2026-02-25 07:01:29,137 [DEBUG] No TAP pending
+2026-02-25 07:01:29,137 [INFO] Waiting: OkBattleButton
+2026-02-25 07:01:29,334 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(942,989)
+2026-02-25 07:01:29,336 [INFO] Click: OkBattleButton
+2026-02-25 07:01:29,895 [DEBUG] Click at (942, 989)
+2026-02-25 07:01:29,896 [INFO] ✓ OkBattle step 1
+2026-02-25 07:01:32,749 [DEBUG] No TAP pending
+2026-02-25 07:01:32,750 [INFO] Waiting: OkBattleButton
+2026-02-25 07:01:32,948 [DEBUG] Found [OkBattleButton] confidence=0.78 pos=(1059,989)
+2026-02-25 07:01:32,950 [INFO] Click: OkBattleButton
+2026-02-25 07:01:33,506 [DEBUG] Click at (1059, 989)
+2026-02-25 07:01:33,506 [INFO] ✓ OkBattle step 2
+2026-02-25 07:01:33,506 [INFO] Replay confirmation
+2026-02-25 07:01:34,307 [INFO] Waiting: YesButton
+2026-02-25 07:01:34,538 [DEBUG] Found [YesButton] confidence=0.97 pos=(1060,745)
+2026-02-25 07:01:34,540 [INFO] Click: YesButton
+2026-02-25 07:01:35,097 [DEBUG] Click at (1060, 745)
+2026-02-25 07:01:35,097 [INFO] ✓ Replay confirmed
+2026-02-25 07:01:35,097 [INFO] ✓ Combat handled, back to level detection
+2026-02-25 07:01:35,097 [INFO] ✓✓ Combat done | Combats: 5 | Total: 6
+2026-02-25 07:01:35,598 [INFO] Detecting level type...
+2026-02-25 07:01:35,598 [INFO] Detecting level type...
+2026-02-25 07:02:01,939 [DEBUG] Found [YesButton] confidence=0.81 pos=(942,745)
+2026-02-25 07:02:03,326 [DEBUG] Anti-stuck OK, diff=62978546
+2026-02-25 07:02:21,480 [WARNING] Level type not detected after 45s → recovery requested
+2026-02-25 07:02:21,480 [WARNING] Unknown level type after timeout → recovery
+2026-02-25 07:02:21,481 [WARNING] ═══ RECOVERY TO MENU ═══
+2026-02-25 07:02:22,128 [INFO] Back #1 via Escape (no button found)
+2026-02-25 07:02:24,949 [DEBUG] No TAP pending
+2026-02-25 07:02:26,834 [INFO] Back #2 via Escape (no button found)
+2026-02-25 07:02:29,646 [DEBUG] No TAP pending
+2026-02-25 07:02:31,532 [INFO] Back #3 via Escape (no button found)
+2026-02-25 07:02:34,366 [DEBUG] No TAP pending
+2026-02-25 07:02:36,253 [INFO] Back #4 via Escape (no button found)
+2026-02-25 07:02:39,060 [DEBUG] No TAP pending
+2026-02-25 07:02:40,965 [INFO] Back #5 via Escape (no button found)
+2026-02-25 07:02:43,883 [DEBUG] No TAP pending
+2026-02-25 07:02:45,784 [INFO] Back #6 via Escape (no button found)
+2026-02-25 07:02:48,587 [DEBUG] No TAP pending
+2026-02-25 07:02:50,490 [INFO] Back #7 via Escape (no button found)
+2026-02-25 07:02:53,308 [DEBUG] No TAP pending
+2026-02-25 07:02:55,195 [INFO] Back #8 via Escape (no button found)
+2026-02-25 07:02:58,006 [DEBUG] No TAP pending
+2026-02-25 07:02:59,891 [INFO] Back #9 via Escape (no button found)
+2026-02-25 07:03:02,698 [DEBUG] No TAP pending
+2026-02-25 07:03:04,685 [DEBUG] Found [BackButton] confidence=0.54 (threshold=0.5) pos=(929,747)
+2026-02-25 07:03:04,687 [INFO] Back #10 via BackButton at (929, 747)
+2026-02-25 07:03:05,260 [DEBUG] Click at (929, 747)
+2026-02-25 07:03:06,140 [WARNING] Anti-stuck: unrecognized screen → recovery requested
+2026-02-25 07:03:09,346 [DEBUG] No TAP pending
+2026-02-25 07:03:10,287 [INFO] Back #11 via Escape (no button found)

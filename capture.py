@@ -27,7 +27,7 @@ BUTTONS_TO_CAPTURE = [
     ("demo",            "DemoCheckmark",     "'Play Demo' UNCHECKED (empty checkbox + Play Demo text) — capture full zone"),
     ("demo_checked",    "DemoChecked",       "'Play Demo' CHECKED yellow (checkmark + Play Demo text) — capture full zone"),
     ("startbattle",     "StartBattleButton", "The 'Start Battle' button"),
-    ("legendspointer",  "LegendsPointer",    "Reference point for team selection (e.g. title zone)"),
+    ("legendspointer",  "LegendsPointer",    "Any element visible on team selection screen (e.g. 'Details' button)"),
     ("ready",           "ReadyButton",       "The 'Ready' button before combat"),
     ("finishedpointer", "FinishedPointer",   "End of combat indicator (victory text or icon)"),
     ("tap",             "TapArrow",          "'Tap to continue' arrow after combat (centered at bottom)"),
@@ -36,6 +36,8 @@ BUTTONS_TO_CAPTURE = [
     ("skip",            "SkipButton",        "The 'Skip' button to skip a cinematic"),
     ("storyslide",      "StorySlide",        "Story slide indicator (dialogue box, narrative background...)"),
     ("rematch",         "RematchButton",     "'Rematch' button — only visible on defeat screen (next to OK)"),
+    ("quitbattle",      "QuitBattleButton",  "'Quit Battle' button — appears after pressing back during combat"),
+    ("incombat",        "InCombatIndicator", "AUTO ON button — visible only during active combat (top left)"),
     ("back",            "BackButton",        "In-game back button (used for recovery when stuck)"),
     ("home",            "HomeButton",        "In-game home button (used for recovery when stuck)"),
     ("mission",         "MissionObject",     "The stage/level to select in the list"),
@@ -210,8 +212,9 @@ class CaptureApp:
                 return
 
         self.root.destroy()
-        print("\n[INFO] Capture tool closed.")
-        print("[INFO] Now run: python main.py")
+        print("\n[INFO] Capture tool closed. Launching bot...")
+        import subprocess
+        subprocess.Popen([sys.executable, "main.py"])
         sys.exit(0)
 
     def run(self):

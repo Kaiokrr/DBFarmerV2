@@ -1,0 +1,101 @@
+2026-02-25 07:20:58,180 [INFO] Config loaded from config.json
+2026-02-25 07:20:58,183 [DEBUG] Image loaded: StoryButton (story.png)
+2026-02-25 07:20:58,184 [DEBUG] Image loaded: ContinueButton (continue.png)
+2026-02-25 07:20:58,186 [DEBUG] Image loaded: MissionObject (mission.png)
+2026-02-25 07:20:58,186 [DEBUG] Image loaded: DemoCheckmark (demo.png)
+2026-02-25 07:20:58,186 [DEBUG] Image loaded: DemoChecked (demo_checked.png)
+2026-02-25 07:20:58,187 [DEBUG] Image loaded: StartBattleButton (startbattle.png)
+2026-02-25 07:20:58,187 [DEBUG] Image loaded: YesButton (yes.png)
+2026-02-25 07:20:58,189 [DEBUG] Image loaded: NoButton (no.png)
+2026-02-25 07:20:58,189 [DEBUG] Image loaded: LegendsPointer (legendspointer.png)
+2026-02-25 07:20:58,190 [DEBUG] Image loaded: ReadyButton (ready.png)
+2026-02-25 07:20:58,190 [DEBUG] Image loaded: FinishedPointer (finishedpointer.png)
+2026-02-25 07:20:58,192 [DEBUG] Image loaded: TapArrow (tap.png)
+2026-02-25 07:20:58,192 [DEBUG] Image loaded: TapArrow2 (tap2.png)
+2026-02-25 07:20:58,193 [DEBUG] Image loaded: OkBattleButton (okbattle.png)
+2026-02-25 07:20:58,193 [DEBUG] Image loaded: SkipButton (skip.png)
+2026-02-25 07:20:58,194 [DEBUG] Image loaded: RematchButton (rematch.png)
+2026-02-25 07:20:58,194 [DEBUG] Image loaded: StorySlide (storyslide.png)
+2026-02-25 07:20:58,195 [DEBUG] Image loaded: BackButton (back.png)
+2026-02-25 07:20:58,197 [DEBUG] Image loaded: HomeButton (home.png)
+2026-02-25 07:20:58,197 [INFO] All images loaded (19)
+2026-02-25 07:20:58,197 [INFO] Looking for window: 'BlueStacks App Player'
+2026-02-25 07:20:58,199 [INFO] Window found: Bluestacks App Player | Pos: (0,0) Size: 1920x1032
+2026-02-25 07:20:58,312 [INFO] DBFarmer initialized successfully
+2026-02-25 07:20:58,317 [INFO] =======================================================
+2026-02-25 07:20:58,317 [INFO]   INITIAL SETUP
+2026-02-25 07:20:58,317 [INFO] =======================================================
+2026-02-25 07:20:58,317 [INFO] Waiting: StoryButton
+2026-02-25 07:20:59,475 [DEBUG] Found [StoryButton] confidence=0.79 pos=(795,795)
+2026-02-25 07:20:59,741 [DEBUG] Found [StoryButton] confidence=0.78 pos=(795,795)
+2026-02-25 07:21:00,304 [DEBUG] Click at (795, 795)
+2026-02-25 07:21:00,304 [INFO] ✓ Story selected
+2026-02-25 07:21:00,304 [INFO] Waiting: ContinueButton
+2026-02-25 07:21:01,937 [DEBUG] Found [ContinueButton] confidence=0.76 pos=(1116,819)
+2026-02-25 07:21:02,151 [DEBUG] Found [ContinueButton] confidence=0.76 pos=(1116,819)
+2026-02-25 07:21:02,714 [DEBUG] Click at (1116, 819)
+2026-02-25 07:21:02,714 [INFO] ✓ Continue clicked
+2026-02-25 07:21:03,201 [INFO] Anti-stuck started (background thread)
+2026-02-25 07:21:06,444 [WARNING] [YesButton] not found after 5 attempts
+2026-02-25 07:21:06,444 [INFO] ✓ Setup done - main loop taking over
+2026-02-25 07:21:06,444 [INFO] =======================================================
+2026-02-25 07:21:06,445 [INFO]   FARMING LOOP STARTED
+2026-02-25 07:21:06,445 [INFO] =======================================================
+2026-02-25 07:21:06,445 [INFO] Detecting level type...
+2026-02-25 07:21:06,445 [INFO] Detecting level type...
+2026-02-25 07:21:06,655 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 07:21:06,657 [INFO] → COMBAT (StartBattleButton found)
+2026-02-25 07:21:06,657 [INFO] ★ COMBAT level
+2026-02-25 07:21:06,657 [INFO] ─── Handling COMBAT level ───
+2026-02-25 07:21:06,658 [INFO] Demo checkmark
+2026-02-25 07:21:06,857 [DEBUG]   _find_best [DemoCheckmark] score=0.948
+2026-02-25 07:21:07,012 [DEBUG]   _find_best [DemoChecked] score=0.994
+2026-02-25 07:21:07,012 [DEBUG] → Winner: [DemoChecked] score=0.994
+2026-02-25 07:21:07,014 [INFO] Play Demo checked — clicking to uncheck at (1078, 809)
+2026-02-25 07:21:07,574 [DEBUG] Click at (1078, 809)
+2026-02-25 07:21:08,568 [DEBUG]   _find_best [DemoCheckmark] score=0.989
+2026-02-25 07:21:08,717 [DEBUG]   _find_best [DemoChecked] score=0.958
+2026-02-25 07:21:08,717 [DEBUG] → Winner: [DemoCheckmark] score=0.989
+2026-02-25 07:21:08,718 [INFO] ✓ Play Demo unchecked after click
+2026-02-25 07:21:08,720 [INFO] ✓ Demo unchecked, launching combat
+2026-02-25 07:21:08,720 [INFO] Waiting for StartBattle...
+2026-02-25 07:21:08,720 [INFO] Waiting: StartBattleButton
+2026-02-25 07:21:08,921 [DEBUG] Found [StartBattleButton] confidence=0.80 pos=(1081,904)
+2026-02-25 07:21:08,924 [INFO] Click: StartBattleButton
+2026-02-25 07:21:09,484 [DEBUG] Click at (1081, 904)
+2026-02-25 07:21:09,484 [INFO] ✓ Start Battle clicked
+2026-02-25 07:21:09,485 [INFO] Team selection
+2026-02-25 07:21:13,224 [DEBUG] Found [LegendsPointer] confidence=0.86 pos=(1145,541)
+2026-02-25 07:21:13,982 [DEBUG] Click at (845, 631)
+2026-02-25 07:21:13,982 [INFO] Char 1 clicked: (845, 631)
+2026-02-25 07:21:14,539 [DEBUG] Click at (945, 631)
+2026-02-25 07:21:14,539 [INFO] Char 2 clicked: (945, 631)
+2026-02-25 07:21:15,095 [DEBUG] Click at (1045, 631)
+2026-02-25 07:21:15,095 [INFO] Char 3 clicked: (1045, 631)
+2026-02-25 07:21:15,650 [DEBUG] Click at (845, 731)
+2026-02-25 07:21:15,650 [INFO] Char 4 clicked: (845, 731)
+2026-02-25 07:21:16,205 [DEBUG] Click at (945, 731)
+2026-02-25 07:21:16,205 [INFO] Char 5 clicked: (945, 731)
+2026-02-25 07:21:16,760 [DEBUG] Click at (1045, 731)
+2026-02-25 07:21:16,760 [INFO] Char 6 clicked: (1045, 731)
+2026-02-25 07:21:16,761 [INFO] Waiting: ReadyButton
+2026-02-25 07:21:46,793 [WARNING] Timeout (30s) waiting for [ReadyButton] → recovery requested
+2026-02-25 07:21:46,794 [WARNING] Combat failed → recovery
+2026-02-25 07:21:46,795 [WARNING] ═══ RECOVERY TO MENU ═══
+2026-02-25 07:21:47,288 [DEBUG] Found [HomeButton] confidence=0.91 pos=(940,944)
+2026-02-25 07:21:47,290 [INFO] ✓ HomeButton visible → click at (940, 944)
+2026-02-25 07:21:47,850 [DEBUG] Click at (940, 944)
+2026-02-25 07:21:49,351 [INFO] ✓ Home reached via HomeButton → relaunching setup
+2026-02-25 07:21:49,351 [INFO] =======================================================
+2026-02-25 07:21:49,352 [INFO]   INITIAL SETUP
+2026-02-25 07:21:49,352 [INFO] =======================================================
+2026-02-25 07:21:49,352 [INFO] Waiting: StoryButton
+2026-02-25 07:21:49,624 [DEBUG] Found [StoryButton] confidence=0.81 pos=(795,795)
+2026-02-25 07:21:49,884 [DEBUG] Found [StoryButton] confidence=0.76 pos=(795,795)
+2026-02-25 07:21:50,439 [DEBUG] Click at (795, 795)
+2026-02-25 07:21:50,439 [INFO] ✓ Story selected
+2026-02-25 07:21:50,440 [INFO] Waiting: ContinueButton
+2026-02-25 07:21:52,047 [DEBUG] Found [ContinueButton] confidence=0.76 pos=(1116,819)
+2026-02-25 07:21:52,261 [DEBUG] Found [ContinueButton] confidence=0.76 pos=(1116,819)
+2026-02-25 07:21:52,821 [DEBUG] Click at (1116, 819)
+2026-02-25 07:21:52,821 [INFO] ✓ Continue clicked

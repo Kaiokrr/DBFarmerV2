@@ -5,19 +5,22 @@ Modernized fork of the original [LUXTACO](https://github.com/LUXTACO/DBFarmer) p
 
 ---
 
-## ✨ Changes vs the original
+## ✨ What's new vs the original
 
-- ✅ Compatible with **BlueStacks 5** (original was for MEmu — window must be named "BlueStacks App Player")
-- ✅ **OpenCV** template matching detection (more reliable than pyautogui alone)
+- ✅ Compatible with **BlueStacks 5**
+- ✅ **OpenCV** template matching (more reliable detection)
 - ✅ Automatic handling of **cinematic levels** (story slides without combat)
 - ✅ Intelligent level type detection (combat or cinematic)
-- ✅ **Play Demo** checkbox state verification before each battle
+- ✅ **Play Demo** checkbox verification before each battle
 - ✅ **Multiple TAP** handling after combat (level up, objectives)
 - ✅ **Defeat detection** with automatic Rematch
+- ✅ **Smart Recovery** — detects current screen and resumes from the right point
+- ✅ **In-combat detection** via AUTO ON button
+- ✅ **QuitBattle** support during recovery
 - ✅ Real-time **overlay** with stats and logs (draggable)
-- ✅ **Anti-stuck** with automatic recovery to main menu
-- ✅ Built-in **image capture tool** (`capture.py`)
-- ✅ Removed Discord dependency
+- ✅ **Anti-stuck** background thread with automatic recovery
+- ✅ Team slots configured via **absolute coordinates** in `config.json`
+- ✅ Built-in **image capture tool** (`capture.py`) with "Done & Launch bot" button
 - ✅ Per-session logs in `logs/` folder
 
 ---
@@ -46,6 +49,8 @@ A GUI will open. For each button:
 3. The window hides → draw a rectangle around the button in the game
 4. The zone is saved automatically ✓
 
+Click **"Done & Launch bot"** when finished — it will start the bot automatically.
+
 ### Buttons to capture:
 
 | Image | Description |
@@ -54,42 +59,41 @@ A GUI will open. For each button:
 | `continue.png` | "Continue" button (resume progress) |
 | `yes.png` | "Yes" / confirmation button |
 | `no.png` | "No" button |
-| `demo.png` | **"Play Demo" unchecked** (empty checkbox — required state to launch auto battle) |
-| `demo_checked.png` | **"Play Demo" checked** (yellow checkmark — bot will uncheck it) |
+| `demo.png` | **"Play Demo" unchecked** (empty checkbox) ✅ already included |
+| `demo_checked.png` | **"Play Demo" checked** (yellow checkmark) ✅ already included |
 | `startbattle.png` | "Start Battle" button |
-| `legendspointer.png` | Reference zone for team selection |
+| `legendspointer.png` | Any element visible on team selection screen (e.g. "Details" button) — used as signal that the screen is ready |
 | `ready.png` | "Ready" button |
 | `finishedpointer.png` | End of battle indicator |
-| `tap.png` | "TAP" button / arrow after battle (centered at bottom) |
-| `tap2.png` | "TAP" icon variant (bottom right corner) |
+| `tap.png` | "Tap to continue" arrow after battle (centered bottom) |
+| `tap2.png` | TAP icon variant (bottom right corner) |
 | `okbattle.png` | "OK" button on results screen |
-| `rematch.png` | "Rematch" button — only visible on defeat screen |
+| `skip.png` | "Skip" button on cinematic levels |
 | `storyslide.png` | Story slide indicator (dialogue box, narrative background) |
-| `arrow.png` | General navigation arrow |
-| `back.png` | In-game back button (used for recovery when stuck) |
-| `home.png` | In-game home button (used for recovery when stuck) |
+| `rematch.png` | "Rematch" button — only visible on defeat screen |
+| `quitbattle.png` | "Quit Battle" button — appears after pressing back during combat |
+| `incombat.png` | **AUTO ON** button — visible only during active combat (top left) |
+| `back.png` | In-game back button (used for recovery) |
+| `home.png` | In-game home button (used for recovery) |
 | `mission.png` | The stage/level to select |
 
-> **Note**: `demo.png` and `demo_checked.png` are already included in the `images/` folder — no need to recapture them.
+> **Note**: `demo.png` and `demo_checked.png` are already included — no need to recapture them.
 
-> **Tip**: Capture images with BlueStacks in **fullscreen** mode.
+> **Tip**: Capture images with BlueStacks in **fullscreen** mode for best results.
 
 ---
 
-## ⚙️ Configure Skip position (important)
+## ⚙️ Step 2: Configure positions
 
-The **Skip** button on cinematic levels is clicked using fixed coordinates (more reliable than image detection). You only need to measure its position **once**:
+### Skip button
+The Skip button is clicked using fixed coordinates. Measure its position once:
 
-1. Open the game on a cinematic level (slide visible with the Skip button)
-2. In a Python terminal:
 ```python
 import pyautogui, time
 time.sleep(3)
 print(pyautogui.position())
 ```
-3. Within 3 seconds, hover your mouse **over the Skip button**
-4. Note the coordinates and put them in `config.json`:
-
+Hover over the Skip button within 3 seconds, then update `config.json`:
 ```json
 "skip_position": {
     "mode": "absolute",
@@ -98,9 +102,23 @@ print(pyautogui.position())
 }
 ```
 
+### Team slots
+Character slots are clicked using absolute coordinates defined in `config.json`:
+```json
+"team_slots": [
+    {"x": 845, "y": 631},
+    {"x": 945, "y": 631},
+    {"x": 1045, "y": 631},
+    {"x": 845, "y": 731},
+    {"x": 945, "y": 731},
+    {"x": 1045, "y": 731}
+]
+```
+If the bot clicks the wrong slots, adjust these values to match your screen. Row 1 = slots 1–3, Row 2 = slots 4–6.
+
 ---
 
-## 🤖 Step 2: Run the bot
+## 🤖 Step 3: Run the bot
 
 ```
 python main.py
@@ -109,8 +127,8 @@ or `start.bat` → choice **3**.
 
 Before launching:
 - ✅ BlueStacks 5 is open in **fullscreen**
-- ✅ The game is on the **home screen** (not in combat)
-- ✅ You have energy to play
+- ✅ The game is on the **home screen**
+- ✅ Your team is already configured in the game
 
 **CTRL+C** to stop cleanly.  
 **Mouse to top-left corner** = emergency stop (pyautogui failsafe).
@@ -125,30 +143,44 @@ Home → Story → Continue
 ```
 
 ### Main loop
-The bot automatically detects the type of each level:
+The bot detects the type of each level automatically:
 
 **COMBAT level**:
 ```
-Verify Play Demo unchecked → Start Battle → Team selection → Ready
-→ [auto battle] →
-FinishedPointer → Victory or Defeat (Rematch) →
-TAP(s) if level up → OK → TAP(s) → OK → Yes (replay)
-→ [next level]
+Verify Play Demo unchecked → Start Battle
+→ Team selection (6 slots) → Ready
+→ [auto battle]
+→ FinishedPointer detected
+→ TAP(s) if any → OK → TAP(s) if any → OK
+→ Yes (replay) → [next level]
 ```
 
-**CINEMATIC level** (story slides without combat):
+**CINEMATIC level**:
 ```
-Skip → Yes
+Skip → Yes (confirm)
 ```
 
-### Stuck handling
-Every timeout automatically triggers a recovery:
-1. Anti-stuck sets a `recovery_requested` flag
-2. Main loop detects it between each action
-3. `_recover_to_menu()` returns to menu via `BackButton` → `HomeButton` → Escape
-4. `setup()` restarts farming from the home screen
+### Smart Recovery
+When something goes wrong, the bot detects the current screen and resumes from the right point:
 
-The anti-stuck is **paused** during combat and the results screen to avoid false positives.
+| Screen detected | Action |
+|----------------|--------|
+| AUTO ON visible | Still in combat → wait for FinishedPointer |
+| OkBattleButton | Resume from results screen |
+| ReadyButton | Go back → re-select team → full combat |
+| StartBattleButton | Resume full combat sequence |
+| SkipButton / StorySlide | Resume cinematic |
+| TapArrow | Flush TAPs and continue |
+| YesButton | Click and continue |
+| StoryButton | Re-run setup |
+| Nothing recognized | Full recovery: Back → Home → Escape |
+
+### Anti-stuck
+Running as a background thread every 60 seconds:
+- TAP detected → clicks immediately
+- Screen frozen (no pixel diff) → clicks highest priority button
+- Unrecognized screen → requests recovery
+- Paused during combat and results screen to avoid false positives
 
 ---
 
@@ -159,29 +191,34 @@ The anti-stuck is **paused** during combat and the results screen to avoid false
 | `window_name` | `BlueStacks App Player` | BlueStacks window title |
 | `confidence` | `0.75` | OpenCV detection threshold (0.5–0.95) |
 | `click_delay` | `0.5` | Delay after each click (sec) |
-| `anti_stuck_delay` | `60.0` | Anti-stuck check frequency (sec) |
+| `loop_delay` | `1.0` | Delay between each check (sec) |
+| `anti_stuck_delay` | `60.0` | Anti-stuck check interval (sec) |
 | `combat_timeout` | `600` | Max combat duration before recovery (sec) |
-| `overlay_enabled` | `true` | Show overlay |
+| `overlay_enabled` | `true` | Show overlay window |
 | `skip_position` | `x:1120, y:70` | Absolute coordinates of the Skip button |
+| `team_slots` | 6 positions | Absolute coordinates for each character slot |
 
 ---
 
 ## ❓ Common issues
 
 **"BlueStacks window not found"**  
-→ Make sure BlueStacks 5 is open. Run `python main.py` to see the list of detected windows and adjust `window_name` in `config.json`.
+→ Make sure BlueStacks 5 is open. Check `window_name` in `config.json` matches your window title exactly.
 
-**Bot launches combat with Play Demo checked**  
-→ Recapture `demo.png` (empty checkbox) and `demo_checked.png` (yellow checkmark) making sure to include the "Play Demo" text in your selection area.
+**Bot clicks wrong character slots**  
+→ Adjust the `team_slots` coordinates in `config.json` to match your screen layout.
 
 **Skip doesn't click in the right place**  
-→ Measure the exact coordinates of the Skip button and update `config.json` → `skip_position`.
+→ Measure the exact coordinates of the Skip button and update `skip_position` in `config.json`.
 
 **Detection too sensitive / not sensitive enough**  
 → Adjust `confidence` in `config.json` (higher = stricter, lower = more lenient).
 
-**Bot gets stuck**  
-→ The anti-stuck triggers automatically every 60s. It detects unrecognized screens (shop, popups, etc.) and sets a recovery flag. The main loop returns to menu via `back.png` → `home.png` → Escape, then restarts setup. During combat and results screen, anti-stuck is paused. If combat exceeds 10 min, anti-stuck reactivates and forces recovery.
+**Bot detects Play Demo as checked when it's not**  
+→ Recapture `demo.png` and `demo_checked.png` making sure to include the full checkbox + "Play Demo" text.
+
+**Bot keeps recovering for no reason**  
+→ Lower `confidence` slightly or recapture the image that is causing false negatives.
 
 ---
 
