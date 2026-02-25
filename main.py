@@ -391,6 +391,32 @@ class DBFarmer:
 
         return None
 
+    def _find_with_confidence(self, key: str, confidence: float) -> tuple | None:
+        """Same as _find but with a custom confidence threshold."""
+        if key not in self.images:
+            return None
+        screenshot = self._screenshot()
+        if screenshot is None:
+            return None
+        template = self.images[key]
+        screen_bgr = cv2.cvtColor(screenshot, cv2.COLOR_RGB2BGR)
+        sh, sw = screen_bgr.shape[:2]
+        th, tw = template.shape[:2]
+        if th > sh or tw > sw:
+            template = cv2.resize(template, (min(tw, sw-1), min(th, sh-1)))
+        result = cv2.matchTemplate(screen_bgr, template, cv2.TM_CCOEFF_NORMED)
+        _, max_val, _, max_loc = cv2.minMaxLoc(result)
+        if max_val >= confidence:
+            rel_x = max_loc[0] + tw // 2
+            rel_y = max_loc[1] + th // 2
+            region = self._get_window_region()
+            if region:
+                abs_x = region[0] + rel_x
+                abs_y = region[1] + rel_y
+                logger.debug(f"Found [{key}] confidence={max_val:.2f} (threshold={confidence}) pos=({abs_x},{abs_y})")
+                return (abs_x, abs_y)
+        return None
+
     def _find_with_score(self, key: str, screenshot_bgr) -> tuple[float, tuple | None]:
         """
         Searches for an image in an already captured screenshot.
@@ -973,17 +999,14 @@ class DBFarmer:
                 return True
 
             # ── BackButton visible → go back one screen ────────
-            back = self._find("BackButton")
+            back = self._find_with_confidence("BackButton", max(0.50, self.confidence - 0.25))
             if back:
                 logger.info(f"Back #{attempt+1} via BackButton at {back}")
                 self._click(*back)
                 time.sleep(1.2)
 
-                # Close possible popup
-                tap = self._find("TapArrow") or self._find("TapArrow2")
-                if tap:
-                    self._click(*tap)
-                    time.sleep(0.8)
+                # Flush all pending TAPs after back
+                self._flush_taps()
 
                 # Refuse possible confirmation
                 no = self._find("NoButton")
@@ -996,11 +1019,8 @@ class DBFarmer:
             # ── No in-game button found → Escape ───────────────
             logger.info(f"Back #{attempt+1} via Escape (no button found)")
 
-            # TAP popup before Escape
-            tap = self._find("TapArrow") or self._find("TapArrow2")
-            if tap:
-                self._click(*tap)
-                time.sleep(0.8)
+            # Flush TAPs before Escape
+            self._flush_taps()
 
             pyautogui.press("escape")
             time.sleep(1.2)
