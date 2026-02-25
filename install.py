@@ -1,6 +1,6 @@
 """
-DBFarmer v2 - Installation automatique des dependances
-Lance: python install.py
+DBFarmer v2 - Automatic dependency installer
+Run: python install.py
 """
 import os
 import sys
@@ -15,7 +15,7 @@ LIBRARIES = [
 ]
 
 print("="*50)
-print("  DBFarmer v2 - Installation des dependances")
+print("  DBFarmer v2 - Installing dependencies")
 print("="*50)
 print()
 
@@ -24,9 +24,9 @@ for lib in LIBRARIES:
     try:
         import_name = lib.replace("-", "_").replace("opencv_python", "cv2").replace("pillow", "PIL")
         __import__(import_name)
-        print(f"  ✓ {lib} (deja installe)")
+        print(f"  ✓ {lib} (already installed)")
     except ImportError:
-        print(f"  → Installation de {lib}...", end=" ", flush=True)
+        print(f"  → Installing {lib}...", end=" ", flush=True)
         result = subprocess.run(
             [sys.executable, "-m", "pip", "install", lib, "-q"],
             capture_output=True, text=True
@@ -34,19 +34,19 @@ for lib in LIBRARIES:
         if result.returncode == 0:
             print("OK")
         else:
-            print(f"ECHEC!\n    {result.stderr.strip()}")
+            print(f"FAILED!\n    {result.stderr.strip()}")
             all_ok = False
 
 print()
 if all_ok:
-    print("  ✓ Toutes les dependances sont installees!")
+    print("  ✓ All dependencies installed!")
     print()
-    print("  Etapes suivantes:")
-    print("  1. Lance: python capture.py   -> capturer les boutons du jeu")
-    print("  2. Lance: python main.py      -> demarrer le bot")
+    print("  Next steps:")
+    print("  1. Run: python capture.py   -> capture game buttons")
+    print("  2. Run: python main.py      -> start the bot")
 else:
-    print("  ✗ Certaines dependances n'ont pas pu etre installees.")
-    print("    Installe-les manuellement avec pip.")
+    print("  ✗ Some dependencies could not be installed.")
+    print("    Install them manually with pip.")
 
 print()
-input("Appuie sur Entree pour continuer...")
+input("Press Enter to continue...")
