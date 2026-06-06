@@ -44,7 +44,8 @@ DEFAULT_CONFIG = {
         {"x": 845, "y": 731},
         {"x": 945, "y": 731},
         {"x": 1045, "y": 731}
-    ]
+    ],
+    "base_resolution": {"w": 1920, "h": 1080}
 }
 
 CONFIG_PATH = "config.json"
@@ -164,7 +165,7 @@ class Overlay:
         # Custom title bar
         bar = tk.Frame(self.root, bg="#1a0a2e", pady=3)
         bar.pack(fill="x")
-        tk.Label(bar, text="⚡ DBFarmer v2 | BlueStacks 5 ⚡",
+        tk.Label(bar, text="⚡ DBFarmer v2 | BlueStacks 5 | kaiokrr ⚡",
                  fg="#b060ff", bg="#1a0a2e",
                  font=("Consolas", 10, "bold")).pack(side="left", padx=8)
         tk.Label(bar, text="✕", fg="#ff5555", bg="#1a0a2e",
@@ -210,7 +211,7 @@ class Overlay:
     def _update(self):
         try:
             data = self.get_data()
-            self.status_var.set(f"🟢 Status: {data.get('status', '...')}")
+            self.status_var.set(f"🟢 Status: {data.get('status', '...')} | {data.get('resolution', '?')}")
             self.loop_var.set(f"🔁 Loops: {data.get('loops', 0)} | Completed: {data.get('completed', 0)}")
             self.stuck_var.set(f"🛡 Anti-stuck: {data.get('stuck_fixed', 0)} fix(s)")
             self.action_var.set(f"⚡ Action: {data.get('action', '...')}")
@@ -261,6 +262,10 @@ class DBFarmer:
         # Main loop detects it and handles recovery properly
         self.recovery_requested = False
 
+        # Resolution scale factors (computed after window is found)
+        self.scale_x = 1.0
+        self.scale_y = 1.0
+
         os.makedirs(self.image_folder, exist_ok=True)
 
         # Load images
@@ -269,6 +274,9 @@ class DBFarmer:
 
         # Find BlueStacks window
         self.window = self._find_window()
+
+        # Compute resolution scale
+        self._compute_scale()
 
         # Start anti-stuck thread
         self._stuck_thread = threading.Thread(target=self._anti_stuck_loop, daemon=True)
@@ -341,7 +349,34 @@ class DBFarmer:
             pass
         return None
 
-    # ── Screenshot ─────────────────────────────────────────────
+    # ── Resolution scaling ─────────────────────────────────────
+
+    def _compute_scale(self):
+        """
+        Reads the screen resolution and computes scale factors
+        relative to the base resolution (1920x1080).
+        1080p → scale 1.0 (no change)
+        1440p → scale 1.333
+        4K    → scale 2.0
+        """
+        base = self.config.get("base_resolution", {"w": 1920, "h": 1080})
+        screen_w, screen_h = pyautogui.size()
+
+        self.scale_x = screen_w / base["w"]
+        self.scale_y = screen_h / base["h"]
+
+        logger.info(f"Screen resolution: {screen_w}x{screen_h} | Scale: x={self.scale_x:.3f} y={self.scale_y:.3f}")
+        self.stats["resolution"] = f"{screen_w}x{screen_h}"
+
+    def _sx(self, x: int) -> int:
+        """Scale an X coordinate from base resolution to current resolution."""
+        return int(x * self.scale_x)
+
+    def _sy(self, y: int) -> int:
+        """Scale a Y coordinate from base resolution to current resolution."""
+        return int(y * self.scale_y)
+
+
 
     def _screenshot(self):
         """Captures only the BlueStacks window."""
@@ -504,8 +539,8 @@ class DBFarmer:
         mode = pos.get("mode", "absolute")
 
         if mode == "absolute":
-            x = pos["x"]
-            y = pos["y"]
+            x = self._sx(pos["x"])
+            y = self._sy(pos["y"])
         else:
             region = self._get_window_region()
             if region is None:
@@ -585,8 +620,10 @@ class DBFarmer:
 
         time.sleep(0.3)
         for i, slot in enumerate(slots):
-            self._click(slot["x"], slot["y"])
-            logger.info(f"Char {i+1} clicked: ({slot['x']}, {slot['y']})")
+            x = self._sx(slot["x"])
+            y = self._sy(slot["y"])
+            self._click(x, y)
+            logger.info(f"Char {i+1} clicked: ({x}, {y})")
             if i == 2:
                 time.sleep(0.5)
 

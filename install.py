@@ -41,12 +41,12 @@ print()
 if all_ok:
     print("  ✓ All dependencies installed!")
     print()
-    print("  Next steps:")
-    print("  1. Run: python capture.py   -> capture game buttons")
-    print("  2. Run: python main.py      -> start the bot")
+    print("  Returning to menu in 3 seconds...")
 else:
     print("  ✗ Some dependencies could not be installed.")
     print("    Install them manually with pip.")
+    print()
+    print("  Returning to menu in 5 seconds...")
 
-print()
-input("Press Enter to continue...")
+import time
+time.sleep(3 if all_ok else 5)

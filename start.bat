@@ -1,6 +1,9 @@
 @echo off
 title DBFarmer v2 - Dragon Ball Legends
 color 0D
+
+:menu
+cls
 echo.
 echo  ========================================
 echo   DBFarmer v2 - Dragon Ball Legends
@@ -18,20 +21,19 @@ set /p choice=" Choice (1-4): "
 
 if "%choice%"=="1" (
     python install.py
-    pause
-    goto :eof
+    goto menu
 )
 if "%choice%"=="2" (
     python capture.py
-    pause
-    goto :eof
+    goto menu
 )
 if "%choice%"=="3" (
     python main.py
     pause
-    goto :eof
+    goto menu
 )
 if "%choice%"=="4" exit
 
 echo Invalid choice
-pause
+timeout /t 2 >nul
+goto menu
